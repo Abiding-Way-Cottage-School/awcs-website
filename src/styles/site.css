@@ -1,0 +1,648 @@
+/* Abiding Way Cottage School — page styles.
+   tokens.css is the brand source of truth and is not edited. Everything here
+   is built from its variables; no new colors, no radii, no shadows. */
+
+/* ---- Reset & base ---- */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  background: var(--bg);
+  color: var(--text);
+  font-family: var(--font-body);
+  font-size: var(--fs-body);
+  line-height: var(--lh-body);
+  text-rendering: optimizeLegibility;
+}
+
+img {
+  max-width: 100%;
+  height: auto;
+  display: block;
+}
+
+a {
+  color: inherit;
+}
+
+h1,
+h2,
+h3,
+p,
+ul,
+ol,
+figure {
+  margin: 0;
+}
+
+ul {
+  padding: 0;
+  list-style: none;
+}
+
+/* ---- Layout primitives ---- */
+.container {
+  width: 100%;
+  max-width: var(--container);
+  margin-inline: auto;
+  padding-inline: var(--gutter);
+}
+
+.section {
+  padding-block: var(--section-y);
+}
+
+.section-tight {
+  padding-block: clamp(2.5rem, 6vw, 4.5rem);
+}
+
+.prose {
+  max-width: var(--measure);
+}
+
+.prose p + p {
+  margin-top: 1.25rem;
+}
+
+.prose strong {
+  font-weight: 600;
+}
+
+/* The handbook's standard section opener: eyebrow, heading, italic lead. */
+.section-head {
+  max-width: var(--measure);
+}
+
+.section-head .eyebrow {
+  display: block;
+  margin-bottom: 1.25rem;
+}
+
+.section-head .lead {
+  display: block;
+  margin-top: 1rem;
+}
+
+.section-head--center {
+  margin-inline: auto;
+  text-align: center;
+}
+
+/* A hairline rule that opens or closes a block. */
+.rule {
+  height: 1px;
+  border: 0;
+  background: var(--border);
+  margin: 0;
+}
+
+.surface-dark .rule,
+.surface-slate .rule {
+  background: var(--border-on-dark);
+}
+
+/* ---- Skip link ---- */
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 100;
+  padding: 0.75rem 1.25rem;
+  background: var(--aw-olive);
+  color: var(--aw-cream);
+  font-size: var(--fs-eyebrow);
+  font-weight: 500;
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  text-decoration: none;
+}
+
+.skip-link:focus {
+  left: var(--gutter);
+  top: 0.5rem;
+}
+
+/* ---- Header ---- */
+/* Echoes the handbook page meta line: wordmark left, section labels right,
+   all in 11px tracked caps. */
+.site-header {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  background: var(--bg-dark);
+  color: var(--text-on-dark);
+  border-bottom: 1px solid var(--border-on-dark);
+}
+
+.site-header__inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 1.5rem;
+  min-height: 4rem;
+}
+
+.site-header__mark {
+  display: inline-flex;
+  align-items: baseline;
+  gap: 0.5em;
+  font-family: var(--font-body);
+  font-size: var(--fs-eyebrow);
+  font-weight: 500;
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--text-on-dark);
+}
+
+.site-header__mark em {
+  font-style: italic;
+  opacity: 0.72;
+}
+
+.site-nav {
+  display: flex;
+  align-items: center;
+  gap: clamp(1rem, 2.5vw, 2rem);
+}
+
+.site-nav a {
+  font-size: var(--fs-eyebrow);
+  font-weight: 500;
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--text-on-dark);
+  opacity: 0.72;
+  padding-block: 0.5rem;
+  border-bottom: 1px solid transparent;
+  transition: opacity 0.2s, border-color 0.2s;
+}
+
+.site-nav a:hover,
+.site-nav a:focus-visible {
+  opacity: 1;
+  border-bottom-color: currentColor;
+}
+
+/* Below the breakpoint the nav becomes a single wrapped row of labels
+   rather than a hamburger — there are only five and they are tiny. */
+@media (max-width: 46rem) {
+  .site-header__inner {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.25rem;
+    padding-block: 0.875rem;
+  }
+
+  .site-nav {
+    flex-wrap: wrap;
+    gap: 0.25rem 1.125rem;
+  }
+
+  .site-nav a {
+    padding-block: 0.25rem;
+  }
+}
+
+/* ---- Hero ---- */
+.hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: min(86vh, 54rem);
+  padding-block: clamp(4rem, 12vw, 8rem);
+  text-align: center;
+}
+
+.hero__inner {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.hero__logo {
+  width: clamp(7rem, 16vw, 11rem);
+  height: auto;
+  margin-bottom: clamp(1.5rem, 4vw, 2.5rem);
+}
+
+.hero-title {
+  display: flex;
+  flex-direction: column;
+  margin: 0;
+}
+
+.hero-title em {
+  display: block;
+}
+
+.hero__tagline {
+  margin-top: 0.5rem;
+  font-size: var(--fs-eyebrow);
+  font-weight: 500;
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  color: var(--aw-linen);
+}
+
+.hero__motto {
+  max-width: 40ch;
+  margin-top: 1.25rem;
+  font-family: var(--font-display);
+  font-style: italic;
+  font-size: var(--fs-lead);
+  color: var(--text-on-dark);
+  opacity: 0.85;
+}
+
+.hero__verse {
+  margin-top: clamp(2rem, 5vw, 3rem);
+}
+
+.hero__verse blockquote {
+  color: var(--text-on-dark);
+}
+
+/* ---- Two-column: prose left, flat card right ---- */
+.split {
+  display: grid;
+  gap: clamp(2.5rem, 6vw, 4.5rem);
+  align-items: start;
+}
+
+@media (min-width: 60rem) {
+  .split {
+    grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+  }
+}
+
+/* ---- Cards: flat panels, no border, no shadow ---- */
+.card {
+  padding: clamp(1.75rem, 4vw, 2.5rem);
+}
+
+.card--dark {
+  background: var(--bg-dark);
+  color: var(--text-on-dark);
+}
+
+.card--dark .eyebrow {
+  color: var(--aw-linen);
+}
+
+.card--linen {
+  background: var(--aw-linen-2);
+  color: var(--text-heading);
+}
+
+.card__title {
+  margin-top: 1rem;
+}
+
+/* A ruled list inside a card: hairline between items, nothing else. */
+.ruled-list > li {
+  padding-block: 0.875rem;
+  border-top: 1px solid var(--border);
+}
+
+.ruled-list > li:first-child {
+  border-top: 0;
+}
+
+.card--dark .ruled-list > li {
+  border-top-color: var(--border-on-dark);
+}
+
+/* Roman-numeral counters, as the handbook numbers its sections. */
+.numbered {
+  counter-reset: item;
+}
+
+.numbered > li {
+  display: grid;
+  grid-template-columns: 2.5rem minmax(0, 1fr);
+  gap: 1rem;
+  counter-increment: item;
+}
+
+.numbered > li::before {
+  content: counter(item, lower-roman);
+  font-size: var(--fs-eyebrow);
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+  line-height: var(--lh-body);
+}
+
+.card--dark .numbered > li::before {
+  color: var(--aw-linen);
+}
+
+/* ---- Linen band: Truth · Beauty · Goodness ---- */
+.band {
+  text-align: center;
+}
+
+.band__words {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+  justify-content: center;
+  gap: clamp(1rem, 5vw, 3.5rem);
+  margin-top: 1.75rem;
+  font-family: var(--font-display);
+  font-size: clamp(1.75rem, 4.5vw, 2.75rem);
+  line-height: var(--lh-display);
+  color: var(--text-heading);
+}
+
+.band__sep {
+  font-size: 0.7em;
+  opacity: 0.5;
+}
+
+/* ---- Schedule ---- */
+.schedule {
+  margin-top: clamp(2rem, 5vw, 3rem);
+  border-top: 1px solid var(--border);
+}
+
+.schedule > li {
+  display: grid;
+  grid-template-columns: 5.5rem minmax(0, 1fr);
+  gap: 0.25rem 1.5rem;
+  padding-block: 1.125rem;
+  border-bottom: 1px solid var(--border);
+}
+
+/* Narrow screens stack the note under the label rather than letting it fall
+   back into the 5.5rem time column. */
+.schedule__note {
+  grid-column: 2;
+}
+
+@media (min-width: 48rem) {
+  .schedule > li {
+    grid-template-columns: 7rem minmax(0, 14rem) minmax(0, 1fr);
+    align-items: baseline;
+  }
+
+  .schedule__note {
+    grid-column: auto;
+  }
+}
+
+.schedule__time {
+  font-family: var(--font-body);
+  font-size: var(--fs-eyebrow);
+  font-weight: 500;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.schedule__label {
+  font-family: var(--font-display);
+  font-size: var(--fs-h3);
+  color: var(--text-heading);
+  line-height: var(--lh-display);
+}
+
+.schedule__note {
+  color: var(--text);
+}
+
+/* ---- Inline tag list (subjects) ---- */
+.taglist {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem 1.25rem;
+  margin-top: 1.25rem;
+}
+
+.taglist li {
+  font-size: var(--fs-small);
+}
+
+.taglist li + li::before {
+  content: '·';
+  margin-right: 1.25rem;
+  color: var(--text-muted);
+}
+
+/* ---- Statement panel (slate) ---- */
+.statement {
+  text-align: center;
+}
+
+.statement blockquote {
+  max-width: 32ch;
+  margin-inline: auto;
+  font-size: clamp(1.5rem, 3.5vw, 2.25rem);
+  line-height: 1.35;
+}
+
+.statement blockquote cite {
+  margin-top: 1.5rem;
+  color: var(--aw-linen);
+}
+
+/* ---- Column grids (ages, giving) ---- */
+.cols {
+  display: grid;
+  gap: clamp(2rem, 4vw, 3rem);
+  margin-top: clamp(2.5rem, 5vw, 3.5rem);
+}
+
+@media (min-width: 52rem) {
+  .cols--3 {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+}
+
+.col {
+  border-top: 1px solid var(--border);
+  padding-top: 1.5rem;
+}
+
+.col__range {
+  display: block;
+  margin-top: 0.375rem;
+}
+
+.col__body {
+  margin-top: 0.875rem;
+}
+
+/* ---- Giving ---- */
+.give-method {
+  display: flex;
+  flex-direction: column;
+  gap: 0.875rem;
+  border-top: 1px solid var(--border);
+  padding-top: 1.5rem;
+}
+
+.give-method__detail {
+  font-family: var(--font-display);
+  font-size: var(--fs-h3);
+  color: var(--text-heading);
+}
+
+.give-method__note {
+  font-size: var(--fs-small);
+  color: var(--text);
+  flex-grow: 1;
+}
+
+.give-method__cta {
+  align-self: flex-start;
+}
+
+.give-method--soon .give-method__detail {
+  color: var(--text-muted);
+  font-style: italic;
+}
+
+/* ---- Contact ---- */
+.contact-grid {
+  display: grid;
+  gap: clamp(2rem, 5vw, 3.5rem);
+  margin-top: clamp(2rem, 5vw, 3rem);
+  align-items: start;
+}
+
+@media (min-width: 52rem) {
+  .contact-grid {
+    grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
+  }
+}
+
+.detail-list > div {
+  padding-block: 1rem;
+  border-top: 1px solid var(--border);
+}
+
+.detail-list dt {
+  font-size: var(--fs-eyebrow);
+  font-weight: 500;
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  color: var(--accent);
+  margin-bottom: 0.5rem;
+}
+
+.detail-list dd {
+  margin: 0;
+}
+
+.detail-list a {
+  text-decoration-thickness: 1px;
+  text-underline-offset: 0.25em;
+}
+
+/* ---- Footer ---- */
+.site-footer {
+  position: relative;
+  padding-block: clamp(3.5rem, 8vw, 6rem);
+  text-align: center;
+}
+
+.site-footer__logo {
+  width: 5.5rem;
+  margin-inline: auto;
+}
+
+.site-footer__mark {
+  margin-top: 1.5rem;
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  font-weight: 300;
+  line-height: var(--lh-display);
+  color: var(--text-on-dark);
+}
+
+.site-footer__mark em {
+  display: block;
+  font-style: italic;
+  font-weight: 400;
+}
+
+.site-footer__meta {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 0.5rem 1.5rem;
+  margin-top: 2rem;
+  font-size: var(--fs-small);
+  color: var(--aw-linen);
+}
+
+.site-footer__meta a {
+  text-underline-offset: 0.25em;
+}
+
+.site-footer blockquote {
+  max-width: 30ch;
+  margin: clamp(2.5rem, 6vw, 3.5rem) auto 0;
+  color: var(--text-on-dark);
+}
+
+.site-footer__legal {
+  margin-top: 2.5rem;
+  font-size: var(--fs-eyebrow);
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  color: var(--aw-stone);
+}
+
+/* The framed inset needs room to breathe on small screens. */
+@media (max-width: 40rem) {
+  .framed::after {
+    inset: 0.875rem;
+  }
+}
+
+/* ---- Buttons: small additions to the token definitions ---- */
+.btn + .btn {
+  margin-left: 0.75rem;
+}
+
+.btn[aria-disabled='true'] {
+  opacity: 0.45;
+  pointer-events: none;
+}
+
+/* ---- Motion: a slow fade-up on section entry, and nothing else ---- */
+.reveal {
+  opacity: 0;
+  transform: translateY(12px);
+  transition: opacity 400ms ease-out, transform 400ms ease-out;
+}
+
+.reveal[data-revealed='true'] {
+  opacity: 1;
+  transform: none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal {
+    opacity: 1;
+    transform: none;
+  }
+}
+
+/* If JavaScript never runs, content must not stay invisible. */
+.no-js .reveal {
+  opacity: 1;
+  transform: none;
+}

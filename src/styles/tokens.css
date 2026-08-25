@@ -1,0 +1,113 @@
+/* Abiding Way Cottage School — design tokens
+   Sampled directly from the 2026–2027 Family Handbook. Load before any other stylesheet. */
+
+@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@400;500;600&display=swap');
+
+:root {
+  /* ---- Color ---- */
+  --aw-olive:        #31331F;  /* primary: deep olive (cover, dark panels, headline text) */
+  --aw-cream:        #EBE5DC;  /* page background, light */
+  --aw-cream-2:      #E8E2DA;  /* alternate page background (use for banded sections) */
+  --aw-linen:        #D6C9B4;  /* warm tan: section dividers, callout pages */
+  --aw-linen-2:      #D5CDBC;  /* softer tan for cards on cream */
+  --aw-slate:        #455763;  /* secondary: dusty blue, used for full-bleed statement pages */
+  --aw-bronze:       #645D3B;  /* accent: muted olive-bronze for eyebrows, labels, rules */
+
+  /* Supporting neutrals (derived, for UI needs) */
+  --aw-ink:          #24221E;  /* near-black for long body text on cream */
+  --aw-stone:        #A29E97;  /* muted caption text, hairline rules on cream */
+  --aw-stone-light:  #C7C1B9;  /* subtle borders, dividers */
+  --aw-olive-light:  #595948;  /* borders and hairlines on olive backgrounds */
+
+  /* Semantic */
+  --bg:              var(--aw-cream);
+  --bg-alt:          var(--aw-cream-2);
+  --bg-dark:         var(--aw-olive);
+  --bg-accent:       var(--aw-slate);
+  --text:            var(--aw-ink);
+  --text-heading:    var(--aw-olive);
+  --text-muted:      var(--aw-stone);
+  --text-on-dark:    var(--aw-cream);
+  --accent:          var(--aw-bronze);
+  --border:          var(--aw-stone-light);
+  --border-on-dark:  var(--aw-olive-light);
+
+  /* ---- Type ---- */
+  --font-display: 'Cormorant Garamond', 'Cormorant', Garamond, 'Times New Roman', serif;
+  --font-body:    'Inter', system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif;
+
+  --fs-hero:    clamp(3rem, 8vw, 6rem);       /* Cormorant Light, e.g. "Abiding Way" */
+  --fs-h1:      clamp(2.5rem, 5vw, 3.75rem);  /* Cormorant Regular */
+  --fs-h2:      clamp(1.75rem, 3vw, 2.25rem);
+  --fs-h3:      1.375rem;                     /* Cormorant Regular or Italic */
+  --fs-lead:    1.25rem;                      /* Cormorant Italic subtitle */
+  --fs-body:    1rem;                         /* Inter Regular */
+  --fs-small:   0.875rem;
+  --fs-eyebrow: 0.6875rem;                    /* Inter Medium, uppercase, tracked */
+
+  --lh-display: 1.05;
+  --lh-body:    1.65;
+
+  --tracking-eyebrow: 0.22em;                 /* wide letterspacing on all-caps labels */
+  --tracking-display: -0.01em;
+
+  /* ---- Layout ---- */
+  --measure:        62ch;      /* max width of body prose */
+  --container:      72rem;
+  --section-y:      clamp(4rem, 10vw, 8rem);
+  --gutter:         clamp(1.25rem, 4vw, 3rem);
+  --radius:         0;         /* the brand uses square corners throughout */
+  --rule:           1px solid var(--border);
+  --frame-inset:    1.5rem;    /* the thin inner border frame on cover/dark pages */
+}
+
+/* ---- Base ---- */
+html { background: var(--bg); color: var(--text); font-family: var(--font-body); font-size: 100%; line-height: var(--lh-body); -webkit-font-smoothing: antialiased; }
+
+h1, h2, h3, .display { font-family: var(--font-display); font-weight: 400; color: var(--text-heading); line-height: var(--lh-display); letter-spacing: var(--tracking-display); }
+h1 { font-size: var(--fs-h1); }
+h2 { font-size: var(--fs-h2); }
+h3 { font-size: var(--fs-h3); }
+.hero-title { font-size: var(--fs-hero); font-weight: 300; }
+.hero-title em, .display em { font-style: italic; font-weight: 400; }
+
+.lead { font-family: var(--font-display); font-style: italic; font-size: var(--fs-lead); color: var(--text-heading); }
+
+.eyebrow { font-family: var(--font-body); font-size: var(--fs-eyebrow); font-weight: 500; letter-spacing: var(--tracking-eyebrow); text-transform: uppercase; color: var(--accent); }
+
+.caption, small { font-size: var(--fs-small); color: var(--text-muted); }
+
+blockquote { font-family: var(--font-display); font-style: italic; font-size: 1.375rem; line-height: 1.4; color: var(--text-heading); margin: 0; }
+blockquote cite { display: block; margin-top: 0.75rem; font-family: var(--font-body); font-style: normal; font-size: var(--fs-eyebrow); letter-spacing: var(--tracking-eyebrow); text-transform: uppercase; color: var(--text-muted); }
+
+/* ---- Surfaces ---- */
+.surface-dark   { background: var(--bg-dark);   color: var(--text-on-dark); }
+.surface-dark h1, .surface-dark h2, .surface-dark h3, .surface-dark .lead, .surface-dark blockquote { color: var(--text-on-dark); }
+.surface-dark .eyebrow { color: var(--aw-linen); }
+.surface-dark .caption { color: var(--aw-stone); }
+
+.surface-slate  { background: var(--bg-accent); color: var(--text-on-dark); }
+.surface-slate h1, .surface-slate h2, .surface-slate h3, .surface-slate .lead { color: var(--text-on-dark); }
+
+.surface-linen  { background: var(--aw-linen); color: var(--text-heading); }
+.surface-alt    { background: var(--bg-alt); }
+
+/* Thin inner frame used on the cover and closing pages */
+.framed { position: relative; }
+.framed::after { content: ''; position: absolute; inset: var(--frame-inset); border: 1px solid var(--border-on-dark); pointer-events: none; }
+
+/* Short centered rule, as under "FAMILY HANDBOOK" on the cover */
+.rule-short { width: 4rem; height: 1px; background: currentColor; opacity: 0.6; margin: 1.5rem auto; }
+
+/* ---- Buttons ---- */
+.btn { display: inline-block; padding: 0.875rem 1.75rem; font-family: var(--font-body); font-size: var(--fs-eyebrow); font-weight: 500; letter-spacing: var(--tracking-eyebrow); text-transform: uppercase; text-decoration: none; border: 1px solid currentColor; border-radius: var(--radius); transition: background-color .2s, color .2s; }
+.btn-primary { background: var(--aw-olive); color: var(--aw-cream); border-color: var(--aw-olive); }
+.btn-primary:hover { background: transparent; color: var(--aw-olive); }
+.btn-ghost { background: transparent; color: var(--aw-olive); }
+.btn-ghost:hover { background: var(--aw-olive); color: var(--aw-cream); }
+.surface-dark .btn-ghost { color: var(--aw-cream); }
+.surface-dark .btn-ghost:hover { background: var(--aw-cream); color: var(--aw-olive); }
+
+/* ---- Accessibility ---- */
+:focus-visible { outline: 2px solid var(--aw-bronze); outline-offset: 3px; }
+@media (prefers-reduced-motion: reduce) { *, *::before, *::after { transition: none !important; animation: none !important; } }

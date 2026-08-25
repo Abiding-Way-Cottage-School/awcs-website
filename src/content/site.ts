@@ -1,14 +1,12 @@
 /**
- * Every fact and every line of copy on the site lives here.
+ * School facts and site navigation.
  *
- * This is the file to edit for a wording change, a new subject, a new way to
- * give, or a change of meeting time. Components read from it and never hold
- * copy of their own, so nobody has to read JSX to update the site.
+ * This file holds things that are true about the school and appear in more than
+ * one place. Page copy lives beside it in home.ts, about.ts, community.ts,
+ * families.ts and join.ts.
  *
- * Facts are taken from the 2026-2027 Family Handbook. Two things are
- * deliberately absent because the handbook is a family document: leadership
- * phone numbers, and the fee and policy detail. Add them only once leadership
- * has said they may be public.
+ * Facts come from the 2026-2027 Family Handbook. Anything invented is marked
+ * DRAFT and listed in docs/CONTENT-TODO.md.
  */
 
 export const school = {
@@ -26,187 +24,173 @@ export const school = {
   meeting: {
     day: 'Wednesdays',
     season: 'September through May',
+    arrival: '9:00 a.m.',
+    assembly: '9:30 a.m.',
+    dismissal: '1:30 p.m.',
     venue: 'Reach Church',
     street: '4815-200 Executive Park Ct, Ste 200',
     cityStateZip: 'Jacksonville, FL 32216',
     mapUrl:
       'https://www.google.com/maps/search/?api=1&query=4815-200+Executive+Park+Ct+Ste+200+Jacksonville+FL+32216',
   },
+  /** The co-op communicates through the BAND app once a family has joined. */
+  communicationApp: 'BAND',
   directors: [
     { name: 'Lily Anderson', role: 'Co-Director' },
     { name: 'Bethany Lynch', role: 'Co-Director' },
   ],
 };
 
-const askUrl = (subject: string) =>
+export const mailto = (subject: string) =>
   'mailto:' + school.email + '?subject=' + encodeURIComponent(subject);
 
-/** Nav links. Section pages get added here as the site grows past one page. */
-export const nav = [
-  { label: 'About', href: '#about' },
-  { label: 'Our Day', href: '#day' },
-  { label: 'Ages', href: '#ages' },
-  { label: 'Give', href: '#give' },
-  { label: 'Contact', href: '#contact' },
+/** The three words that describe the atmosphere the co-op keeps. */
+export const atmosphereWords = ['Truth', 'Beauty', 'Goodness'];
+
+/** The six commitments, quoted from the handbook. */
+export const commitments = [
+  {
+    name: 'Christ at the center',
+    body: 'Every subject, every habit, every hour belongs to him. He is not a class we add; he is the ground we stand on.',
+  },
+  {
+    name: 'Living over lifeless',
+    body: 'Whole books written by people who loved their subject, in place of textbooks assembled by committee.',
+  },
+  {
+    name: 'Slow & thoughtful',
+    body: 'Short lessons, full attention, and time left over. We would rather do less well than more poorly.',
+  },
+  {
+    name: 'Habit as kindness',
+    body: 'Good habits are a gift to a child, not a burden laid on them. They make the right thing easy.',
+  },
+  {
+    name: 'Wonder protected',
+    body: 'We do not explain away what a child could notice. Awe is the beginning of knowledge, not a reward for it.',
+  },
+  {
+    name: 'Mothers, together',
+    body: 'No one carries this alone. We teach beside each other, and we are better for the company.',
+  },
 ];
 
-export const hero = {
-  eyebrow: 'Jacksonville, Florida',
-  verse: {
-    text: 'Abide in me, and I in you…',
-    cite: 'John 15:4',
-  },
-};
-
-export const about = {
-  eyebrow: 'About us',
-  heading: 'A quiet place to learn together.',
-  lead: 'We are mothers teaching our own children, and gladly sharing the work.',
-  body: [
-    'Abiding Way Cottage School is a Christ-centered enrichment co-op for homeschooling families in Jacksonville. We meet one day a week to study the things that are hard to do alone — Shakespeare read aloud in a room full of voices, a folk dance that needs more than one pair of feet, a painting looked at slowly and then described from memory.',
-    'Our teaching follows Charlotte Mason, who understood a child as a born person rather than a vessel to be filled. So we set a wide feast of living books, of music and pictures and handicrafts, and we trust the child to take from it what nourishes. There are no worksheets here, and no busywork. We narrate, we attend, we go outdoors.',
-    'Every family participates. Parents teach, assist, and carry the day together, which is what keeps the co-op small, affordable, and unmistakably ours. If you are weighing whether this is a good fit for your family, we would be glad to hear from you.',
-  ],
-  commitments: {
-    eyebrow: 'Our six commitments',
-    items: [
-      'Christ at the center',
-      'Living over lifeless',
-      'Slow & thoughtful',
-      'Habit as kindness',
-      'Wonder protected',
-      'Mothers, together',
-    ],
-  },
-};
-
-export const atmosphere = {
-  eyebrow: 'The atmosphere we keep',
-  words: ['Truth', 'Beauty', 'Goodness'],
-};
-
-export const day = {
-  eyebrow: 'A day at co-op',
-  heading: 'One day a week, unhurried.',
-  lead: 'Wednesdays, September through May.',
-  schedule: [
-    { time: '9:00', label: 'Arrival', note: 'Families gather, coats and baskets down.' },
-    { time: '9:30', label: 'Assembly', note: 'Hymn, Scripture, recitation, the day set before us.' },
-    { time: '10:00', label: 'Morning lessons', note: 'Main subjects in small, mixed-age groups.' },
-    { time: '12:00', label: 'Lunch together', note: 'Outdoors whenever the weather allows.' },
-    { time: '12:30', label: 'Afternoon studies', note: 'Handicrafts, folk dance, drill and games.' },
-    { time: '1:30', label: 'Dismissal', note: 'Home again, with something to tell.' },
-  ],
-  subjects: {
-    eyebrow: 'What we study',
-    items: [
-      'Shakespeare',
-      'Poetry',
-      'Picture Study',
-      'Music & Composer Study',
-      'Handicrafts',
-      'Folk Dance',
-      'Swedish Drill',
-      'Balance & Coordination',
-      'Narration',
-      'Spanish',
-    ],
-  },
-};
-
-export const ages = {
-  eyebrow: 'Who we teach',
-  heading: 'Three rooms, one household.',
-  lead: 'Younger children are cared for so their mothers can teach.',
-  groups: [
-    {
-      name: 'Nursery',
-      range: '2 & under',
-      body: 'Warm, quiet care for the youngest, held close while the older children study.',
-    },
-    {
-      name: 'Kinderleben',
-      range: '3 – 5',
-      body: 'The children’s life: songs, stories, handwork and a great deal of time outdoors. Nothing is rushed and nothing is formal.',
-    },
-    {
-      name: 'Main Subjects',
-      range: '6 – 11',
-      body: 'The full feast — Shakespeare, poetry, picture study, composer study, handicrafts, drill and dance, all met with narration.',
-    },
-  ],
-};
-
-export type GivingMethod = {
-  id: string;
-  name: string;
-  detail: string;
-  note: string;
-  href: string | null;
-  cta: string | null;
-  available: boolean;
-};
-
-export const give: {
-  eyebrow: string;
-  heading: string;
-  lead: string;
-  body: string;
-  methods: GivingMethod[];
-} = {
-  eyebrow: 'Support the school',
-  heading: 'Giving keeps the door open.',
-  lead: 'Gifts go to books, art supplies, and the room we meet in.',
-  body: 'We are a small parent-run co-op, and a gift of any size does real work here — a set of living books for the shared shelf, watercolors and clay for handicrafts, or a family’s tuition quietly covered. Thank you for holding this place up with us.',
-  /**
-   * Ways to give. Add an entry here and the section renders it; no other file
-   * needs to change. Set `available: false` to show a method as coming soon.
-   * Card and recurring giving need a server, so they arrive with the move off
-   * GitHub Pages — see docs/ROADMAP.md.
-   */
-  methods: [
-    {
-      id: 'venmo',
-      name: 'Venmo',
-      detail: school.venmoHandle,
-      note: 'The simplest way to give today. Please add a note saying what the gift is for.',
-      href: school.venmoUrl,
-      cta: 'Give with Venmo',
-      available: true,
-    },
-    {
-      id: 'card',
-      name: 'Card or bank transfer',
-      detail: 'Coming soon',
-      note: 'We are setting up online giving by card, including recurring monthly support.',
-      href: null,
-      cta: null,
-      available: false,
-    },
-    {
-      id: 'other',
-      name: 'Another way to give',
-      detail: 'By arrangement',
-      note: 'A check, a gift of books or materials, or a matching gift through your employer.',
-      href: askUrl('Giving to Abiding Way Cottage School'),
-      cta: 'Write to us',
-      available: true,
-    },
-  ],
-};
-
-export const contact = {
-  eyebrow: 'Contact',
-  heading: 'We would love to hear from you.',
-  lead: 'Write to us and one of our directors will answer.',
-  body: 'Whether you are new to Charlotte Mason or have been at it for years, you are welcome to ask questions before you decide anything. Tell us a little about your family and the ages of your children.',
-  emailHref: askUrl('Hello from a prospective family'),
-  emailCta: 'Email the directors',
-};
-
-export const footer = {
-  quote: {
+export const quotes = {
+  mason: {
     text: 'Education is an atmosphere, a discipline, a life.',
     cite: 'Charlotte M. Mason',
   },
+  john15: {
+    text: 'Abide in me, and I in you…',
+    cite: 'John 15:4',
+  },
+  bornPerson: {
+    text: 'Children are born persons.',
+    cite: 'Charlotte M. Mason',
+  },
+  feast: {
+    text: 'The children have a right to the best we possess.',
+    cite: 'Charlotte M. Mason',
+  },
+};
+
+/**
+ * The navigation tree. A section with `children` renders as a dropdown; its own
+ * `href` is the landing page for that section.
+ *
+ * Add a page here and it appears in the header and the footer sitemap.
+ */
+export type NavLink = { label: string; href: string };
+export type NavSection = NavLink & { children?: NavLink[] };
+
+export const nav: NavSection[] = [
+  { label: 'Home', href: '/' },
+  {
+    label: 'About',
+    href: '/about/',
+    children: [
+      { label: 'Our Philosophy', href: '/about/philosophy/' },
+      { label: 'Our Story', href: '/about/story/' },
+      { label: 'Our Leadership', href: '/about/leadership/' },
+    ],
+  },
+  {
+    label: 'Our Community',
+    href: '/community/',
+    children: [
+      { label: 'The Abiding Way Experience', href: '/community/experience/' },
+      { label: 'A Day at Abiding Way', href: '/community/a-day/' },
+      { label: 'The Feast', href: '/community/the-feast/' },
+      { label: 'For Mothers', href: '/community/for-mothers/' },
+    ],
+  },
+  {
+    label: 'Families',
+    href: '/families/',
+    children: [
+      { label: "Who It's For", href: '/families/who-its-for/' },
+      { label: 'Tuition & Fees', href: '/families/tuition/' },
+      { label: 'FAQ', href: '/families/faq/' },
+      { label: 'Calendar', href: '/families/calendar/' },
+    ],
+  },
+  {
+    label: 'Join Us',
+    href: '/join/',
+    children: [
+      { label: 'Visit Us', href: '/join/visit/' },
+      { label: 'Apply', href: '/join/apply/' },
+    ],
+  },
+  { label: 'Family Portal', href: '/portal/' },
+];
+
+/** Photography. See docs/PHOTO-CREDITS.md — all Pexels, free for commercial use. */
+export const photo = {
+  heroPath: '/photos/hero-path.jpg',
+  fieldGolden: '/photos/field-golden.jpg',
+  mistyField: '/photos/misty-field.jpg',
+  childrenWalking: '/photos/children-walking.jpg',
+  walkingTogether: '/photos/walking-together.jpg',
+  booksHeld: '/photos/books-held.jpg',
+  bookPages: '/photos/book-pages.jpg',
+  bookOldHands: '/photos/book-old-hands.jpg',
+  childReading: '/photos/child-reading.jpg',
+  woolBasket: '/photos/wool-basket.jpg',
+  knittingHands: '/photos/knitting-hands.jpg',
+  artSupplies: '/photos/art-supplies.jpg',
+  meadowGolden: '/photos/meadow-golden.jpg',
+  pressedFlowers: '/photos/pressed-flowers.jpg',
+  sheetMusic: '/photos/sheet-music.jpg',
+  woodworkHands: '/photos/woodwork-hands.jpg',
+  driedGrass: '/photos/dried-grass.jpg',
+  bowlLinen: '/photos/bowl-linen.jpg',
+  lightWall: '/photos/light-wall.jpg',
+  candleDried: '/photos/candle-dried.jpg',
+  handsHeld: '/photos/hands-held.jpg',
+};
+
+/** Alt text, kept beside the paths so no image ships without a description. */
+export const photoAlt: Record<string, string> = {
+  [photo.heroPath]: 'A figure walking a narrow path through a misty field at dawn.',
+  [photo.fieldGolden]: 'Low golden light across an open meadow.',
+  [photo.mistyField]: 'A single tree in a quiet field under morning mist.',
+  [photo.childrenWalking]: 'Two children walking together through tall grass, seen from behind.',
+  [photo.walkingTogether]: 'A mother and small child walking hand in hand along a path.',
+  [photo.booksHeld]: 'A hand holding up a small stack of hardback books.',
+  [photo.bookPages]: 'The open pages of a well-used book in warm light.',
+  [photo.bookOldHands]: 'Hands holding an old book open.',
+  [photo.childReading]: 'A child reading at a desk beside a bookshelf, seen from behind.',
+  [photo.woolBasket]: 'A basket of undyed wool and knitted work.',
+  [photo.knittingHands]: 'Hands working a pair of knitting needles.',
+  [photo.artSupplies]: 'Brushes standing in a jar beside a well-used box of watercolors.',
+  [photo.meadowGolden]: 'A wide meadow of dry grass in low golden light.',
+  [photo.pressedFlowers]: 'Pressed flowers and ferns arranged on paper.',
+  [photo.sheetMusic]: 'A rolled sheet of handwritten music.',
+  [photo.woodworkHands]: 'Hands planing a length of timber at a workbench.',
+  [photo.driedGrass]: 'Dried grasses and a pressed leaf against a pale wall.',
+  [photo.bowlLinen]: 'A small wooden bowl resting on folded linen.',
+  [photo.lightWall]: 'Morning light falling across a plain interior wall.',
+  [photo.candleDried]: 'A candle and a vase of dried flowers on a table.',
+  [photo.handsHeld]: 'Two pairs of hands, one holding the other.',
 };

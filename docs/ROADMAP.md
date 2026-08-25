@@ -1,6 +1,6 @@
 # Roadmap — from brochure site to family portal
 
-The homepage is deliberately the whole site for now. This document records how the
+The public site is complete. This document records how the
 member area, `/admin`, form signing, and payments get added, and why the current
 setup does not have to be undone to get there.
 
@@ -31,10 +31,15 @@ request. Netlify and Cloudflare Pages both work too.
 
 ## Stage 1 — the site as it stands (done)
 
-- Homepage: about, the co-op day, age groups, giving, contact.
+- Nineteen pages across five sections: Home, About, Our Community, Families,
+  Join Us, plus a Family Portal placeholder.
 - Giving by Venmo, with the methods list built as data so more can be added.
 - Contact by email link. No form, no backend, nothing to spam.
 - Deploys to GitHub Pages on every push to `main`.
+
+Outstanding before a wider launch: the draft copy listed in
+[CONTENT-TODO.md](CONTENT-TODO.md), and real photographs in place of the
+placeholders described in [PHOTO-CREDITS.md](PHOTO-CREDITS.md).
 
 ## Stage 2 — move to a domain and a real host
 
@@ -73,7 +78,9 @@ src/app/
 
 > Note: route groups are avoided today only because Next 16's **static export**
 > mishandles their prefetch payload. Once the site runs on a server that bug is
-> not in play, so the group structure above is safe from Stage 2 onward.
+> not in play, so the group structure above is safe from Stage 2 onward — and
+> `scripts/flatten-rsc-payloads.mjs` can be deleted at the same time, along with
+> the `&&` in the `build` script. See the README for what it works around.
 
 Keep `/admin` out of the public nav and add `robots: { index: false }` to the
 portal layout's metadata.
@@ -87,6 +94,10 @@ portal layout's metadata.
   signature is actually required.
 - **Payments for services** — see below.
 
+The `/portal/` page already exists as a public placeholder describing what is
+coming. When the real portal ships, that page becomes the sign-in route and the
+nav entry stops being decorative.
+
 ## Stage 5 — payments
 
 **Stripe** is the right fit: Checkout for one-off payments, Billing for recurring
@@ -98,8 +109,8 @@ giving, and Stripe Tax if it is ever needed. Concretely:
 - Keep amounts server-side, keyed by a product id. Never accept a price from the
   client.
 
-Once card giving is live, flip the `card` entry in `give.methods`
-(`src/content/site.ts`) to `available: true` and give it an `href` and `cta`. The
+Once card giving is live, flip the `card` entry in `givingMethods`
+(`src/content/home.ts`) to `available: true` and give it an `href` and `cta`. The
 giving section will render it with no other change.
 
 **Fees are worth a moment's thought.** Stripe takes roughly 2.9% + 30¢. For a small

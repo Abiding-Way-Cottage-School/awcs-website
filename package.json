@@ -4,7 +4,7 @@
   "description": "Website for Abiding Way Cottage School, a Charlotte Mason enrichment co-op in Jacksonville, FL.",
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build && node scripts/flatten-rsc-payloads.mjs",
     "start": "next start",
     "typecheck": "tsc --noEmit"
   },

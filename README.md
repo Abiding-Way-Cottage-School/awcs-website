@@ -8,6 +8,11 @@ static files so GitHub Pages can host it for free, and it is set up so that addi
 a member login, an `/admin` area, form signing, and card payments later does not
 require a rewrite. See [docs/ROADMAP.md](docs/ROADMAP.md).
 
+> **Before this goes to a wider audience**, read
+> [docs/CONTENT-TODO.md](docs/CONTENT-TODO.md). Several pages contain prose written
+> to the right tone without the underlying facts — the co-op's story, the calendar,
+> parts of the FAQ. Every instance is marked `DRAFT` in the source.
+
 ---
 
 ## Running it locally
@@ -27,18 +32,31 @@ npm run dev        # http://localhost:3000
 
 ## Editing the site
 
-**Almost every change you will want to make is in one file:
-[`src/content/site.ts`](src/content/site.ts).**
+**Almost every change you will want to make is in `src/content/`.** The page
+components read from those files and hold no copy of their own, so you never have
+to read JSX to change a sentence.
 
-Wording, the meeting time, the address, the list of subjects, the age groups, the
-ways to give — all of it lives there as plain data. The page components read from
-it and hold no copy of their own, so you never have to read JSX to change a
-sentence.
+| File | Holds |
+| --- | --- |
+| `site.ts` | School facts, the navigation tree, quotes, the photo list and alt text |
+| `home.ts` | The homepage, and the list of ways to give |
+| `about.ts` | Our Philosophy, Our Story, Our Leadership |
+| `community.ts` | The Experience, A Day, The Feast, For Mothers |
+| `families.ts` | Who It's For, Tuition & Fees, FAQ, Calendar |
+| `join.ts` | Visit Us, Apply, and the Family Portal placeholder |
+
+### Adding a page
+
+1. Add it to the `nav` tree in `src/content/site.ts` — it appears in the header
+   dropdown and the footer sitemap automatically.
+2. Add its copy to the relevant content file.
+3. Create `src/app/<section>/<page>/page.tsx`. Copy the closest existing page; they
+   all follow the same shape: `SiteShell` → `PageHeader` → sections → `CtaBand`.
 
 ### Adding a new way to give
 
-Add an entry to the `give.methods` array in `src/content/site.ts`. The giving
-section renders whatever is in that array:
+Add an entry to `givingMethods` in `src/content/home.ts`. The giving section renders
+whatever is in that array:
 
 ```ts
 {
@@ -55,18 +73,27 @@ section renders whatever is in that array:
 Card and recurring giving need a server, so they arrive with the move off GitHub
 Pages — the placeholder entry is already in the array.
 
+### Photographs
+
+All current photographs are Pexels placeholders, chosen so that **no identifiable
+faces appear**. See [docs/PHOTO-CREDITS.md](docs/PHOTO-CREDITS.md) for the reasoning,
+the source list, and how to swap in real photographs. Before publishing any
+photograph of a child, get the parent's written permission.
+
+Images are warmed and desaturated by CSS (`.photo img` in `src/styles/site.css`), not
+baked into the files, so real photographs inherit the same treatment.
+
 ### Brand
 
-[`docs/BRAND.md`](docs/BRAND.md) is the brand kit, copied unmodified. It is the
-reference for color, type, layout, voice, and the facts that may be published.
-[`src/styles/tokens.css`](src/styles/tokens.css) is the design-token stylesheet
-from that kit and **should not be edited** — page styles in
-[`src/styles/site.css`](src/styles/site.css) are built entirely from its variables.
+[`docs/BRAND.md`](docs/BRAND.md) is the brand kit, copied unmodified — the reference
+for color, type, layout, voice, and which facts may be published.
+[`src/styles/tokens.css`](src/styles/tokens.css) is its design-token stylesheet and
+**should not be edited**; page styles in [`src/styles/site.css`](src/styles/site.css)
+are built entirely from its variables.
 
-Two things are deliberately left off the site because the Family Handbook is a
-family document: **leadership phone numbers** and the **fee and policy detail**
-(enrollment cost, background-check fee, uniform prices). Add them only once
-leadership confirms they may be public.
+Two things stay off the site because the Family Handbook is a family document:
+**leadership phone numbers** and the **full policy detail**. Fees are published as
+approximate and confirmed at enrollment.
 
 ---
 
@@ -75,30 +102,26 @@ leadership confirms they may be public.
 ### Today — GitHub Pages
 
 [`.github/workflows/deploy.yml`](.github/workflows/deploy.yml) builds and publishes
-on every push to `main`. One-time setup:
+on every push to `main`. Pages is already configured with
+**Settings → Pages → Source = "GitHub Actions"**.
 
-> Repo **Settings → Pages → Build and deployment → Source = "GitHub Actions"**
-
-No `gh-pages` branch is needed. The site then serves from
-`https://abiding-way-cottage-school.github.io/awcs-website/`.
-
+The site serves from `https://abiding-way-cottage-school.github.io/awcs-website/`.
 Because GitHub Pages serves a project repo from a subdirectory, the workflow builds
 with `AWCS_BASE_PATH=/awcs-website` so every asset URL is prefixed.
 
 ### When the custom domain goes live
 
 1. In `.github/workflows/deploy.yml`, **delete the `AWCS_BASE_PATH` line** and set
-   `NEXT_PUBLIC_SITE_URL` to the new domain. The site then serves from the root.
-2. Add a file `public/CNAME` containing just the domain, e.g. `abidingwaycottageschool.org`.
-3. Point the domain's DNS at GitHub Pages, then set it under **Settings → Pages →
-   Custom domain** and tick **Enforce HTTPS**.
+   `NEXT_PUBLIC_SITE_URL` to the new domain.
+2. Add `public/CNAME` containing just the domain.
+3. Point DNS at GitHub Pages, set the domain under **Settings → Pages → Custom
+   domain**, and tick **Enforce HTTPS**.
 
 ### Later — a host with a server
 
 Set `AWCS_STATIC_EXPORT=false` and deploy to Vercel, Netlify, or Cloudflare. That
-single flag drops the static-export restriction and unlocks API routes, middleware,
-sessions, and Stripe. Nothing in `src/` changes. See
-[docs/ROADMAP.md](docs/ROADMAP.md).
+one flag unlocks API routes, middleware, sessions, and Stripe. Nothing in `src/`
+changes. See [docs/ROADMAP.md](docs/ROADMAP.md).
 
 ---
 
@@ -107,41 +130,69 @@ sessions, and Stripe. Nothing in `src/` changes. See
 ```
 src/
   app/
-    layout.tsx        root document, metadata, fonts, skip link
-    page.tsx          the homepage — every section, in brand-kit order
-    not-found.tsx     404
-    globals.css       imports tokens.css then site.css
-    icon.png          favicon / touch icon
+    layout.tsx          root document, metadata, fonts, skip link
+    page.tsx            homepage
+    about/              philosophy · story · leadership
+    community/          experience · a-day · the-feast · for-mothers
+    families/           who-its-for · tuition · faq · calendar
+    join/               visit · apply
+    portal/             Family Portal placeholder (noindex)
+    not-found.tsx       404
   components/
-    SiteShell.tsx     header + main + footer wrapper for public pages
-    SiteHeader.tsx    the handbook meta line, as a nav
-    SiteFooter.tsx    framed olive closing panel
-    Reveal.tsx        the site's only motion: a 400ms fade-up on scroll
-  content/
-    site.ts           ← all copy and facts
-  lib/
-    asset.ts          basePath-aware URLs for files in /public
+    SiteShell.tsx       header + main + footer wrapper
+    SiteHeader.tsx      wordmark and nav
+    SiteNav.tsx         dropdown nav (client); mobile disclosure panel
+    SiteFooter.tsx      framed olive footer with sitemap
+    PageHeader.tsx      breadcrumb + eyebrow + heading + lead + photo
+    Feature.tsx         alternating photo-and-prose block
+    PhotoBand.tsx       full-bleed photo, optionally with a quote
+    CardGrid.tsx        section-index cards
+    CtaBand.tsx         closing invitation
+    Photo.tsx           brand-treated image with alt-text lookup
+    Reveal.tsx          the site's only motion: a 400ms fade-up
+  content/              ← all copy and facts
+  lib/asset.ts          basePath-aware URLs for files in /public
   styles/
-    tokens.css        brand design tokens (do not edit)
-    site.css          page styles, built from those tokens
+    tokens.css          brand design tokens (do not edit)
+    site.css            page styles, built from those tokens
 public/
-  brand/              logo files, all four variants
-  og.png              social share card
+  brand/                logo files
+  photos/               photography (see docs/PHOTO-CREDITS.md)
+  og.png                social share card
+scripts/
+  flatten-rsc-payloads.mjs   post-build workaround, see below
 docs/
-  BRAND.md            the brand kit
-  ROADMAP.md          how the portal, admin, and payments get added
+  BRAND.md              the brand kit
+  ROADMAP.md            how the portal, admin, and payments get added
+  CONTENT-TODO.md       what still needs real information
+  PHOTO-CREDITS.md      image sources and the photo policy
 ```
 
 ---
 
-## Notes
+## Two Next.js workarounds worth knowing about
+
+Both exist only because of `output: 'export'`, and both can be removed once the site
+moves to a host with a server.
+
+**1. No route groups.** Next 16's static export writes a route group's RSC prefetch
+payload to a directory while the router requests a flat filename, so every page load
+404s. `SiteShell` gives the same separation as a `(site)` group without the bug.
+
+**2. `scripts/flatten-rsc-payloads.mjs`.** The same mismatch affects *any* route with
+more than one path segment — `/about/philosophy/` and friends. The build writes
+`__next.about/philosophy/__PAGE__.txt`; the router asks for
+`__next.about.philosophy.__PAGE__.txt`. Without the fix, every page fired roughly
+fifteen 404s on load, one per prefetched nav link. The script runs automatically
+after `next build` and copies each payload to the name the router expects. It prints
+`nothing to do` if a future Next version fixes this, which is your cue to delete it
+along with the `&&` in the `build` script.
+
+## Other notes
 
 - **Fonts** (Cormorant Garamond, Inter) load from Google Fonts via `tokens.css`.
-  If the school later needs the site to work fully offline or wants to drop the
-  third-party request, switch to `next/font` and self-host them.
+  Switch to `next/font` if the site ever needs to work offline or drop the
+  third-party request.
 - **Favicon**: `src/app/icon.png` is the 512px olive logo. The brand kit notes the
-  cottage detail disappears below 80px, so a purpose-drawn 32px mark would render
-  better in a browser tab. Worth doing when there is time.
-- **No route groups.** Next 16's static export mishandles a route group's prefetch
-  payload (it writes a directory but the router requests a flat filename, so every
-  page load 404s). `SiteShell` gives the same separation without that bug.
+  cottage detail disappears below 80px, so a purpose-drawn 32px mark would read
+  better in a browser tab.

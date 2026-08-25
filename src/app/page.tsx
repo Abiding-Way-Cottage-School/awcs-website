@@ -1,96 +1,102 @@
-import Image from 'next/image';
+import Link from 'next/link';
 
-import { asset } from '@/lib/asset';
-
+import CardGrid from '@/components/CardGrid';
+import CtaBand from '@/components/CtaBand';
+import Feature from '@/components/Feature';
+import Photo from '@/components/Photo';
+import PhotoBand from '@/components/PhotoBand';
 import SiteShell from '@/components/SiteShell';
+import { givingMethods, home } from '@/content/home';
+import { atmosphereWords, commitments, quotes, school } from '@/content/site';
 
-import {
-  about,
-  ages,
-  atmosphere,
-  contact,
-  day,
-  give,
-  hero,
-  school,
-} from '@/content/site';
-
-/**
- * The homepage follows the page rhythm set out in the brand kit:
- *
- *   olive hero → cream about → linen band → cream-2 day →
- *   slate statement → cream ages → cream-2 giving → cream contact → olive footer
- *
- * Light surfaces carry the site; the dark ones are deliberate punctuation.
- */
 export default function HomePage() {
   const [firstLine, secondLine] = school.nameLines;
 
   return (
     <SiteShell>
-      {/* ---- Hero ---- */}
-      <section className="hero surface-dark framed">
-        <div className="container hero__inner">
-          <Image
-            src={asset('/brand/logo-cream.png')}
-            alt=""
-            width={512}
-            height={512}
-            className="hero__logo"
-            priority
-            aria-hidden="true"
-          />
+      {/* ---- Hero: a light editorial split rather than a dark cover ---- */}
+      <section className="hero">
+        <div className="hero__grid">
+          <div className="hero__text">
+            <div className="hero__inner">
+              <p className="eyebrow">{home.hero.eyebrow}</p>
 
-          <h1 className="hero-title">
-            {firstLine}
-            <em>{secondLine}</em>
-          </h1>
+              <h1 className="hero-title display">
+                {firstLine}
+                <em>{secondLine}</em>
+              </h1>
 
-          <div className="rule-short" />
+              <p className="hero__tagline">{home.hero.tagline}</p>
+              <p className="hero__lead">{home.hero.lead}</p>
 
-          <p className="hero__tagline">{school.tagline}</p>
-          <p className="hero__motto">{school.motto}</p>
-        </div>
-      </section>
-
-      {/* ---- About ---- */}
-      <section id="about" className="section">
-        <div className="container split">
-          <div className="reveal">
-            <div className="section-head">
-              <span className="eyebrow">{about.eyebrow}</span>
-              <h2>{about.heading}</h2>
-              <span className="lead">{about.lead}</span>
-            </div>
-
-            <div className="prose" style={{ marginTop: '2rem' }}>
-              {about.body.map((paragraph) => (
-                <p key={paragraph.slice(0, 32)}>{paragraph}</p>
-              ))}
+              <div className="hero__actions">
+                <Link className="btn btn-primary" href={home.hero.primary.href}>
+                  {home.hero.primary.label}
+                </Link>
+                <Link className="btn btn-ghost" href={home.hero.secondary.href}>
+                  {home.hero.secondary.label}
+                </Link>
+              </div>
             </div>
           </div>
 
-          <aside className="card card--dark reveal">
-            <span className="eyebrow">{about.commitments.eyebrow}</span>
-            <ul className="ruled-list numbered" style={{ marginTop: '1.25rem' }}>
-              {about.commitments.items.map((item) => (
-                <li key={item}>
-                  <span>{item}</span>
-                </li>
-              ))}
-            </ul>
-          </aside>
+          <div className="hero__photo">
+            <Photo
+              src={home.hero.image}
+              shape="fill"
+              priority
+              sizes="(min-width: 60rem) 52vw, 100vw"
+            />
+          </div>
         </div>
       </section>
 
-      {/* ---- Linen band ---- */}
+      {/* ---- Welcome ---- */}
+      <section className="section">
+        <div className="container reveal">
+          <Feature
+            eyebrow={home.welcome.eyebrow}
+            heading={home.welcome.heading}
+            lead={home.welcome.lead}
+            body={home.welcome.body}
+            image={home.welcome.image}
+            imageShape="portrait"
+            link={home.welcome.link}
+            reverse
+          />
+        </div>
+      </section>
+
+      {/* ---- Three pillars ---- */}
+      <section className="section surface-alt">
+        <div className="container">
+          <div className="section-head section-head--center reveal">
+            <span className="eyebrow">{home.pillars.eyebrow}</span>
+            <h2>{home.pillars.heading}</h2>
+          </div>
+
+          <div className="reveal" style={{ marginTop: 'clamp(2.5rem, 5vw, 3.5rem)' }}>
+            <CardGrid
+              columns={3}
+              cards={home.pillars.items.map((p) => ({
+                name: p.name,
+                body: p.body,
+                href: p.href,
+                image: p.image,
+              }))}
+            />
+          </div>
+        </div>
+      </section>
+
+      {/* ---- Truth · Beauty · Goodness ---- */}
       <section className="section-tight surface-linen band">
         <div className="container reveal">
-          <span className="eyebrow">{atmosphere.eyebrow}</span>
+          <span className="eyebrow">{home.atmosphere.eyebrow}</span>
           <p className="band__words">
-            {atmosphere.words.map((word, i) => (
+            {atmosphereWords.map((word, i) => (
               <span key={word}>
-                {i > 0 && <span className="band__sep">·&nbsp;&nbsp;</span>}
+                {i > 0 && <span className="band__sep" aria-hidden="true">·</span>}
                 {word}
               </span>
             ))}
@@ -98,84 +104,58 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ---- A day at co-op ---- */}
-      <section id="day" className="section surface-alt">
-        <div className="container">
-          <div className="section-head reveal">
-            <span className="eyebrow">{day.eyebrow}</span>
-            <h2>{day.heading}</h2>
-            <span className="lead">{day.lead}</span>
-          </div>
-
-          <ol className="schedule reveal">
-            {day.schedule.map((slot) => (
-              <li key={slot.time}>
-                <span className="schedule__time">{slot.time}</span>
-                <span className="schedule__label">{slot.label}</span>
-                <span className="schedule__note">{slot.note}</span>
-              </li>
-            ))}
-          </ol>
-
-          <div className="reveal" style={{ marginTop: 'clamp(2.5rem, 5vw, 3.5rem)' }}>
-            <span className="eyebrow">{day.subjects.eyebrow}</span>
-            <ul className="taglist">
-              {day.subjects.items.map((subject) => (
-                <li key={subject}>{subject}</li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      {/* ---- Scripture statement ---- */}
-      <section className="section surface-slate statement">
+      {/* ---- The day ---- */}
+      <section className="section">
         <div className="container reveal">
-          <figure>
-            <blockquote>
-              {hero.verse.text}
-              <cite>{hero.verse.cite}</cite>
-            </blockquote>
-          </figure>
+          <Feature
+            eyebrow={home.day.eyebrow}
+            heading={home.day.heading}
+            lead={home.day.lead}
+            body={[home.day.body]}
+            image={home.day.image}
+            imageShape="landscape"
+            link={home.day.link}
+          />
         </div>
       </section>
 
-      {/* ---- Who we teach ---- */}
-      <section id="ages" className="section">
+      {/* ---- The six commitments ---- */}
+      <section className="section surface-alt">
         <div className="container">
           <div className="section-head reveal">
-            <span className="eyebrow">{ages.eyebrow}</span>
-            <h2>{ages.heading}</h2>
-            <span className="lead">{ages.lead}</span>
+            <span className="eyebrow">Our six commitments</span>
+            <h2>What we hold to.</h2>
           </div>
 
-          <div className="cols cols--3 reveal">
-            {ages.groups.map((group) => (
-              <div key={group.name} className="col">
-                <h3>{group.name}</h3>
-                <span className="col__range caption">Ages {group.range}</span>
-                <p className="col__body">{group.body}</p>
+          <div className="def-grid def-grid--3 reveal">
+            {commitments.map((c) => (
+              <div key={c.name} className="def">
+                <h3>{c.name}</h3>
+                <p>{c.body}</p>
               </div>
             ))}
           </div>
         </div>
       </section>
 
+      {/* ---- Scripture over a photograph ---- */}
+      <PhotoBand image="/photos/meadow-golden.jpg" quote={quotes.john15} />
+
       {/* ---- Giving ---- */}
-      <section id="give" className="section surface-alt">
+      <section id="give" className="section">
         <div className="container">
           <div className="section-head reveal">
-            <span className="eyebrow">{give.eyebrow}</span>
-            <h2>{give.heading}</h2>
-            <span className="lead">{give.lead}</span>
+            <span className="eyebrow">{home.give.eyebrow}</span>
+            <h2>{home.give.heading}</h2>
+            <span className="lead">{home.give.lead}</span>
           </div>
 
-          <div className="prose reveal" style={{ marginTop: '2rem' }}>
-            <p>{give.body}</p>
+          <div className="prose reveal" style={{ marginTop: '1.75rem' }}>
+            <p>{home.give.body}</p>
           </div>
 
-          <div className="cols cols--3 reveal">
-            {give.methods.map((method) => (
+          <div className="cards cards--3 reveal" style={{ marginTop: 'clamp(2.5rem, 5vw, 3.5rem)' }}>
+            {givingMethods.map((method) => (
               <div
                 key={method.id}
                 className={
@@ -185,7 +165,6 @@ export default function HomePage() {
                 <h3>{method.name}</h3>
                 <p className="give-method__detail">{method.detail}</p>
                 <p className="give-method__note">{method.note}</p>
-
                 {method.href && method.cta ? (
                   <a
                     className="btn btn-ghost give-method__cta"
@@ -203,74 +182,15 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* ---- Contact ---- */}
-      <section id="contact" className="section">
-        <div className="container">
-          <div className="section-head reveal">
-            <span className="eyebrow">{contact.eyebrow}</span>
-            <h2>{contact.heading}</h2>
-            <span className="lead">{contact.lead}</span>
-          </div>
-
-          <div className="contact-grid">
-            <div className="reveal">
-              <div className="prose">
-                <p>{contact.body}</p>
-              </div>
-              <a
-                className="btn btn-primary"
-                href={contact.emailHref}
-                style={{ marginTop: '2rem' }}
-              >
-                {contact.emailCta}
-              </a>
-            </div>
-
-            <dl className="detail-list reveal">
-              <div>
-                <dt>Email</dt>
-                <dd>
-                  <a href={`mailto:${school.email}`}>{school.email}</a>
-                </dd>
-              </div>
-              <div>
-                <dt>Where we meet</dt>
-                <dd>
-                  <a
-                    href={school.meeting.mapUrl}
-                    target="_blank"
-                    rel="noopener noreferrer"
-                  >
-                    {school.meeting.venue}
-                    <br />
-                    {school.meeting.street}
-                    <br />
-                    {school.meeting.cityStateZip}
-                  </a>
-                </dd>
-              </div>
-              <div>
-                <dt>When we meet</dt>
-                <dd>
-                  {school.meeting.day}, {school.meeting.season}
-                  <br />
-                  <span className="caption">
-                    Arrival 9:00 a.m. · Assembly 9:30 · Dismissal 1:30 p.m.
-                  </span>
-                </dd>
-              </div>
-              <div>
-                <dt>Directors</dt>
-                <dd>
-                  {school.directors.map((d) => d.name).join(' and ')}
-                  <br />
-                  <span className="caption">Co-Directors</span>
-                </dd>
-              </div>
-            </dl>
-          </div>
-        </div>
-      </section>
+      {/* ---- Come and see ---- */}
+      <CtaBand
+        eyebrow={home.visit.eyebrow}
+        heading={home.visit.heading}
+        body={home.visit.body}
+        primary={home.visit.primary}
+        secondary={home.visit.secondary}
+        surface="linen"
+      />
     </SiteShell>
   );
 }

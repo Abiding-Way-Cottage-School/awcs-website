@@ -75,10 +75,11 @@ Pages — the placeholder entry is already in the array.
 
 ### Photographs
 
-All current photographs are Pexels placeholders, chosen so that **no identifiable
-faces appear**. See [docs/PHOTO-CREDITS.md](docs/PHOTO-CREDITS.md) for the reasoning,
-the source list, and how to swap in real photographs. Before publishing any
-photograph of a child, get the parent's written permission.
+All current photographs are Pexels placeholders. Most were chosen so that **no
+identifiable faces appear**; two supplied by the school (`dancing-circle` and
+`child-studying`) do show faces. See [docs/PHOTO-CREDITS.md](docs/PHOTO-CREDITS.md)
+for the reasoning, the source list, and how to swap in real photographs. Before
+publishing any photograph of a child, get the parent's written permission.
 
 Images are warmed and desaturated by CSS (`.photo img` in `src/styles/site.css`), not
 baked into the files, so real photographs inherit the same treatment.
@@ -90,6 +91,15 @@ for color, type, layout, voice, and which facts may be published.
 [`src/styles/tokens.css`](src/styles/tokens.css) is its design-token stylesheet and
 **should not be edited**; page styles in [`src/styles/site.css`](src/styles/site.css)
 are built entirely from its variables.
+
+**The header mark** (`public/brand/logo-mark-olive.png`, and its cream twin for
+dark surfaces) is the cottage drawing lifted out of the full logo — the outer
+ring and the wordmark inside it removed. That is a deliberate departure from the
+brand kit's "keep the circle intact", made at the school's request, and it exists
+because the full lockup is illegible at header size. The complete logo still
+appears intact in the footer of every page. It was cropped from `logo-olive.png`
+at roughly x 460–1020, y 300–955 of the 1500×1500 original, then trimmed to the
+ink bounds; redo it from the original if a different framing is ever wanted.
 
 Two things stay off the site because the Family Handbook is a family document:
 **leadership phone numbers** and the **full policy detail**. Fees are published as
@@ -140,7 +150,7 @@ src/
     not-found.tsx       404
   components/
     SiteShell.tsx       header + main + footer wrapper
-    SiteHeader.tsx      wordmark and nav
+    SiteHeader.tsx      wordmark, cottage mark, and nav
     SiteNav.tsx         dropdown nav (client); mobile disclosure panel
     SiteFooter.tsx      framed olive footer with sitemap
     PageHeader.tsx      breadcrumb + eyebrow + heading + lead + photo

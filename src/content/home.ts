@@ -5,7 +5,7 @@ export const home = {
     eyebrow: school.city,
     tagline: school.tagline,
     lead: school.motto,
-    image: photo.handInHand,
+    image: photo.childrenWalking,
     primary: { label: 'Visit us', href: '/join/visit/' },
     secondary: { label: 'Our philosophy', href: '/about/philosophy/' },
   },
@@ -18,7 +18,7 @@ export const home = {
       'Abiding Way Cottage School is a Christ-centered enrichment co-op for homeschooling families in Jacksonville. We meet one day a week to study the things that are hard to do alone — Shakespeare read aloud in a room full of voices, a folk dance that needs more than one pair of feet, a painting looked at slowly and then described from memory.',
       'Every family participates. Parents teach, assist, and carry the day together, which is what keeps the co-op small, affordable, and unmistakably ours.',
     ],
-    image: photo.childrenWalking,
+    image: photo.handInHand,
     link: { label: 'Read our story', href: '/about/story/' },
   },
 

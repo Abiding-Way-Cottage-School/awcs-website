@@ -4,6 +4,7 @@ import Photo from '@/components/Photo';
 import PhotoBand from '@/components/PhotoBand';
 import SiteShell from '@/components/SiteShell';
 import { experience } from '@/content/community';
+import { photo } from '@/content/site';
 
 export const metadata = {
   title: 'The Abiding Way Experience',
@@ -54,7 +55,7 @@ export default function ExperiencePage() {
         </div>
       </section>
 
-      <PhotoBand image="/photos/hero-path.jpg" quote={experience.quote} />
+      <PhotoBand image={photo.heroPath} quote={experience.quote} />
 
       <CtaBand
         heading="It is easier to see than to describe."

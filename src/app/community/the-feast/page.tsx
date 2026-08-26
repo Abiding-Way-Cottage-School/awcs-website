@@ -4,6 +4,7 @@ import PageHeader from '@/components/PageHeader';
 import PhotoBand from '@/components/PhotoBand';
 import SiteShell from '@/components/SiteShell';
 import { theFeast } from '@/content/community';
+import { photo } from '@/content/site';
 
 export const metadata = {
   title: 'The Feast',
@@ -54,7 +55,7 @@ export default function TheFeastPage() {
         </section>
       ))}
 
-      <PhotoBand image="/photos/field-golden.jpg" quote={theFeast.quote} />
+      <PhotoBand image={photo.fieldGolden} quote={theFeast.quote} />
 
       <CtaBand
         heading="Taste it on a Wednesday."

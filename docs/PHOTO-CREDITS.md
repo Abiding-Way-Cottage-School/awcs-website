@@ -34,11 +34,36 @@ Before publishing any photograph of a child, get the parent's written permission
 The handbook's policy is that families post only photographs of their own children;
 a public website is a higher bar than a family group, not a lower one.
 
-## Sources
+## Supplied by the school
+
+These six were chosen by the school and take priority — they hold the hero, the
+homepage feature cards, the Scripture band, and the Our Story, Our Leadership,
+The Feast, For Mothers, Who It's For and Visit Us page headers.
+
+They arrived as full-resolution originals (up to 7669px, 3.4MB). The versions in
+`public/photos/` are resized to a 1800px maximum and re-encoded; the originals are
+kept in `/source-photos/` at the repo root, which is gitignored and never deployed.
+
+| File | Original | Used for |
+| --- | --- | --- |
+| hand-in-hand.jpg | pexels-alena-32974299 | Homepage hero, Visit Us |
+| watercolor-set.jpg | pexels-cottonbro-4709828 | The Feast, "a generous feast" |
+| dancing-circle.jpg | pexels-elly-fairytale-4834133 | Our Story, For Mothers |
+| arms-linked.jpg | pexels-mayaramombellifotografias-38816417 | Our Leadership, "mothers, together" |
+| child-studying.jpg | pexels-mikhail-nilov-8923543 | Who It's For, "a living education" |
+| silhouette-sunset.jpg | pexels-vladimirsrajber-27637122 | Homepage Scripture band |
+
+> **Two of these show faces** — `dancing-circle` and `child-studying`. That is a
+> departure from the no-identifiable-faces rule the rest of the set follows, and it
+> was a deliberate choice by the school. Worth knowing if the rule matters later:
+> a stock child's face on a school site can read to a visiting parent as a student
+> here. Both are licensed stock, so there is no consent issue with the subjects
+> themselves.
+
+## Other sources
 
 | File | Pexels ID | Page |
 | --- | --- | --- |
-| art-supplies.jpg | 9609267 | https://www.pexels.com/photo/9609267/ |
 | book-old-hands.jpg | 5937897 | https://www.pexels.com/photo/5937897/ |
 | book-pages.jpg | 13580974 | https://www.pexels.com/photo/13580974/ |
 | books-held.jpg | 8762862 | https://www.pexels.com/photo/8762862/ |
@@ -48,14 +73,10 @@ a public website is a higher bar than a family group, not a lower one.
 | children-walking.jpg | 4982481 | https://www.pexels.com/photo/4982481/ |
 | dried-grass.jpg | 7163189 | https://www.pexels.com/photo/7163189/ |
 | field-golden.jpg | 6195790 | https://www.pexels.com/photo/6195790/ |
-| hands-held.jpg | 32695709 | https://www.pexels.com/photo/32695709/ |
 | hero-path.jpg | 10979 | https://www.pexels.com/photo/10979/ |
 | knitting-hands.jpg | 5691896 | https://www.pexels.com/photo/5691896/ |
 | light-wall.jpg | 12121995 | https://www.pexels.com/photo/12121995/ |
-| meadow-golden.jpg | 35962844 | https://www.pexels.com/photo/35962844/ |
 | misty-field.jpg | 16682740 | https://www.pexels.com/photo/16682740/ |
 | pressed-flowers.jpg | 11066932 | https://www.pexels.com/photo/11066932/ |
-| sheet-music.jpg | 206447 | https://www.pexels.com/photo/206447/ |
-| walking-together.jpg | 7856945 | https://www.pexels.com/photo/7856945/ |
 | woodwork-hands.jpg | 13005858 | https://www.pexels.com/photo/13005858/ |
 | wool-basket.jpg | 5788376 | https://www.pexels.com/photo/5788376/ |

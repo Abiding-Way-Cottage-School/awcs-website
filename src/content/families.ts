@@ -10,7 +10,7 @@ export const familiesIndex = {
       name: "Who It's For",
       body: 'The ages we teach and the families who tend to be at home here.',
       href: '/families/who-its-for/',
-      image: photo.childReading,
+      image: photo.childStudying,
     },
     {
       name: 'Tuition & Fees',
@@ -37,7 +37,7 @@ export const whoItsFor = {
   eyebrow: "Who it's for",
   heading: 'Three rooms, one household.',
   lead: 'Younger children are cared for so their mothers can teach.',
-  image: photo.childReading,
+  image: photo.childStudying,
   intro:
     'We take children from birth through about eleven, in three groups. Siblings are welcome across all of them — no mother has to choose between teaching a lesson and caring for her toddler.',
   groups: [

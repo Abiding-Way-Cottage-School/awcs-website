@@ -4,7 +4,7 @@ import PageHeader from '@/components/PageHeader';
 import PhotoBand from '@/components/PhotoBand';
 import SiteShell from '@/components/SiteShell';
 import { philosophy } from '@/content/about';
-import { quotes } from '@/content/site';
+import { photo, quotes } from '@/content/site';
 
 export const metadata = {
   title: 'Our Philosophy',
@@ -47,7 +47,7 @@ export default function PhilosophyPage() {
         </div>
       </section>
 
-      <PhotoBand image="/photos/misty-field.jpg" quote={quotes.bornPerson} />
+      <PhotoBand image={photo.mistyField} quote={quotes.bornPerson} />
 
       <section className="section">
         <div className="container">

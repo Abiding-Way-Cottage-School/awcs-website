@@ -10,7 +10,7 @@ export const joinIndex = {
       name: 'Visit Us',
       body: 'Spend a Wednesday with us before you decide anything.',
       href: '/join/visit/',
-      image: photo.walkingTogether,
+      image: photo.handInHand,
     },
     {
       name: 'Apply',
@@ -25,7 +25,7 @@ export const visit = {
   eyebrow: 'Visit us',
   heading: 'Spend a Wednesday with us.',
   lead: 'Bring your children. Stay for the morning. Ask anything.',
-  image: photo.walkingTogether,
+  image: photo.handInHand,
   intro: [
     'The best way to understand a co-op is to stand in the middle of one. Reading about narration is not the same as watching a nine-year-old tell back a scene from Shakespeare without a note in front of her.',
     'So we would rather you came and saw. Write to us with your family’s names and the ages of your children, and we will find a Wednesday that works.',

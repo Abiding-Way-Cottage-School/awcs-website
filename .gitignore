@@ -32,3 +32,7 @@ yarn-error.log*
 # editor
 .vscode/
 .idea/
+
+# Full-resolution photo originals. Kept on disk, never deployed or committed;
+# the web-sized versions live in public/photos/.
+/source-photos/

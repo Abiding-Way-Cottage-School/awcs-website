@@ -7,7 +7,7 @@ import Photo from '@/components/Photo';
 import PhotoBand from '@/components/PhotoBand';
 import SiteShell from '@/components/SiteShell';
 import { givingMethods, home } from '@/content/home';
-import { atmosphereWords, commitments, quotes, school } from '@/content/site';
+import { atmosphereWords, commitments, photo, quotes, school } from '@/content/site';
 
 export default function HomePage() {
   const [firstLine, secondLine] = school.nameLines;
@@ -139,7 +139,7 @@ export default function HomePage() {
       </section>
 
       {/* ---- Scripture over a photograph ---- */}
-      <PhotoBand image="/photos/meadow-golden.jpg" quote={quotes.john15} />
+      <PhotoBand image={photo.silhouetteSunset} quote={quotes.john15} />
 
       {/* ---- Giving ---- */}
       <section id="give" className="section">

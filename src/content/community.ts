@@ -22,13 +22,13 @@ export const communityIndex = {
       name: 'The Feast',
       body: 'Everything we spread on the table: Shakespeare to Swedish Drill.',
       href: '/community/the-feast/',
-      image: photo.artSupplies,
+      image: photo.watercolorSet,
     },
     {
       name: 'For Mothers',
       body: 'What the co-op asks of you, and what it gives back.',
       href: '/community/for-mothers/',
-      image: photo.handsHeld,
+      image: photo.dancingCircle,
     },
   ],
 };
@@ -143,7 +143,7 @@ export const theFeast = {
   eyebrow: 'The feast',
   heading: 'A wide table, generously set.',
   lead: 'We do not decide in advance what a child will love.',
-  image: photo.artSupplies,
+  image: photo.watercolorSet,
   intro: [
     'Mason used the word feast deliberately. A feast is not a diet plan; nobody weighs what is taken. It is spread out, and it is offered, and the guest eats what nourishes them.',
     'So we lay out far more than any one child will make their life’s work, and we do not apologise for the breadth. A child who never becomes a musician has still spent a year listening to Bach, and is not the same for it.',
@@ -189,7 +189,7 @@ export const forMothers = {
   eyebrow: 'For mothers',
   heading: 'You are not dropping them off.',
   lead: 'This is a co-op. It asks something of you, and it gives more back.',
-  image: photo.handsHeld,
+  image: photo.dancingCircle,
   intro: [
     'Abiding Way is a parent-participation co-op, which means there is no staff to hand your children to. Every mother takes a part: teaching a subject, assisting in a room, holding babies in the nursery, setting out lunch, running the music for assembly.',
     'It is real work. It is also the reason the co-op costs what it costs, and the reason it feels like ours rather than a service we bought.',
@@ -215,7 +215,7 @@ export const forMothers = {
       'A co-op helps almost by accident. You will read Shakespeare because you are teaching it. You will learn a composer because you are introducing him. You will spend a Wednesday among women who understand why a morning can be ruined by a bad reading and saved by a good one.',
       'Most mothers tell us this is the part they did not expect.',
     ],
-    image: photo.knittingHands,
+    image: photo.armsLinked,
   },
   quote: {
     text: 'Mothers, together.',

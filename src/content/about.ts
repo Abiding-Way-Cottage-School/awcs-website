@@ -22,7 +22,7 @@ export const aboutIndex = {
       name: 'Our Leadership',
       body: 'The mothers who carry the practical weight of the day.',
       href: '/about/leadership/',
-      image: photo.handsHeld,
+      image: photo.armsLinked,
     },
   ],
 };
@@ -95,7 +95,7 @@ export const story = {
   eyebrow: 'Our story',
   heading: 'It began with a few mothers and a long table.',
   lead: 'A co-op is what happens when several families decide not to do this alone.',
-  image: photo.walkingTogether,
+  image: photo.dancingCircle,
   /* DRAFT — the narrative below is written to the right tone but the specifics are
      invented. Replace with the real account: who started it, in what year, what
      prompted it, and how many families there were at the beginning.
@@ -117,7 +117,7 @@ export const leadership = {
   eyebrow: 'Our leadership',
   heading: 'The mothers who carry the day.',
   lead: 'Abiding Way is led by the parents who teach in it.',
-  image: photo.bowlLinen,
+  image: photo.armsLinked,
   intro:
     'Our co-directors handle the practical weight of the co-op — the calendar, the room, the enrollment, the hundred small decisions that let a Wednesday run well — alongside teaching their own children like everyone else.',
   /* DRAFT — names and roles are from the handbook and are correct. The `bio`

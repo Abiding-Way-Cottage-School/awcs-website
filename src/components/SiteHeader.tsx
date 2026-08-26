@@ -9,10 +9,11 @@ import { asset } from '@/lib/asset';
  * Light, pinned header: the typographic wordmark with the cottage mark beside
  * it, and the navigation to the right.
  *
- * The mark is `logo-mark-olive.png` — the cottage drawing lifted out of the
- * full logo, without the ring or the wordmark inside it. That is a deliberate
- * departure from the brand kit ("keep the circle intact"), made at the school's
- * request; the complete lockup still appears in the footer of every page.
+ * The mark is `logo-mark-olive.png` — the full logo with the wordmark removed
+ * from inside the ring and the ring redrawn tighter around the drawing, so the
+ * space the text used to occupy is not left empty. The circle, sun, cottage and
+ * path are all kept. The complete lockup still appears in the footer of every
+ * page.
  *
  * It carries no alt text because the wordmark beside it already names the
  * school, and the two together are a single link.
@@ -31,8 +32,8 @@ export default function SiteHeader() {
           <Image
             src={asset('/brand/logo-mark-olive.png')}
             alt=""
-            width={320}
-            height={257}
+            width={512}
+            height={512}
             className="brand-mark"
             priority
           />

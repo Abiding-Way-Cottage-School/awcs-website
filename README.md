@@ -93,13 +93,17 @@ for color, type, layout, voice, and which facts may be published.
 are built entirely from its variables.
 
 **The header mark** (`public/brand/logo-mark-olive.png`, and its cream twin for
-dark surfaces) is the cottage drawing lifted out of the full logo — the outer
-ring and the wordmark inside it removed. That is a deliberate departure from the
-brand kit's "keep the circle intact", made at the school's request, and it exists
-because the full lockup is illegible at header size. The complete logo still
-appears intact in the footer of every page. It was cropped from `logo-olive.png`
-at roughly x 460–1020, y 300–955 of the 1500×1500 original, then trimmed to the
-ink bounds; redo it from the original if a different framing is ever wanted.
+dark surfaces) is the full logo with the wordmark taken out from inside the ring
+and the ring redrawn tighter around the drawing, so the space the text used to
+occupy is not left empty. The circle, sun, cottage and path are all kept, and the
+ring keeps the original's stroke weight and colour. It exists because the full
+lockup — ring, illustration and two lines of type — is an unreadable smudge at
+header size; the complete logo still appears intact in the footer of every page.
+
+To regenerate it from `logo-olive.png` / `logo-cream.png`: lift the drawing from
+roughly x 460–1020, y 300–955 of the 1500×1500 original, trim to the ink bounds,
+find the smallest radius from the drawing's centre that contains all the ink, and
+stroke a circle at 1.3× that radius using the original ring's 12px weight.
 
 Two things stay off the site because the Family Handbook is a family document:
 **leadership phone numbers** and the **full policy detail**. Fees are published as

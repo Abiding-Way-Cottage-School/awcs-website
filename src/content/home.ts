@@ -61,7 +61,7 @@ export const home = {
     heading: 'One day a week, unhurried.',
     lead: `${school.meeting.day}, ${school.meeting.season}.`,
     body: 'Arrival at nine, assembly at half past, morning lessons in small mixed-age groups, lunch outdoors when the weather allows, and afternoon studies before we go home again at half past one.',
-    image: photo.mistyField,
+    image: photo.knittingHands,
     link: { label: 'See the full day', href: '/community/a-day/' },
   },
 

@@ -1,0 +1,375 @@
+/* Family Portal — chrome, tables and forms.
+
+   Built from tokens.css like site.css, and only for what the marketing site
+   does not already have; every class here is prefixed `.portal-`. Reuse
+   .panel, .btn, .eyebrow, .marker-list, .def-grid, .link-more, .container,
+   .lead and .prose from site.css for everything else.
+
+   Cream ground, hairline rules, Inter at the small size for tables, Cormorant
+   for headings, square corners. Status is small-caps text, never a coloured
+   badge. */
+
+/* ---- Shell: a 16rem column beside the page from 60rem, stacked below ---- */
+.portal-shell {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  background: var(--bg);
+}
+
+.portal-sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  padding: 1.25rem var(--gutter);
+  background: var(--bg-alt);
+  border-bottom: 1px solid var(--border);
+}
+
+@media (min-width: 60rem) {
+  .portal-shell {
+    grid-template-columns: 16rem minmax(0, 1fr);
+  }
+
+  .portal-sidebar {
+    position: sticky;
+    top: 0;
+    height: 100vh;
+    gap: 2rem;
+    padding: 2rem 1.5rem;
+    border-bottom: 0;
+    border-right: 1px solid var(--border);
+  }
+}
+
+.portal-brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  text-decoration: none;
+  color: var(--text-heading);
+}
+
+.portal-brand__mark {
+  width: auto;
+  height: 2.75rem;
+  flex-shrink: 0;
+}
+
+.portal-brand__text {
+  display: inline-flex;
+  flex-direction: column;
+  font-family: var(--font-display);
+  font-size: 1.25rem;
+  font-weight: 300;
+  line-height: 1.05;
+  letter-spacing: var(--tracking-display);
+}
+
+.portal-brand__text em {
+  font-style: italic;
+  font-weight: 400;
+  font-size: 0.92em;
+}
+
+/* ---- Navigation ---- */
+.portal-nav ul {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 1.25rem;
+}
+
+@media (min-width: 60rem) {
+  .portal-nav {
+    flex: 1;
+  }
+
+  .portal-nav ul {
+    flex-direction: column;
+    gap: 0;
+  }
+}
+
+.portal-nav__link {
+  display: inline-block;
+  padding: 0.5rem 0;
+  font-family: var(--font-body);
+  font-size: var(--fs-eyebrow);
+  font-weight: 500;
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  text-decoration: none;
+  color: var(--text-heading);
+  border-bottom: 1px solid transparent;
+  transition: color 0.2s;
+}
+
+.portal-nav__link:hover {
+  color: var(--accent);
+}
+
+.portal-nav__link--active {
+  color: var(--accent);
+  border-bottom-color: currentColor;
+}
+
+/* Sign out is a form button dressed as a nav link. */
+button.portal-nav__link {
+  background: none;
+  border: 0;
+  border-bottom: 1px solid transparent;
+  padding-inline: 0;
+  cursor: pointer;
+}
+
+/* ---- Signed-in family ---- */
+.portal-user {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+  padding-top: 1rem;
+  border-top: 1px solid var(--border);
+  font-size: var(--fs-small);
+}
+
+.portal-user__name {
+  font-family: var(--font-display);
+  font-size: var(--fs-h3);
+  color: var(--text-heading);
+  line-height: var(--lh-display);
+}
+
+.portal-user__email {
+  color: var(--text-muted);
+  overflow-wrap: anywhere;
+}
+
+/* ---- Page ---- */
+.portal-main {
+  padding-block: clamp(2rem, 5vw, 4rem);
+}
+
+.portal-page-head {
+  margin-bottom: clamp(1.5rem, 4vw, 2.5rem);
+}
+
+.portal-page-head .eyebrow {
+  display: block;
+  margin-bottom: 0.75rem;
+}
+
+.portal-page-head .lead {
+  display: block;
+  margin-top: 0.75rem;
+}
+
+.portal-section + .portal-section {
+  margin-top: clamp(2rem, 5vw, 3.5rem);
+}
+
+.portal-section > h2 {
+  margin-bottom: 1rem;
+}
+
+/* ---- Tables ---- */
+.portal-table-wrap {
+  overflow-x: auto;
+}
+
+.portal-table {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: var(--fs-small);
+}
+
+.portal-table th,
+.portal-table td {
+  padding: 0.75rem 1rem 0.75rem 0;
+  text-align: left;
+  vertical-align: top;
+  border-bottom: 1px solid var(--border);
+}
+
+.portal-table th {
+  font-size: var(--fs-eyebrow);
+  font-weight: 500;
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  color: var(--text-muted);
+}
+
+.portal-table__num {
+  text-align: right;
+  font-variant-numeric: tabular-nums;
+}
+
+.portal-table a {
+  text-underline-offset: 0.25em;
+}
+
+/* Status as tracked small caps; muted for the settled states. */
+.portal-pill {
+  display: inline-block;
+  font-family: var(--font-body);
+  font-size: var(--fs-eyebrow);
+  font-weight: 500;
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.portal-pill--muted {
+  color: var(--text-muted);
+}
+
+/* ---- Forms ---- */
+.portal-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25rem;
+  max-width: 36rem;
+}
+
+.portal-field {
+  display: flex;
+  flex-direction: column;
+  gap: 0.4rem;
+}
+
+.portal-field label {
+  font-size: var(--fs-eyebrow);
+  font-weight: 500;
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.portal-field input,
+.portal-field select,
+.portal-field textarea {
+  width: 100%;
+  padding: 0.75rem 0.875rem;
+  font: inherit;
+  font-size: var(--fs-body);
+  color: var(--text);
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: var(--radius);
+}
+
+.portal-field input:focus-visible,
+.portal-field select:focus-visible,
+.portal-field textarea:focus-visible {
+  border-color: var(--aw-bronze);
+}
+
+.portal-field textarea {
+  min-height: 12rem;
+  resize: vertical;
+}
+
+.portal-field__hint {
+  font-size: var(--fs-small);
+  color: var(--text-muted);
+}
+
+.portal-field__error {
+  font-size: var(--fs-small);
+  color: var(--text-heading);
+}
+
+/* A checkbox and its sentence on one line. */
+.portal-field--check {
+  flex-direction: row;
+  align-items: flex-start;
+  gap: 0.75rem;
+}
+
+.portal-field--check input {
+  width: auto;
+  margin-top: 0.3rem;
+}
+
+.portal-field--check label {
+  font-size: var(--fs-small);
+  font-weight: 400;
+  letter-spacing: 0;
+  text-transform: none;
+  color: var(--text);
+}
+
+.portal-actions {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.75rem 1rem;
+}
+
+.portal-actions .btn:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+/* ---- Notices, empty states, tasks ---- */
+.portal-notice {
+  max-width: 36rem;
+  padding: 1rem 1.25rem;
+  border: 1px solid var(--border);
+  font-size: var(--fs-small);
+}
+
+.portal-empty {
+  padding: 1.5rem;
+  border: 1px dashed var(--border);
+  font-size: var(--fs-small);
+  color: var(--text-muted);
+}
+
+.portal-task {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 0.35rem 1.5rem;
+  align-items: baseline;
+  padding-block: 1rem;
+  border-top: 1px solid var(--border);
+  font-size: var(--fs-small);
+}
+
+.portal-task:last-child {
+  border-bottom: 1px solid var(--border);
+}
+
+.portal-task__title {
+  font-family: var(--font-display);
+  font-size: var(--fs-h3);
+  color: var(--text-heading);
+  line-height: var(--lh-display);
+}
+
+.portal-task__meta {
+  color: var(--text-muted);
+}
+
+/* ---- The public pages: sign in, check your email, error ---- */
+.portal-auth {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding-block: var(--section-y);
+}
+
+.portal-auth__inner {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+.portal-auth .portal-page-head {
+  margin-bottom: 0;
+}
+
+.portal-auth__foot {
+  max-width: var(--measure);
+  font-size: var(--fs-small);
+  color: var(--text-muted);
+}

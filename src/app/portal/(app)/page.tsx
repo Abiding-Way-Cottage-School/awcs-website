@@ -1,50 +1,31 @@
-import CtaBand from '@/components/CtaBand';
-import PageHeader from '@/components/PageHeader';
-import SiteShell from '@/components/SiteShell';
-import { portal } from '@/content/join';
+import { homeStub } from '@/content/portal';
+import { requireUser } from '@/lib/dal';
 
-export const metadata = {
-  title: 'Family Portal',
-  description: portal.lead,
-  // Nothing to index until there is a real portal behind a login.
-  robots: { index: false, follow: true },
-};
+export const dynamic = 'force-dynamic';
 
-export default function PortalPage() {
+type SearchParams = Promise<Record<string, string | string[] | undefined>>;
+
+/** Phase 1 stand-in; the family home (tasks and payments) replaces it. */
+export default async function PortalHomePage({ searchParams }: { searchParams: SearchParams }) {
+  const user = await requireUser();
+  const { denied } = await searchParams;
+
   return (
-    <SiteShell>
-      <PageHeader
-        eyebrow="Family Portal"
-        heading={portal.heading}
-        lead={portal.lead}
-        image={portal.image}
-      />
+    <>
+      <header className="portal-page-head">
+        <p className="eyebrow">{homeStub.eyebrow}</p>
+        <h1>{homeStub.heading}</h1>
+      </header>
 
-      <section className="section">
-        <div className="container container--narrow">
-          <div className="prose reveal">
-            {portal.body.map((p) => (
-              <p key={p.slice(0, 40)}>{p}</p>
-            ))}
-          </div>
+      {denied ? (
+        <p className="portal-notice" role="status">
+          {homeStub.denied}
+        </p>
+      ) : null}
 
-          <div className="panel panel--linen reveal" style={{ marginTop: 'clamp(2rem, 4vw, 3rem)' }}>
-            <span className="eyebrow">What it will hold</span>
-            <ul className="marker-list" style={{ marginTop: '1rem' }}>
-              {portal.planned.map((item) => (
-                <li key={item}>{item}</li>
-              ))}
-            </ul>
-          </div>
-        </div>
-      </section>
-
-      <CtaBand
-        heading={portal.cta.heading}
-        body={portal.cta.body}
-        primary={portal.cta.primary}
-        surface="alt"
-      />
-    </SiteShell>
+      <p className="portal-empty">
+        {homeStub.body} Signed in as {user.familyName ?? user.email}.
+      </p>
+    </>
   );
 }

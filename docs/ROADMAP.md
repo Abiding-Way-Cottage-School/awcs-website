@@ -39,37 +39,38 @@ depends on. See the Deploying section of [../README.md](../README.md).
 The GitHub Pages mirror was retired with the portal; a static export cannot host
 any of it.
 
-## Stage 3 — accounts and login
+## Stage 3 — accounts and login (done)
 
-Suggested pieces:
+What was chosen, and why:
 
-- **[Auth.js](https://authjs.dev) (NextAuth v5)** for sessions. Email magic links
-  suit this audience better than passwords: no password for a busy mother to
-  forget or reset, and the co-op already communicates by email.
-- **A hosted Postgres** — Neon or Supabase, both with usable free tiers — with
-  **Prisma** or **Drizzle** for schema and queries.
-- **Roles**, minimally `admin` (directors) and `member` (enrolled families).
-  Keep it to two until a third is genuinely needed.
+- **[Auth.js](https://authjs.dev) v5** with its built-in **Resend** provider:
+  magic links by email, JWT sessions, no passwords. Sign-in is invite-only — a
+  director adds a family's address before it can get a link — with
+  `ADMIN_EMAILS` as the bootstrap for the first director.
+- **Neon Postgres** with **Drizzle**; migrations generated into `drizzle/` and
+  committed.
+- **Two roles**, `admin` (directors) and `family`. The family's name is a
+  profile field, not a credential.
 
-Suggested structure. `src/app/page.tsx` moves into a `(site)` group at this point
-and the portal sits beside it:
+The portal has its own shell (`src/components/portal/PortalShell.tsx`) rather
+than `SiteShell`, and sits beside the public pages without a route group:
 
 ```
-src/app/
-  (site)/            public pages — wrap in SiteShell as they do now
-  (portal)/
-    layout.tsx       auth boundary: redirect to sign-in when there is no session
-    portal/          the family dashboard
-    admin/           directors only, gated by role in the proxy and the data layer
-  api/
-    auth/[...nextauth]/route.ts
+src/
+  proxy.ts               cookie-only redirect for /portal and /admin
+  auth.ts, auth.config.ts
+  db/                    schema + lazy db() handle
+  lib/dal/               requireUser(), requireAdmin() — the real gate
+  app/
+    portal/              layout (shell, noindex) · sign-in · verify · error · home
+    admin/               layout (shell, noindex) · redirects to /admin/users/
+    api/auth/[...nextauth]/route.ts
 ```
 
-> Note: the public pages are not in a `(site)` group today (a leftover of a
-> static-export bug that no longer applies). Introducing the group is optional.
-
-Keep `/admin` out of the public nav and add `robots: { index: false }` to the
-portal layout's metadata.
+Auth is checked in the data layer and in every page, server action and route
+handler — never only in a layout, which does not re-render on navigation and
+cannot stop a child segment from running. See the "Family portal" section of
+[../README.md](../README.md).
 
 ## Stage 4 — what members do once they are logged in
 
@@ -80,9 +81,8 @@ portal layout's metadata.
   signature is actually required.
 - **Payments for services** — see below.
 
-The `/portal/` page already exists as a public placeholder describing what is
-coming. When the real portal ships, that page becomes the sign-in route and the
-nav entry stops being decorative.
+Sign-in lives at `/portal/sign-in/` and the family home at `/portal/`; the
+header's Family Portal entry now leads somewhere real.
 
 ## Stage 5 — payments
 
@@ -105,9 +105,11 @@ listed alongside cards rather than replacing them.
 
 ---
 
-## Things to decide before building Stage 3
+## Things to decide before building Stage 4
 
-These are questions for leadership, not engineering:
+Stage 3 settled two of these: one account per family, keyed by the email a
+director adds, and invite-only sign-in. The rest are questions for leadership,
+not engineering:
 
 - Who counts as a member — one account per family, or one per parent?
 - Should prospective families be able to create an account, or is it invite-only

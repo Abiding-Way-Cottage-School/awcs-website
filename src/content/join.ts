@@ -73,37 +73,14 @@ export const apply = {
     { name: 'Join the BAND', body: `You are added to the ${school.communicationApp} app, where the calendar, notices and the term's plans live.` },
   ],
   portalNote: {
-    eyebrow: 'Coming soon',
-    heading: 'An online application.',
-    body: 'We are building a family portal where enrollment forms can be completed and signed online, and fees paid by card. Until then, everything happens by email, which works perfectly well.',
+    eyebrow: 'Family portal',
+    heading: 'Once you are enrolled.',
+    body: 'Enrolled families use the Family Portal to sign the co-op’s forms, find the documents they need and keep track of fees. A director adds your email address once your place is confirmed; until then, everything happens by email, which works perfectly well.',
   },
   cta: {
     heading: 'Ready to begin?',
     body: 'Write to the directors and tell us about your family.',
     primary: { label: 'Email the directors', href: mailto('We would like to enroll') },
     secondary: { label: 'Visit first', href: '/join/visit/' },
-  },
-};
-
-export const portal = {
-  eyebrow: 'Family portal',
-  heading: 'Coming soon.',
-  lead: 'A private place for enrolled families.',
-  image: photo.lightWall,
-  body: [
-    'We are building a portal for the mothers of Abiding Way — somewhere to find the calendar and the term’s plans, read notices, sign the forms a co-op needs, and pay fees without a cheque.',
-    'It is not ready yet. Until it is, everything happens by email and through the BAND app, and nothing is lost.',
-  ],
-  /* Update this list as portal features actually ship. */
-  planned: [
-    'The calendar and term plans in one place',
-    'Notices and important documents',
-    'Enrollment and permission forms, signed online',
-    'Fees and payments by card',
-  ],
-  cta: {
-    heading: 'Need something in the meantime?',
-    body: 'Enrolled families should use the BAND app. Everyone else is welcome to email us.',
-    primary: { label: 'Email the directors', href: mailto('A question from a family') },
   },
 };

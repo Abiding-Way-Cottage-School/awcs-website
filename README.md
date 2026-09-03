@@ -3,10 +3,10 @@
 The website for Abiding Way Cottage School — a Christ-centered, parent-participation
 Charlotte Mason enrichment co-op in Jacksonville, Florida.
 
-Built with Next.js 16 (App Router) and TypeScript. It currently exports to plain
-static files so GitHub Pages can host it for free, and it is set up so that adding
-a member login, an `/admin` area, form signing, and card payments later does not
-require a rewrite. See [docs/ROADMAP.md](docs/ROADMAP.md).
+Built with Next.js 16 (App Router) and TypeScript, and served by Vercel as a
+Node.js server. Beside the public pages there is a private Family Portal —
+`/portal/` for enrolled families, `/admin/` for the directors — for signing forms,
+finding documents and keeping track of fees. See [docs/ROADMAP.md](docs/ROADMAP.md).
 
 > **Before this goes to a wider audience**, read
 > [docs/CONTENT-TODO.md](docs/CONTENT-TODO.md). Several pages contain prose written
@@ -25,7 +25,7 @@ npm run dev        # http://localhost:3000
 | Script | What it does |
 | --- | --- |
 | `npm run dev` | Development server with hot reload |
-| `npm run build` | Production build; writes the static site to `out/` |
+| `npm run build` | Production build, run as a Node.js server (see Deploying) |
 | `npm run typecheck` | TypeScript check with no build |
 
 ---
@@ -43,7 +43,8 @@ to read JSX to change a sentence.
 | `about.ts` | Our Philosophy, Our Story, Our Leadership |
 | `community.ts` | The Experience, A Day, The Feast, For Mothers |
 | `families.ts` | Who It's For, Tuition & Fees, FAQ, Calendar |
-| `join.ts` | Visit Us, Apply, and the Family Portal placeholder |
+| `join.ts` | Visit Us and Apply |
+| `portal.ts` | The Family Portal's chrome and its sign-in pages |
 
 ### Adding a page
 
@@ -136,6 +137,54 @@ arrived. `src/lib/asset.ts` remains as the one place a CDN prefix would go.
 
 ---
 
+## Family portal
+
+`/portal/` is a private area for enrolled families and `/admin/` is the
+directors' side of it. Both are `noindex`, gated by `src/proxy.ts` (a quick
+cookie check) and, properly, by `requireUser()` / `requireAdmin()` in
+`src/lib/dal/session.ts`, which every page, server action and route handler
+calls itself. Layouts never gate — they only read the session to show who is
+signed in.
+
+**Signing in** is by magic link: Auth.js v5 with the built-in Resend provider,
+JWT sessions, no passwords. It is invite-only. An address gets a link only if a
+director has added it (and the account is active); everyone else sees "not on
+our list yet". The one exception is `ADMIN_EMAILS`: whoever signs in with an
+address on that comma-separated list becomes a director on their first
+sign-in, even before any user rows exist. That is how the first director gets
+in; after that, add people through `/admin/users/`.
+
+**Environment variables** are listed with comments in [`.env.example`](.env.example):
+`AUTH_SECRET`, `AUTH_TRUST_HOST`, `ADMIN_EMAILS`, `RESEND_API_KEY`,
+`AUTH_RESEND_FROM`, `DATABASE_URL`, `BLOB_READ_WRITE_TOKEN` and
+`NEXT_PUBLIC_SITE_URL`. Copy the file to `.env.local` for development. The
+build reads none of them — every client (Neon, Resend, Blob) is constructed on
+first use — so a missing variable shows up as a clear error at request time,
+not a failed deploy.
+
+**Data** lives in Neon Postgres through Drizzle. The schema is
+`src/db/schema.ts`; the handle is `db()` from `src/db` (a function, so nothing
+connects at import time). Neon's HTTP driver has no interactive transactions:
+use `db().batch([...])` for atomic multi-statement writes, never
+`db().transaction()`.
+
+| Script | What it does |
+| --- | --- |
+| `npm run db:generate` | Writes a migration to `drizzle/` from the schema. Needs no database; commit the result |
+| `npm run db:migrate` | Applies pending migrations to `DATABASE_URL` from `.env.local` |
+| `npm run db:studio` | Opens Drizzle Studio against the same database |
+
+drizzle-kit reads only `./.env` on its own, which is why the migrate and studio
+scripts pass `--env-file=.env.local` to Node.
+
+**Files** families download are private Vercel Blobs, uploaded straight from
+the browser and served back through an authenticated route handler; the blob
+URL itself never reaches a browser. **Payments** are a Venmo link plus a
+director marking the charge paid; the table is shaped so Stripe can write to it
+later.
+
+---
+
 ## Project layout
 
 ```
@@ -147,8 +196,15 @@ src/
     community/          experience · a-day · the-feast · for-mothers
     families/           who-its-for · tuition · faq · calendar
     join/               visit · apply
-    portal/             Family Portal placeholder (noindex)
+    portal/             Family Portal (noindex): sign-in, verify, error render bare;
+    portal/(app)/       the signed-in family pages, wrapped in PortalShell by their own layout
+    admin/              the directors' side of the portal (noindex)
+    api/auth/           Auth.js route handler
     not-found.tsx       404
+  proxy.ts              cookie-only gate for /portal and /admin; not the security boundary
+  auth.ts               Auth.js instance: Drizzle adapter, Resend magic links, invite-only
+  auth.config.ts        the adapter-free half of that config, shared with proxy.ts
+  db/                   Drizzle schema and the lazy db() handle
   components/
     SiteShell.tsx       header + main + footer wrapper
     SiteHeader.tsx      wordmark, cottage mark, and nav
@@ -161,11 +217,16 @@ src/
     CtaBand.tsx         closing invitation
     Photo.tsx           brand-treated image with alt-text lookup
     Reveal.tsx          the site's only motion: a 400ms fade-up
+    portal/             the portal's shell, nav, and sign-in frame
   content/              ← all copy and facts
   lib/asset.ts          the one place a CDN prefix for /public files would go
+  lib/dal/              session helpers: requireUser, requireAdmin, clientIp
+  lib/validation.ts     zod schemas shared by the portal's server actions
   styles/
     tokens.css          brand design tokens (do not edit)
     site.css            page styles, built from those tokens
+    portal.css          the portal's chrome, tables and forms
+drizzle/                generated migrations (commit them)
 public/
   brand/                logo files
   photos/               photography (see docs/PHOTO-CREDITS.md)

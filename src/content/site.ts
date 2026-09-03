@@ -48,31 +48,31 @@ export const mailto = (subject: string) =>
 /** The three words that describe the atmosphere the co-op keeps. */
 export const atmosphereWords = ['Truth', 'Beauty', 'Goodness'];
 
-/** The six commitments, quoted from the handbook. */
+/** The six commitments, in the school's own words. */
 export const commitments = [
   {
-    name: 'Christ at the center',
-    body: 'Every subject, every habit, every hour belongs to him. He is not a class we add; he is the ground we stand on.',
+    name: 'Christ at the Center',
+    body: 'We seek to know, love, and glorify God in all that we do.',
   },
   {
-    name: 'Living over lifeless',
-    body: 'Whole books written by people who loved their subject, in place of textbooks assembled by committee.',
+    name: 'Living Ideas',
+    body: 'We offer children a feast of living books, meaningful ideas, and things worthy of their attention.',
   },
   {
-    name: 'Slow & thoughtful',
-    body: 'Short lessons, full attention, and time left over. We would rather do less well than more poorly.',
+    name: 'Short Lessons',
+    body: 'We honor a child’s attention with lessons that are focused, purposeful, and appropriately brief.',
   },
   {
-    name: 'Habit as kindness',
-    body: 'Good habits are a gift to a child, not a burden laid on them. They make the right thing easy.',
+    name: 'Beauty & Wonder',
+    body: 'We surround children with beautiful things that awaken wonder and cultivate a lifelong love of learning.',
   },
   {
-    name: 'Wonder protected',
-    body: 'We do not explain away what a child could notice. Awe is the beginning of knowledge, not a reward for it.',
+    name: 'The Whole Child',
+    body: 'We nurture mind, body, character, creativity, and a growing sense of responsibility.',
   },
   {
-    name: 'Mothers, together',
-    body: 'No one carries this alone. We teach beside each other, and we are better for the company.',
+    name: 'Mothers, Together',
+    body: 'We share the work of educating our children, learning from one another and building a generous community.',
   },
 ];
 

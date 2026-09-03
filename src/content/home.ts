@@ -42,7 +42,7 @@ export const home = {
       },
       {
         name: 'A generous feast',
-        body: 'Shakespeare, poetry, picture study, composer study, handicrafts, folk dance and drill — spread wide and offered freely.',
+        body: 'A rich feast of living ideas through Shakespeare, poetry, literature, music, art, language, movement, and handicrafts.',
         href: '/community/the-feast/',
         linkLabel: 'The feast',
         image: photo.watercolorSet,

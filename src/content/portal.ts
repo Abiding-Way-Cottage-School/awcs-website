@@ -22,6 +22,14 @@ export const portalNav: { family: NavItem[]; admin: NavItem[] } = {
   ],
 };
 
+/**
+ * Appended to the family nav for directors, so the two sides of the portal
+ * link to each other: the admin nav already carries "Family view" back.
+ * Without it a director in the family view has no way to /admin/ but the
+ * address bar.
+ */
+export const adminNavLink: NavItem = { label: 'Admin', href: '/admin/users/' };
+
 export const signInPage = {
   eyebrow: 'Family Portal',
   heading: 'Sign in.',

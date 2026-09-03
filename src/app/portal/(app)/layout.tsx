@@ -1,5 +1,5 @@
 import PortalShell from '@/components/portal/PortalShell';
-import { portalNav } from '@/content/portal';
+import { adminNavLink, portalNav } from '@/content/portal';
 import { getSession } from '@/lib/dal';
 
 export const dynamic = 'force-dynamic';
@@ -22,9 +22,12 @@ export default async function PortalAppLayout({ children }: { children: React.Re
     return <main id="main">{children}</main>;
   }
 
+  const nav =
+    user.role === 'admin' ? [...portalNav.family, adminNavLink] : portalNav.family;
+
   return (
     <PortalShell
-      nav={portalNav.family}
+      nav={nav}
       title="Family Portal"
       user={{ familyName: user.familyName, email: user.email ?? '', role: user.role }}
     >

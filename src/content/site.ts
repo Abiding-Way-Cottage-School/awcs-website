@@ -24,9 +24,10 @@ export const school = {
   meeting: {
     day: 'Wednesdays',
     season: 'September through May',
-    arrival: '9:00 a.m.',
-    assembly: '9:30 a.m.',
-    dismissal: '1:30 p.m.',
+    // The day opens with assembly; there is no separate arrival window.
+    start: '9:30 a.m.',
+    end: '1:30 p.m.',
+    hours: '9:30 AM–1:30 PM',
     venue: 'Reach Church',
     street: '4815-200 Executive Park Ct, Ste 200',
     cityStateZip: 'Jacksonville, FL 32216',

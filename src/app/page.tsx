@@ -19,14 +19,18 @@ export default function HomePage() {
         <div className="hero__grid">
           <div className="hero__text">
             <div className="hero__inner">
-              <p className="eyebrow">{home.hero.eyebrow}</p>
-
               <h1 className="hero-title display">
                 {firstLine}
                 <em>{secondLine}</em>
               </h1>
 
               <p className="hero__lead">{home.hero.lead}</p>
+
+              <div className="hero__facts">
+                {home.hero.facts.map((line) => (
+                  <p key={line.join('|')}>{line.join(' • ')}</p>
+                ))}
+              </div>
 
               <div className="hero__actions">
                 <Link className="btn btn-primary" href={home.hero.primary.href}>
@@ -110,11 +114,20 @@ export default function HomePage() {
             eyebrow={home.day.eyebrow}
             heading={home.day.heading}
             lead={home.day.lead}
-            body={[home.day.body]}
+            body={home.day.body}
             image={home.day.image}
             imageShape="landscape"
             link={home.day.link}
-          />
+          >
+            <ul className="subject-list">
+              {home.day.subjects.map((subject) => (
+                <li key={subject}>{subject}</li>
+              ))}
+            </ul>
+            <div className="prose feature__after">
+              <p>{home.day.after}</p>
+            </div>
+          </Feature>
         </div>
       </section>
 

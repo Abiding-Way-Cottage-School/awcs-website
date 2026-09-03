@@ -2,11 +2,15 @@ import { mailto, photo, school } from './site';
 
 export const home = {
   hero: {
-    eyebrow: school.city,
     // A sentence rather than school.tagline's small-caps label: the hero has the
     // room for it, and it says what the co-op is to someone who has never heard
     // of Charlotte Mason. school.tagline still carries the page titles.
     lead: 'A Christ-centered Charlotte Mason enrichment community for homeschooling families.',
+    /** Two lines of facts under the sentence; each inner array is one line, joined with a dot. */
+    facts: [
+      [school.meeting.day, school.meeting.hours, school.city],
+      ['Ages 6–11', 'Kinderleben', 'Mother-led'],
+    ],
     image: photo.childrenTogether,
     primary: { label: 'Visit us', href: '/join/visit/' },
     secondary: { label: 'Our philosophy', href: '/about/philosophy/' },
@@ -17,8 +21,8 @@ export const home = {
     heading: 'A quiet place to learn together.',
     lead: 'We are mothers teaching our own children, and gladly sharing the work.',
     body: [
-      'Abiding Way Cottage School is a Christ-centered enrichment co-op for homeschooling families in Jacksonville. We meet one day a week to study the things that are hard to do alone — Shakespeare read aloud in a room full of voices, a folk dance that needs more than one pair of feet, a painting looked at slowly and then described from memory.',
-      'Every family participates. Parents teach, assist, and carry the day together, which is what keeps the co-op small, affordable, and unmistakably ours.',
+      'Abiding Way Cottage School is a Christ-centered Charlotte Mason enrichment community for homeschooling families in Jacksonville. We meet one day each week to share the subjects that are especially rich when experienced together — Shakespeare read aloud in a room full of voices, a folk dance that needs more than one pair of feet, a painting looked at slowly and then described from memory.',
+      'Every family participates. We teach, assist, and carry the day together, creating a small, beautiful community where children learn alongside one another and mothers don’t have to carry the work alone.',
     ],
     image: photo.handInHand,
     link: { label: 'Read our story', href: '/about/story/' },
@@ -61,8 +65,24 @@ export const home = {
   day: {
     eyebrow: 'A day at Abiding Way',
     heading: 'One day a week, unhurried.',
-    lead: `${school.meeting.day}, ${school.meeting.season}.`,
-    body: 'Arrival at nine, assembly at half past, morning lessons in small mixed-age groups, lunch outdoors when the weather allows, and afternoon studies before we go home again at half past one.',
+    lead: `${school.meeting.day} • ${school.meeting.hours} • ${school.meeting.season}`,
+    body: [
+      'Our Wednesdays begin together with assembly, followed by short lessons in small mixed-age groups, a shared lunch, and afternoon studies.',
+      'Throughout the year, our children enjoy a generous Charlotte Mason feast including:',
+    ],
+    subjects: [
+      'Shakespeare',
+      'Poetry',
+      'Literature & Narration',
+      'Spanish',
+      'Picture Study',
+      'Composer Study',
+      'Handicrafts',
+      'Folk Dance',
+      'Swedish Drill',
+    ],
+    after:
+      'Each subject is approached through living ideas, beautiful materials, short lessons, and attentive participation.',
     image: photo.knittingHands,
     link: { label: 'See the full day', href: '/community/a-day/' },
   },

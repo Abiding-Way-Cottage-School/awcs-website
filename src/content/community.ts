@@ -14,7 +14,7 @@ export const communityIndex = {
     },
     {
       name: 'A Day at Abiding Way',
-      body: 'Hour by hour, from arrival at nine to dismissal at half past one.',
+      body: 'Hour by hour, from assembly at half past nine to dismissal at half past one.',
       href: '/community/a-day/',
       image: photo.mistyField,
     },
@@ -86,19 +86,14 @@ export const aDay = {
   image: photo.mistyField,
   intro:
     'We meet once a week and we make it count. The shape below is the ordinary rhythm of a Wednesday; the particular subjects rotate through the term.',
-  /* DRAFT — arrival, assembly and dismissal times are from the handbook and are
-     correct. The middle of the day (the 10:00, 12:00 and 12:30 blocks) is a
-     reasonable reconstruction and should be checked against the real schedule. */
+  /* DRAFT — assembly and dismissal times are from the handbook and are correct.
+     The middle of the day (the 10:00, 12:00 and 12:30 blocks) is a reasonable
+     reconstruction and should be checked against the real schedule. */
   schedule: [
-    {
-      time: '9:00',
-      label: 'Arrival',
-      note: 'Families gather, coats and baskets down, a little time to greet one another before we begin.',
-    },
     {
       time: '9:30',
       label: 'Assembly',
-      note: 'The whole school together: a hymn, Scripture, recitation, and the day set before us.',
+      note: 'Coats and baskets down, and the whole school together: a hymn, Scripture, recitation, and the day set before us.',
     },
     {
       time: '10:00',

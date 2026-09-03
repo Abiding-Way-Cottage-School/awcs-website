@@ -494,6 +494,22 @@ ul {
   color: var(--text-heading);
 }
 
+/* Two lines of facts under the lead: day, hours, place; ages, groups, who runs it. */
+.hero__facts {
+  margin-top: 1.75rem;
+  font-family: var(--font-body);
+  font-size: var(--fs-eyebrow);
+  font-weight: 500;
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  line-height: 2;
+  color: var(--accent);
+}
+
+.hero__facts p {
+  margin: 0;
+}
+
 .hero__actions {
   display: flex;
   flex-wrap: wrap;
@@ -604,6 +620,32 @@ ul {
 
 .feature__actions {
   margin-top: 2rem;
+}
+
+/* The feast as a run of small caps separated by dots, wrapping as it needs to. */
+.subject-list {
+  list-style: none;
+  margin: 1.25rem 0 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  row-gap: 0.5rem;
+  font-family: var(--font-body);
+  font-size: var(--fs-eyebrow);
+  font-weight: 500;
+  letter-spacing: var(--tracking-eyebrow);
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
+.subject-list li + li::before {
+  content: '•';
+  margin-inline: 0.75rem;
+  color: var(--text-muted);
+}
+
+.feature__after {
+  margin-top: 1.5rem;
 }
 
 /* ---- Full-bleed photo band, optionally with a quote over it ---- */

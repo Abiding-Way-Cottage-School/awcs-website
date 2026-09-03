@@ -64,7 +64,7 @@ export default function ADayPage() {
 
       <CtaBand
         heading="Join us for one."
-        body="Arrive at nine with the rest of us and stay through lunch."
+        body="Arrive at half past nine with the rest of us and stay through lunch."
         primary={{ label: 'Plan a visit', href: '/join/visit/' }}
         surface="linen"
       />

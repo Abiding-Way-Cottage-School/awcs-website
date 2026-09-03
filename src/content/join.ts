@@ -35,7 +35,7 @@ export const visit = {
   steps: [
     { name: 'Write to us', body: 'Tell us a little about your family and the ages of your children. A sentence or two is plenty.' },
     { name: 'We find a date', body: 'One of the directors will reply with a Wednesday that suits, and what to expect when you arrive.' },
-    { name: 'Come for the morning', body: 'Arrive at nine with the rest of us. Sit in on assembly and lessons. Eat lunch with the mothers.' },
+    { name: 'Come for the morning', body: 'Arrive at half past nine with the rest of us. Sit in on assembly and lessons. Eat lunch with the mothers.' },
     { name: 'Take your time', body: 'There is no pressure to decide on the day. Go home, talk it over, and write again when you are ready.' },
   ],
   practical: {
@@ -43,7 +43,7 @@ export const visit = {
     heading: 'What to expect.',
     items: [
       { name: 'Where', body: `${school.meeting.venue}, ${school.meeting.street}, ${school.meeting.cityStateZip}.`, href: school.meeting.mapUrl },
-      { name: 'When', body: `Arrive at ${school.meeting.arrival}. Assembly begins at ${school.meeting.assembly} and we finish at ${school.meeting.dismissal}.` },
+      { name: 'When', body: `Arrive at ${school.meeting.start}; we begin with assembly and finish at ${school.meeting.end}.` },
       { name: 'Bring', body: 'A packed lunch for your family and a water bottle each. Nothing else is needed.' },
       { name: 'Wear', body: 'Whatever is comfortable and can be danced in. We go outside at lunch in most weather.' },
     ],

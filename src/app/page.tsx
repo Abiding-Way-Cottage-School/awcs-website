@@ -26,7 +26,6 @@ export default function HomePage() {
                 <em>{secondLine}</em>
               </h1>
 
-              <p className="hero__tagline">{home.hero.tagline}</p>
               <p className="hero__lead">{home.hero.lead}</p>
 
               <div className="hero__actions">

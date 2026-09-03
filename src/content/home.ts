@@ -3,8 +3,10 @@ import { mailto, photo, school } from './site';
 export const home = {
   hero: {
     eyebrow: school.city,
-    tagline: school.tagline,
-    lead: school.motto,
+    // A sentence rather than school.tagline's small-caps label: the hero has the
+    // room for it, and it says what the co-op is to someone who has never heard
+    // of Charlotte Mason. school.tagline still carries the page titles.
+    lead: 'A Christ-centered Charlotte Mason enrichment community for homeschooling families.',
     image: photo.childrenTogether,
     primary: { label: 'Visit us', href: '/join/visit/' },
     secondary: { label: 'Our philosophy', href: '/about/philosophy/' },

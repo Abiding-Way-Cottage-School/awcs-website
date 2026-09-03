@@ -1,8 +1,10 @@
 # Photography
 
-Every photograph in `public/photos/` is from **[Pexels](https://www.pexels.com)** and
-is used under the [Pexels License](https://www.pexels.com/license/): free to use,
-including commercially, with no attribution required and no permission needed.
+One photograph — `children-together.jpg`, the homepage hero — was taken at the
+school and belongs to it. Every other photograph in `public/photos/` is from
+**[Pexels](https://www.pexels.com)** and is used under the
+[Pexels License](https://www.pexels.com/license/): free to use, including
+commercially, with no attribution required and no permission needed.
 
 Attribution is not required, but the source IDs are recorded here so any image can
 be traced, re-downloaded at a different size, or replaced.
@@ -33,6 +35,29 @@ update the alt text in `src/content/site.ts`.
 Before publishing any photograph of a child, get the parent's written permission.
 The handbook's policy is that families post only photographs of their own children;
 a public website is a higher bar than a family group, not a lower one.
+
+## The school's own photograph
+
+`children-together.jpg` is the only photograph here of real people connected to
+the school: the children of the co-op in a line, arms around one another, in the
+"I am, I can, I ought, I will" shirts, under live oaks. It holds the homepage
+hero.
+
+It follows the same no-identifiable-faces rule as the rest of the set — every
+child is turned away from the camera — but it differs from everything else here
+in one way that matters: **the subjects are real students, not licensed stock.**
+Publishing it is the school's call to make, and the usual condition is a photo
+release from the family of every child in the frame. Worth confirming that is on
+file before the site is promoted widely, and worth re-checking each time another
+real photograph is added.
+
+The original is kept in `/source-photos/awcs-children-together.jpeg`
+(3268x2451, 5.6MB), which is gitignored and never deployed. The web version is
+resized to 1800px and re-encoded like the rest.
+
+| File | Origin | Used for |
+| --- | --- | --- |
+| children-together.jpg | The school's own photograph | Homepage hero |
 
 ## Supplied by the school
 

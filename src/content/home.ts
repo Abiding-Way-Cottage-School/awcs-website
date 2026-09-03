@@ -5,7 +5,7 @@ export const home = {
     eyebrow: school.city,
     tagline: school.tagline,
     lead: school.motto,
-    image: photo.childrenWalking,
+    image: photo.childrenTogether,
     primary: { label: 'Visit us', href: '/join/visit/' },
     secondary: { label: 'Our philosophy', href: '/about/philosophy/' },
   },

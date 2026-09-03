@@ -159,6 +159,7 @@ export const photo = {
   fieldGolden: '/photos/field-golden.jpg',
   mistyField: '/photos/misty-field.jpg',
   childrenWalking: '/photos/children-walking.jpg',
+  childrenTogether: '/photos/children-together.jpg',
   booksHeld: '/photos/books-held.jpg',
   bookPages: '/photos/book-pages.jpg',
   bookOldHands: '/photos/book-old-hands.jpg',
@@ -185,6 +186,8 @@ export const photoAlt: Record<string, string> = {
   [photo.fieldGolden]: 'Low golden light across an open meadow.',
   [photo.mistyField]: 'A single tree in a quiet field under morning mist.',
   [photo.childrenWalking]: 'Two children walking together through tall grass, seen from behind.',
+  [photo.childrenTogether]:
+    'The children of the co-op standing in a line with their arms around one another, seen from behind, under live oaks hung with Spanish moss.',
   [photo.booksHeld]: 'A hand holding up a small stack of hardback books.',
   [photo.bookPages]: 'The open pages of a well-used book in warm light.',
   [photo.bookOldHands]: 'Hands holding an old book open.',

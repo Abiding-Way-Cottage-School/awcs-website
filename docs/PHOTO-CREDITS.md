@@ -51,9 +51,19 @@ release from the family of every child in the frame. Worth confirming that is on
 file before the site is promoted widely, and worth re-checking each time another
 real photograph is added.
 
-The original is kept in `/source-photos/awcs-children-together.jpeg`
-(3268x2451, 5.6MB), which is gitignored and never deployed. The web version is
-resized to 1800px and re-encoded like the rest.
+The deployed version is not the camera original. The photograph was taken in
+front of an office building and its car park, visible through the trees, and
+the school used Google Gemini to replace that background with foliage. Nothing
+about the children was changed. Both versions are kept in the gitignored
+`/source-photos/`: the camera original `awcs-children-together.jpeg`
+(3268x2451, 5.6MB) and the edited export `awcs-children-together-gemini.jpg`.
+
+Gemini exported the edit at only 1195x896, so unlike every other photograph
+here the web version is served at that native size rather than 1800px. On a
+high-density desktop display the hero will look softer than the rest of the
+set. If a sharper version is wanted, re-run the edit at a larger output size
+and drop the result into `/source-photos/` — the alt text and content wiring
+do not need to change.
 
 | File | Origin | Used for |
 | --- | --- | --- |

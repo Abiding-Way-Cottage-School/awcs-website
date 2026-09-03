@@ -46,7 +46,7 @@ export const home = {
         body: 'This is a co-op, not a drop-off. We teach beside each other and are better for the company.',
         href: '/community/for-mothers/',
         linkLabel: 'For mothers',
-        image: photo.armsLinked,
+        image: photo.dancingCircle,
       },
     ],
   },

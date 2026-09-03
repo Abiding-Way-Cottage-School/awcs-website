@@ -139,7 +139,7 @@ export default function HomePage() {
       </section>
 
       {/* ---- Scripture over a photograph ---- */}
-      <PhotoBand image={photo.silhouetteSunset} quote={quotes.john15} />
+      <PhotoBand image={photo.fieldGolden} quote={quotes.john15} />
 
       {/* ---- Giving ---- */}
       <section id="give" className="section">

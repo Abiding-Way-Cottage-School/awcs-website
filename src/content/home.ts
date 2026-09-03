@@ -90,19 +90,20 @@ export const home = {
 
   give: {
     eyebrow: 'Support the school',
-    heading: 'Giving keeps the door open.',
-    lead: 'Gifts go to books, art supplies, and the room we meet in.',
-    body: 'We are a small parent-run co-op, and a gift of any size does real work here — a set of living books for the shared shelf, watercolors and clay for handicrafts, or a family’s tuition quietly covered.',
+    heading: 'Help Set the Table',
+    body: 'Every child deserves a generous feast of living ideas, beautiful things, and meaningful work. Your support helps us provide the books, materials, and resources that make this possible for our community.',
+    /** The one-line ask, set above the ways to give. */
+    closing: 'Help us set the table.',
     image: photo.bowlLinen,
   },
 
   visit: {
-    eyebrow: 'Come and see',
+    eyebrow: 'Come and see.',
     heading: 'You are welcome to visit.',
-    lead: 'Come for a Wednesday morning and see whether this is home.',
-    body: 'The best way to understand a co-op is to stand in the middle of one. Write to us and we will find a Wednesday that suits your family.',
+    body: 'The best way to understand Abiding Way is to experience it for yourself. Come spend a Wednesday with us, meet our families, and see the rhythm of our school firsthand.',
     image: photo.fieldGolden,
-    primary: { label: 'Plan a visit', href: '/join/visit/' },
+    primary: { label: 'Plan a Visit', href: '/join/visit/' },
+    /** Sits beneath the button as a plain link rather than beside it as a second button. */
     secondary: { label: 'Email the directors', href: mailto('Hello from a prospective family') },
   },
 };

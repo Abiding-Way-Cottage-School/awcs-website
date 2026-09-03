@@ -169,20 +169,30 @@ export default function HomePage() {
       {/* ---- Scripture over a photograph ---- */}
       <PhotoBand image={photo.fieldGolden} quote={quotes.john15} />
 
-      {/* ---- Giving ---- */}
-      <section id="give" className="section">
+      {/* ---- Come and see ---- */}
+      <CtaBand
+        eyebrow={home.visit.eyebrow}
+        heading={home.visit.heading}
+        body={home.visit.body}
+        primary={home.visit.primary}
+        under={home.visit.secondary}
+        surface="linen"
+      />
+
+      {/* ---- Giving: deliberately the smallest section on the page ---- */}
+      <section id="give" className="section section-tight give-compact">
         <div className="container">
           <div className="section-head reveal">
             <span className="eyebrow">{home.give.eyebrow}</span>
             <h2>{home.give.heading}</h2>
-            <span className="lead">{home.give.lead}</span>
           </div>
 
-          <div className="prose reveal" style={{ marginTop: '1.75rem' }}>
+          <div className="prose reveal" style={{ marginTop: '1.25rem' }}>
             <p>{home.give.body}</p>
+            <p className="give-compact__closing">{home.give.closing}</p>
           </div>
 
-          <div className="cards cards--3 reveal" style={{ marginTop: 'clamp(2.5rem, 5vw, 3.5rem)' }}>
+          <div className="cards cards--3 reveal" style={{ marginTop: '2rem' }}>
             {givingMethods.map((method) => (
               <div
                 key={method.id}
@@ -209,16 +219,6 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-
-      {/* ---- Come and see ---- */}
-      <CtaBand
-        eyebrow={home.visit.eyebrow}
-        heading={home.visit.heading}
-        body={home.visit.body}
-        primary={home.visit.primary}
-        secondary={home.visit.secondary}
-        surface="linen"
-      />
     </SiteShell>
   );
 }

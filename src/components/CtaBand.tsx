@@ -9,6 +9,7 @@ export default function CtaBand({
   body,
   primary,
   secondary,
+  under,
   surface = 'alt',
 }: {
   eyebrow?: string;
@@ -16,6 +17,8 @@ export default function CtaBand({
   body?: string;
   primary?: Action;
   secondary?: Action;
+  /** A quieter action set beneath the buttons as a text link. */
+  under?: Action;
   surface?: 'alt' | 'linen' | 'dark';
 }) {
   const surfaceClass =
@@ -53,6 +56,19 @@ export default function CtaBand({
             {primary ? render(primary, 'btn-primary') : null}
             {secondary ? render(secondary, 'btn-ghost') : null}
           </div>
+        ) : null}
+        {under ? (
+          <p className="cta__under">
+            {isExternal(under.href) ? (
+              <a className="link-more" href={under.href}>
+                {under.label}
+              </a>
+            ) : (
+              <Link className="link-more" href={under.href}>
+                {under.label}
+              </Link>
+            )}
+          </p>
         ) : null}
       </div>
     </section>

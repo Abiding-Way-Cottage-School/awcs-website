@@ -75,6 +75,10 @@ ul {
   padding-block: clamp(2.5rem, 6vw, 4.5rem);
 }
 
+.cta__under {
+  margin-top: 1.25rem;
+}
+
 .prose {
   max-width: var(--measure);
 }
@@ -1156,6 +1160,17 @@ ul {
 }
 
 /* ---- Giving ---- */
+/* Giving closes the page at a smaller scale than the sections above it. */
+.give-compact .section-head h2 {
+  font-size: var(--fs-h3);
+}
+
+.give-compact__closing {
+  font-family: var(--font-display);
+  font-style: italic;
+  color: var(--text-heading);
+}
+
 .give-method {
   display: flex;
   flex-direction: column;

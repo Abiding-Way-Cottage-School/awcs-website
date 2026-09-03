@@ -1,7 +1,9 @@
 # Photography
 
-One photograph — `children-together.jpg`, the homepage hero — was taken at the
-school and belongs to it. Every other photograph in `public/photos/` is from
+`children-together.jpg`, the homepage hero, was taken at the school and belongs
+to it. Five further photographs were supplied by the school directly and their
+source is not recorded here (see "Supplied directly, source unrecorded" below).
+Every other photograph in `public/photos/` is from
 **[Pexels](https://www.pexels.com)** and is used under the
 [Pexels License](https://www.pexels.com/license/): free to use, including
 commercially, with no attribution required and no permission needed.
@@ -69,7 +71,28 @@ do not need to change.
 | --- | --- | --- |
 | children-together.jpg | The school's own photograph | Homepage hero |
 
-## Supplied by the school
+## Supplied directly, source unrecorded
+
+These arrived as files from the school rather than as Pexels picks, and they now
+hold four of the homepage's most prominent slots. They are resized to 1800px and
+re-encoded like everything else; the originals are in the gitignored
+`/source-photos/`.
+
+| File | Used for | Note |
+| --- | --- | --- |
+| book-flowers.jpg | Homepage Welcome | Open book with daisies |
+| reading-in-grass.jpg | Homepage, "a living education" | Two children reading; **faces visible** |
+| knitting-child.jpg | Homepage, "One day a week, unhurried" | A child's hands at handwork |
+| beach-path.jpg | Homepage Scripture band | Sand path through sea oats |
+
+**Their licensing is not established.** If they came from a stock library other
+than Pexels, or from an image generator, the terms may differ from the rest of the
+set — worth confirming before the site is promoted widely, and worth recording the
+source here when it is known. `reading-in-grass.jpg` also shows two identifiable
+children, so if they are not stock models the usual release question applies, as
+it does for `children-together.jpg`.
+
+## Chosen by the school from Pexels
 
 These six were chosen by the school and take priority — they hold the hero, the
 homepage feature cards, the Scripture band, and the Our Story, Our Leadership,

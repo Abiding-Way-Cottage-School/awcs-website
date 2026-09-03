@@ -24,7 +24,7 @@ export const home = {
       'Abiding Way Cottage School is a Christ-centered Charlotte Mason enrichment community for homeschooling families in Jacksonville. We meet one day each week to share the subjects that are especially rich when experienced together — Shakespeare read aloud in a room full of voices, a folk dance that needs more than one pair of feet, a painting looked at slowly and then described from memory.',
       'Every family participates. We teach, assist, and carry the day together, creating a small, beautiful community where children learn alongside one another and mothers don’t have to carry the work alone.',
     ],
-    image: photo.handInHand,
+    image: photo.bookFlowers,
     link: { label: 'Read our story', href: '/about/story/' },
   },
 
@@ -38,7 +38,7 @@ export const home = {
         body: 'Whole books by authors who loved their subject, and narration instead of worksheets. The child does the work of knowing.',
         href: '/about/philosophy/',
         linkLabel: 'Our philosophy',
-        image: photo.childStudying,
+        image: photo.readingInGrass,
       },
       {
         name: 'A generous feast',
@@ -84,7 +84,7 @@ export const home = {
     ],
     after:
       'Each subject is approached through living ideas, beautiful materials, short lessons, and attentive participation.',
-    image: photo.knittingHands,
+    image: photo.knittingChild,
     link: { label: 'See the full day', href: '/community/a-day/' },
   },
 

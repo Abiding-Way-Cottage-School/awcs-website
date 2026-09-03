@@ -155,6 +155,10 @@ export const photo = {
   armsLinked: '/photos/arms-linked.jpg',
   childStudying: '/photos/child-studying.jpg',
   silhouetteSunset: '/photos/silhouette-sunset.jpg',
+  bookFlowers: '/photos/book-flowers.jpg',
+  readingInGrass: '/photos/reading-in-grass.jpg',
+  knittingChild: '/photos/knitting-child.jpg',
+  beachPath: '/photos/beach-path.jpg',
 
   heroPath: '/photos/hero-path.jpg',
   fieldGolden: '/photos/field-golden.jpg',
@@ -183,6 +187,12 @@ export const photoAlt: Record<string, string> = {
   [photo.armsLinked]: 'Two people standing arm in arm, hands clasped.',
   [photo.childStudying]: 'A child at a desk working over an open illustrated book.',
   [photo.silhouetteSunset]: 'An adult and a child silhouetted against the water at sunset, arms outstretched.',
+  [photo.bookFlowers]:
+    'An open book on a weathered wooden table, with small white daisies laid across the pages.',
+  [photo.readingInGrass]:
+    'Two children lying on a blanket in long summer grass, reading a book together.',
+  [photo.knittingChild]: 'A child’s hands working a piece of teal wool with a hook.',
+  [photo.beachPath]: 'A sand path through sea oats opening onto the ocean.',
   [photo.heroPath]: 'A figure walking a narrow path through a misty field at dawn.',
   [photo.fieldGolden]: 'Low golden light across an open meadow.',
   [photo.mistyField]: 'A single tree in a quiet field under morning mist.',

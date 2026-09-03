@@ -6,26 +6,14 @@ setup does not have to be undone to get there.
 
 ---
 
-## The one constraint that shapes everything
+## The constraint that shaped the early stages (now lifted)
 
-GitHub Pages serves **static files only**. There is no server, so there is no place
-to check a password, hold a session, verify a Stripe webhook, or store a signed
-form. Everything in the "later" column below needs a server.
-
-That is a hosting change, not a rewrite. `next.config.mjs` reads two environment
-variables:
-
-| Variable | Today | After the move |
-| --- | --- | --- |
-| `AWCS_STATIC_EXPORT` | unset (static export on) | `false` |
-| `AWCS_BASE_PATH` | `/awcs-website` | unset (site serves from the domain root) |
-
-Setting `AWCS_STATIC_EXPORT=false` removes `output: 'export'`, and route handlers,
-middleware, and server actions all start working. Nothing in `src/` changes.
-
-**Recommended host: Vercel.** It is free at this size, it is the reference host for
-Next.js so nothing needs adapting, and it gives preview deployments per pull
-request. Netlify and Cloudflare Pages both work too.
+The site began as a static export on GitHub Pages: no server, so nowhere to hold a
+session, verify a webhook, or store a signed form. Moving to Vercel as a Node.js
+server lifted that constraint, and the static mode was retired outright when the
+portal arrived — a static export forbids the proxy, route handlers, cookies and
+server actions the portal is built on. `next.config.mjs` is now a plain server
+config with no environment switches.
 
 ---
 
@@ -43,14 +31,13 @@ placeholders described in [PHOTO-CREDITS.md](PHOTO-CREDITS.md).
 
 ## Stage 2 — move to a domain and a real host (done)
 
-`abidingwaycottageschool.com` is registered at GoDaddy and served by Vercel, with
-`AWCS_STATIC_EXPORT=false`, `AWCS_BASE_PATH` unset, and `NEXT_PUBLIC_SITE_URL` set
-to the domain. Route handlers, middleware, and server actions are therefore
-available — everything Stage 3 onward depends on. See the Deploying section of
-[../README.md](../README.md) for the environment variables and DNS records.
+`abidingwaycottageschool.com` is registered at GoDaddy and served by Vercel as a
+Node.js server, with `NEXT_PUBLIC_SITE_URL` set to the domain. Route handlers, the
+proxy, and server actions are therefore available — everything Stage 3 onward
+depends on. See the Deploying section of [../README.md](../README.md).
 
-GitHub Pages still publishes a static mirror at the old `github.io` address. It is
-a fallback only and cannot host anything from Stage 3 onward.
+The GitHub Pages mirror was retired with the portal; a static export cannot host
+any of it.
 
 ## Stage 3 — accounts and login
 
@@ -73,16 +60,13 @@ src/app/
   (portal)/
     layout.tsx       auth boundary: redirect to sign-in when there is no session
     portal/          the family dashboard
-    admin/           directors only, gated by role in middleware
+    admin/           directors only, gated by role in the proxy and the data layer
   api/
     auth/[...nextauth]/route.ts
 ```
 
-> Note: route groups are avoided today only because Next 16's **static export**
-> mishandles their prefetch payload. Once the site runs on a server that bug is
-> not in play, so the group structure above is safe from Stage 2 onward — and
-> `scripts/flatten-rsc-payloads.mjs` can be deleted at the same time, along with
-> the `&&` in the `build` script. See the README for what it works around.
+> Note: the public pages are not in a `(site)` group today (a leftover of a
+> static-export bug that no longer applies). Introducing the group is optional.
 
 Keep `/admin` out of the public nav and add `robots: { index: false }` to the
 portal layout's metadata.

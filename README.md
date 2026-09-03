@@ -120,26 +120,19 @@ builds and deploys on every push to `main` and gives every pull request its own
 preview URL. There is no workflow file for it: Vercel watches the repository
 directly.
 
-Two environment variables are set in the Vercel project (Settings → Environment
-Variables), for all environments:
+The site runs as a Node.js server — the Family Portal's sign-in, uploads and
+form signing need route handlers, server actions and cookies, none of which a
+static export can provide. Environment variables are listed in
+[`.env.example`](.env.example) and set in the Vercel project (Settings →
+Environment Variables) for all environments.
 
-| Variable | Value | Why |
-| --- | --- | --- |
-| `AWCS_STATIC_EXPORT` | `false` | Turns off `output: 'export'`, so route handlers, middleware, sessions and Stripe all work |
-| `NEXT_PUBLIC_SITE_URL` | `https://abidingwaycottageschool.com` | Canonical URLs and the social card |
+### The static era
 
-`AWCS_BASE_PATH` must stay **unset** — a custom domain serves from the root.
-
-### Mirror — GitHub Pages
-
-[`.github/workflows/deploy.yml`](.github/workflows/deploy.yml) still publishes a
-static copy to `https://abiding-way-cottage-school.github.io/awcs-website/` on every
-push to `main`. It is a fallback, not the live site; delete the workflow whenever
-you want it gone. Because Pages serves a project repo from a subdirectory, that
-build passes `AWCS_BASE_PATH=/awcs-website` so every asset URL is prefixed.
-
-Note that the Pages mirror is a static export and so can never host the Family
-Portal, form signing, or card payments. Those need the Vercel deployment.
+Until the domain moved, the site was a static export served by GitHub Pages from
+`/awcs-website`. That mode, its `basePath` prefix, the `AWCS_STATIC_EXPORT` and
+`AWCS_BASE_PATH` variables, the Pages workflow, and a post-build script that
+patched Next 16's static-export prefetch payloads were all retired when the portal
+arrived. `src/lib/asset.ts` remains as the one place a CDN prefix would go.
 
 ---
 
@@ -169,7 +162,7 @@ src/
     Photo.tsx           brand-treated image with alt-text lookup
     Reveal.tsx          the site's only motion: a 400ms fade-up
   content/              ← all copy and facts
-  lib/asset.ts          basePath-aware URLs for files in /public
+  lib/asset.ts          the one place a CDN prefix for /public files would go
   styles/
     tokens.css          brand design tokens (do not edit)
     site.css            page styles, built from those tokens
@@ -177,8 +170,6 @@ public/
   brand/                logo files
   photos/               photography (see docs/PHOTO-CREDITS.md)
   og.png                social share card
-scripts/
-  flatten-rsc-payloads.mjs   post-build workaround, see below
 docs/
   BRAND.md              the brand kit
   ROADMAP.md            how the portal, admin, and payments get added
@@ -188,23 +179,12 @@ docs/
 
 ---
 
-## Two Next.js workarounds worth knowing about
+## A note on route groups
 
-Both exist only because of `output: 'export'`, and both can be removed once the site
-moves to a host with a server.
-
-**1. No route groups.** Next 16's static export writes a route group's RSC prefetch
-payload to a directory while the router requests a flat filename, so every page load
-404s. `SiteShell` gives the same separation as a `(site)` group without the bug.
-
-**2. `scripts/flatten-rsc-payloads.mjs`.** The same mismatch affects *any* route with
-more than one path segment — `/about/philosophy/` and friends. The build writes
-`__next.about/philosophy/__PAGE__.txt`; the router asks for
-`__next.about.philosophy.__PAGE__.txt`. Without the fix, every page fired roughly
-fifteen 404s on load, one per prefetched nav link. The script runs automatically
-after `next build` and copies each payload to the name the router expects. It prints
-`nothing to do` if a future Next version fixes this, which is your cue to delete it
-along with the `&&` in the `build` script.
+The public pages are not in a `(site)` route group; `SiteShell` gives the same
+separation. That began as a workaround for a static-export bug in Next 16 and is now
+simply the shape of the code — a group is safe to introduce whenever it earns its
+keep.
 
 ## Other notes
 

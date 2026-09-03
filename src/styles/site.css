@@ -1162,12 +1162,15 @@ ul {
 /* ---- Giving ---- */
 /* Giving closes the page at a smaller scale than the sections above it. */
 .give-compact .section-head h2 {
-  font-size: var(--fs-h3);
+  /* Smaller than every other section heading, but still above the card titles
+     (--fs-h3) so it reads as their parent. */
+  font-size: clamp(1.5rem, 2.4vw, 1.75rem);
 }
 
 .give-compact__closing {
   font-family: var(--font-display);
   font-style: italic;
+  font-size: var(--fs-lead);
   color: var(--text-heading);
 }
 

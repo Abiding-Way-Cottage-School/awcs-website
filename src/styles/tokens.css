@@ -1,7 +1,8 @@
 /* Abiding Way Cottage School — design tokens
    Sampled directly from the 2026–2027 Family Handbook. Load before any other stylesheet. */
 
-@import url('https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400;1,500&family=Inter:wght@400;500;600&display=swap');
+/* The faces themselves are loaded by next/font in src/app/layout.tsx, which sets
+   --font-cormorant and --font-inter on <html>. */
 
 :root {
   /* ---- Color ---- */
@@ -33,8 +34,8 @@
   --border-on-dark:  var(--aw-olive-light);
 
   /* ---- Type ---- */
-  --font-display: 'Cormorant Garamond', 'Cormorant', Garamond, 'Times New Roman', serif;
-  --font-body:    'Inter', system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif;
+  --font-display: var(--font-cormorant), 'Cormorant Garamond', 'Cormorant', Garamond, 'Times New Roman', serif;
+  --font-body:    var(--font-inter), 'Inter', system-ui, -apple-system, 'Segoe UI', Helvetica, Arial, sans-serif;
 
   --fs-hero:    clamp(3rem, 8vw, 6rem);       /* Cormorant Light, e.g. "Abiding Way" */
   --fs-h1:      clamp(2.5rem, 5vw, 3.75rem);  /* Cormorant Regular */

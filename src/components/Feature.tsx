@@ -19,7 +19,7 @@ export default function Feature({
 }: {
   eyebrow?: string;
   heading: string;
-  lead?: string;
+  lead?: React.ReactNode;
   body?: string[];
   image: string;
   imageShape?: 'portrait' | 'landscape' | 'square' | 'tall';

@@ -9,6 +9,20 @@ import SiteShell from '@/components/SiteShell';
 import { givingMethods, home } from '@/content/home';
 import { atmosphereWords, commitments, photo, quotes, school } from '@/content/site';
 
+/** Facts run together with a dot that sighted readers see and screen readers skip. */
+function Dotted({ parts }: { parts: string[] }) {
+  return (
+    <>
+      {parts.map((part, i) => (
+        <span key={part}>
+          {i > 0 ? <span aria-hidden="true"> • </span> : null}
+          {part}
+        </span>
+      ))}
+    </>
+  );
+}
+
 export default function HomePage() {
   const [firstLine, secondLine] = school.nameLines;
 
@@ -28,7 +42,9 @@ export default function HomePage() {
 
               <div className="hero__facts">
                 {home.hero.facts.map((line) => (
-                  <p key={line.join('|')}>{line.join(' • ')}</p>
+                  <p key={line.join('|')}>
+                    <Dotted parts={line} />
+                  </p>
                 ))}
               </div>
 
@@ -113,7 +129,7 @@ export default function HomePage() {
           <Feature
             eyebrow={home.day.eyebrow}
             heading={home.day.heading}
-            lead={home.day.lead}
+            lead={<Dotted parts={home.day.leadParts} />}
             body={home.day.body}
             image={home.day.image}
             imageShape="landscape"

@@ -475,7 +475,7 @@ ul {
   display: flex;
   flex-direction: column;
   font-size: clamp(2.75rem, 6.5vw, 4.75rem);
-  margin: 1.5rem 0 0;
+  margin: 0;
 }
 
 .hero-title em {
@@ -638,8 +638,14 @@ ul {
   color: var(--accent);
 }
 
-.subject-list li + li::before {
-  content: '•';
+.subject-list li {
+  white-space: nowrap;
+}
+
+/* Trailing, not leading, so a wrapped row never opens with a stray dot; the
+   empty alt text keeps screen readers from announcing it. */
+.subject-list li:not(:last-child)::after {
+  content: '•' / '';
   margin-inline: 0.75rem;
   color: var(--text-muted);
 }

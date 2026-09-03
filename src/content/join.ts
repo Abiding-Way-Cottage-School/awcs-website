@@ -43,7 +43,7 @@ export const visit = {
     heading: 'What to expect.',
     items: [
       { name: 'Where', body: `${school.meeting.venue}, ${school.meeting.street}, ${school.meeting.cityStateZip}.`, href: school.meeting.mapUrl },
-      { name: 'When', body: `Arrive at ${school.meeting.start}; we begin with assembly and finish at ${school.meeting.end}.` },
+      { name: 'When', body: `Arrive at ${school.meeting.start}; we begin with assembly and finish at ${school.meeting.end}` },
       { name: 'Bring', body: 'A packed lunch for your family and a water bottle each. Nothing else is needed.' },
       { name: 'Wear', body: 'Whatever is comfortable and can be danced in. We go outside at lunch in most weather.' },
     ],

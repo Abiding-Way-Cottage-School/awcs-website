@@ -158,7 +158,7 @@ Key phrases already written (reuse verbatim):
 
 ## 9. Facts for the site
 
-- Meets Wednesdays, September through May, 9:00 a.m. arrival, assembly at 9:30, dismissal 1:30 p.m.
+- Meets Wednesdays, September through May, 9:30 a.m. to 1:30 p.m. The day opens with assembly; there is no earlier arrival window.
 - Location: Reach Church, 4815-200 Executive Park Ct, Ste 200, Jacksonville, FL 32216
 - Ages: Nursery (2 & under), Kinderleben (3–5), Main Subjects (6–11)
 - Subjects: Shakespeare, Poetry, Picture Study, Music/Composer Study, Handicrafts, Folk Dance, Swedish Drill, Balance & Coordination, Narration, Spanish

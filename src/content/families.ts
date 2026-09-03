@@ -161,7 +161,7 @@ export const faq = {
       items: [
         {
           q: 'When and where do you meet?',
-          a: `${school.meeting.day}, ${school.meeting.season}. We begin with assembly at ${school.meeting.start} and finish at ${school.meeting.end}. We meet at ${school.meeting.venue}, ${school.meeting.street}, ${school.meeting.cityStateZip}.`,
+          a: `${school.meeting.day}, ${school.meeting.season}. We begin with assembly at ${school.meeting.start} and finish at ${school.meeting.end} We meet at ${school.meeting.venue}, ${school.meeting.street}, ${school.meeting.cityStateZip}.`,
         },
         {
           q: 'What ages do you take?',

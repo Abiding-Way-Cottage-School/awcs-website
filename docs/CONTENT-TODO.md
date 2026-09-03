@@ -14,7 +14,7 @@ Search the codebase for `DRAFT` to find every instance.
 | **Our Story** | `src/content/about.ts` → `story.body` | The whole narrative is invented. Who started the co-op, in what year, what prompted it, how many families at the start. |
 | **Leadership bios** | `src/content/about.ts` → `leadership.people` | Names and roles are correct (from the handbook). The `bio` field is deliberately **empty** — we will not publish invented claims about real people. Ask Lily and Bethany for two or three sentences each. |
 | **Calendar** | `src/content/families.ts` → `calendar` | Entirely placeholder. The page shows a visible warning banner until `isDraft` is set to `false`. Replace every row with the real 2026–2027 dates. |
-| **Mid-day schedule** | `src/content/community.ts` → `aDay.schedule` | Arrival (9:00), assembly (9:30) and dismissal (1:30) are handbook facts. The 10:00, 12:00 and 12:30 blocks are a reasonable reconstruction — check them. |
+| **Mid-day schedule** | `src/content/community.ts` → `aDay.schedule` | The day opens with assembly at 9:30 and ends at 1:30; there is no separate arrival window. Both are handbook facts. The 10:00, 12:00 and 12:30 blocks are a reasonable reconstruction — check them. |
 | **What to bring** | `src/content/community.ts` → `aDay.bring` | A sensible list, not from the handbook. |
 | **What the co-op asks** | `src/content/community.ts` → `forMothers.asks` | Fair for a participation co-op, but confirm the specifics: how many roles, whether preparation is weekly, the background-check policy. |
 | **Visit process** | `src/content/join.ts` → `visit.steps` | Invented but plausible. Confirm, and say whether visits are limited to particular weeks. |
@@ -27,7 +27,7 @@ Search the codebase for `DRAFT` to find every instance.
 
 These came from the 2026–2027 Family Handbook and are on the site as fact:
 
-- Meeting day, season, and the 9:00 / 9:30 / 1:30 times
+- Meeting day, season, and the 9:30 / 1:30 times
 - Location: Reach Church, 4815-200 Executive Park Ct, Ste 200, Jacksonville, FL 32216
 - Age groups: Nursery (2 & under), Kinderleben (3–5), Main Subjects (6–11)
 - The full subject list

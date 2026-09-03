@@ -65,7 +65,8 @@ export const home = {
   day: {
     eyebrow: 'A day at Abiding Way',
     heading: 'One day a week, unhurried.',
-    lead: `${school.meeting.day} • ${school.meeting.hours} • ${school.meeting.season}`,
+    /** Joined with a dot in the page, hidden from screen readers like every other separator. */
+    leadParts: [school.meeting.day, school.meeting.hours, school.meeting.season],
     body: [
       'Our Wednesdays begin together with assembly, followed by short lessons in small mixed-age groups, a shared lunch, and afternoon studies.',
       'Throughout the year, our children enjoy a generous Charlotte Mason feast including:',

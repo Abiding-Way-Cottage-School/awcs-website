@@ -113,29 +113,33 @@ approximate and confirmed at enrollment.
 
 ## Deploying
 
-### Today — GitHub Pages
+### Production — Vercel
 
-[`.github/workflows/deploy.yml`](.github/workflows/deploy.yml) builds and publishes
-on every push to `main`. Pages is already configured with
-**Settings → Pages → Source = "GitHub Actions"**.
+`abidingwaycottageschool.com` is served by [Vercel](https://vercel.com), which
+builds and deploys on every push to `main` and gives every pull request its own
+preview URL. There is no workflow file for it: Vercel watches the repository
+directly.
 
-The site serves from `https://abiding-way-cottage-school.github.io/awcs-website/`.
-Because GitHub Pages serves a project repo from a subdirectory, the workflow builds
-with `AWCS_BASE_PATH=/awcs-website` so every asset URL is prefixed.
+Two environment variables are set in the Vercel project (Settings → Environment
+Variables), for all environments:
 
-### When the custom domain goes live
+| Variable | Value | Why |
+| --- | --- | --- |
+| `AWCS_STATIC_EXPORT` | `false` | Turns off `output: 'export'`, so route handlers, middleware, sessions and Stripe all work |
+| `NEXT_PUBLIC_SITE_URL` | `https://abidingwaycottageschool.com` | Canonical URLs and the social card |
 
-1. In `.github/workflows/deploy.yml`, **delete the `AWCS_BASE_PATH` line** and set
-   `NEXT_PUBLIC_SITE_URL` to the new domain.
-2. Add `public/CNAME` containing just the domain.
-3. Point DNS at GitHub Pages, set the domain under **Settings → Pages → Custom
-   domain**, and tick **Enforce HTTPS**.
+`AWCS_BASE_PATH` must stay **unset** — a custom domain serves from the root.
 
-### Later — a host with a server
+### Mirror — GitHub Pages
 
-Set `AWCS_STATIC_EXPORT=false` and deploy to Vercel, Netlify, or Cloudflare. That
-one flag unlocks API routes, middleware, sessions, and Stripe. Nothing in `src/`
-changes. See [docs/ROADMAP.md](docs/ROADMAP.md).
+[`.github/workflows/deploy.yml`](.github/workflows/deploy.yml) still publishes a
+static copy to `https://abiding-way-cottage-school.github.io/awcs-website/` on every
+push to `main`. It is a fallback, not the live site; delete the workflow whenever
+you want it gone. Because Pages serves a project repo from a subdirectory, that
+build passes `AWCS_BASE_PATH=/awcs-website` so every asset URL is prefixed.
+
+Note that the Pages mirror is a static export and so can never host the Family
+Portal, form signing, or card payments. Those need the Vercel deployment.
 
 ---
 

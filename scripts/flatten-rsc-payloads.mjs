@@ -27,6 +27,14 @@ import { join, dirname, basename } from 'node:path';
 
 const OUT = 'out';
 
+// Server deployments (AWCS_STATIC_EXPORT=false, e.g. Vercel) build into .next,
+// not out/. There is no static payload to rename and no out/index.html, so bail
+// out before the sanity check at the bottom fails the build.
+if (process.env.AWCS_STATIC_EXPORT === 'false') {
+  console.log('flatten-rsc-payloads: skipped — this is a server build, not a static export.');
+  process.exit(0);
+}
+
 /** Every directory in `out` whose name starts with "__next." */
 function findPayloadDirs(dir, found = []) {
   let entries;

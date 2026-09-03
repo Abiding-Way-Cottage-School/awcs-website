@@ -5,11 +5,10 @@ import { school } from '@/content/site';
 
 import './globals.css';
 
-// Set NEXT_PUBLIC_SITE_URL when the domain goes live so social cards and the
-// canonical URL point at it rather than the GitHub Pages address.
+// The live domain. NEXT_PUBLIC_SITE_URL overrides it so preview deployments and
+// the GitHub Pages mirror advertise their own address rather than production's.
 const siteUrl =
-  process.env.NEXT_PUBLIC_SITE_URL ??
-  'https://abiding-way-cottage-school.github.io/awcs-website';
+  process.env.NEXT_PUBLIC_SITE_URL ?? 'https://abidingwaycottageschool.com';
 
 export const metadata: Metadata = {
   metadataBase: new URL(siteUrl),

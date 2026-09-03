@@ -41,14 +41,16 @@ Outstanding before a wider launch: the draft copy listed in
 [CONTENT-TODO.md](CONTENT-TODO.md), and real photographs in place of the
 placeholders described in [PHOTO-CREDITS.md](PHOTO-CREDITS.md).
 
-## Stage 2 — move to a domain and a real host
+## Stage 2 — move to a domain and a real host (done)
 
-1. Buy the domain and point it at the host.
-2. Set `AWCS_STATIC_EXPORT=false` and clear `AWCS_BASE_PATH`.
-3. Set `NEXT_PUBLIC_SITE_URL` to the domain so canonical URLs and the social card
-   resolve correctly.
+`abidingwaycottageschool.com` is registered at GoDaddy and served by Vercel, with
+`AWCS_STATIC_EXPORT=false`, `AWCS_BASE_PATH` unset, and `NEXT_PUBLIC_SITE_URL` set
+to the domain. Route handlers, middleware, and server actions are therefore
+available — everything Stage 3 onward depends on. See the Deploying section of
+[../README.md](../README.md) for the environment variables and DNS records.
 
-Do this before Stage 3 — everything after here depends on it.
+GitHub Pages still publishes a static mirror at the old `github.io` address. It is
+a fallback only and cannot host anything from Stage 3 onward.
 
 ## Stage 3 — accounts and login
 

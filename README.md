@@ -156,8 +156,10 @@ in; after that, add people through `/admin/users/`.
 
 **Environment variables** are listed with comments in [`.env.example`](.env.example):
 `AUTH_SECRET`, `AUTH_TRUST_HOST`, `ADMIN_EMAILS`, `RESEND_API_KEY`,
-`AUTH_RESEND_FROM`, `DATABASE_URL`, `BLOB_READ_WRITE_TOKEN` and
-`NEXT_PUBLIC_SITE_URL`. Copy the file to `.env.local` for development. The
+`AUTH_RESEND_FROM`, `DATABASE_URL`, `BLOB_STORE_ID`, `BLOB_WEBHOOK_PUBLIC_KEY`
+(with `VERCEL_OIDC_TOKEN` locally, or `BLOB_READ_WRITE_TOKEN` instead of OIDC)
+and `NEXT_PUBLIC_SITE_URL`. Copy the file to `.env.local` for development, or
+run `vercel env pull` once the project is linked. The
 build reads none of them — every client (Neon, Resend, Blob) is constructed on
 first use — so a missing variable shows up as a clear error at request time,
 not a failed deploy.
@@ -178,8 +180,12 @@ drizzle-kit reads only `./.env` on its own, which is why the migrate and studio
 scripts pass `--env-file=.env.local` to Node.
 
 **Files** families download are private Vercel Blobs, uploaded straight from
-the browser and served back through an authenticated route handler; the blob
-URL itself never reaches a browser. **Payments** are a Venmo link plus a
+the browser (a presigned URL from `POST /api/blob/upload/`, which only a
+director may request) and served back through an authenticated route handler
+(`GET /api/documents/[id]/file/`); the blob URL itself never reaches a browser.
+Blob calls authenticate with Vercel OIDC, so the upload route needs
+`BLOB_WEBHOOK_PUBLIC_KEY` to sign upload URLs and verify the upload-completed
+callback. **Payments** are a Venmo link plus a
 director marking the charge paid; the table is shaped so Stripe can write to it
 later.
 

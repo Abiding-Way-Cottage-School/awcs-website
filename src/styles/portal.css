@@ -373,3 +373,197 @@ button.portal-nav__link {
   font-size: var(--fs-small);
   color: var(--text-muted);
 }
+
+/* ---- Page furniture the modules share ---- */
+
+/* A "back" link set in the eyebrow reads as the eyebrow, not as a link. */
+.portal-page-head .eyebrow a {
+  color: inherit;
+  text-decoration: none;
+  border: 0;
+}
+
+.portal-page-head .eyebrow a:hover {
+  color: var(--text-heading);
+}
+
+.portal-page-head__meta {
+  margin-top: 0.75rem;
+  font-size: var(--fs-small);
+  color: var(--text-muted);
+}
+
+/* A sentence under a section heading, before its table or form. */
+.portal-section__lead {
+  max-width: var(--measure);
+  margin-bottom: 1.25rem;
+  font-size: var(--fs-small);
+  color: var(--text-muted);
+}
+
+/* A link out of a section, after its table. */
+.portal-section__foot {
+  margin-top: 1.5rem;
+}
+
+.portal-measure {
+  max-width: var(--measure);
+}
+
+.portal-break {
+  overflow-wrap: anywhere;
+}
+
+/* An unstyled list whose items carry their own rules. */
+.portal-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+/* Rows of a panel, evenly spaced. */
+.portal-stack {
+  display: grid;
+  gap: 1.5rem;
+}
+
+.portal-stack__label {
+  margin-bottom: 0.5rem;
+}
+
+/* The one number on the family's payments panel. */
+.portal-total {
+  font-family: var(--font-display);
+  font-size: var(--fs-h2);
+  color: var(--text-heading);
+  line-height: var(--lh-display);
+}
+
+.portal-filters {
+  margin-bottom: 1rem;
+}
+
+/* Read by screen readers only. */
+.portal-sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0 0 0 0);
+  white-space: nowrap;
+}
+
+/* ---- Tables, continued ---- */
+.portal-table caption {
+  caption-side: top;
+  text-align: left;
+  margin-bottom: 0.5rem;
+}
+
+/* The one-word actions in a row: open, edit, hide, delete. */
+.portal-table__actions {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.25rem 0.75rem;
+  white-space: nowrap;
+}
+
+/* A form that opens inside a table cell to confirm one action. */
+.portal-row-form {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+  min-width: 14rem;
+}
+
+/* ---- Buttons ---- */
+
+/* A button that reads as the table's text links, for actions that post. */
+.portal-link-button {
+  background: none;
+  border: 0;
+  padding: 0;
+  font: inherit;
+  color: inherit;
+  text-decoration: underline;
+  text-underline-offset: 0.25em;
+  cursor: pointer;
+}
+
+.portal-link-button:hover {
+  color: var(--accent);
+}
+
+.portal-link-button:disabled {
+  opacity: 0.45;
+  cursor: default;
+}
+
+/* A .btn inside a table or beside a question, where the full size would shout. */
+.portal-btn--small {
+  padding: 0.4rem 0.75rem;
+}
+
+.portal-actions > p {
+  margin: 0;
+}
+
+/* ---- Forms, continued ---- */
+
+/* A form's text runs wider than a field or two. */
+.portal-form--wide {
+  max-width: 48rem;
+}
+
+.portal-field--short {
+  max-width: 16rem;
+}
+
+/* A fieldset with the browser's box removed; dimmed when disabled. */
+.portal-fieldset {
+  min-width: 0;
+  padding: 0;
+  margin: 0;
+  border: 0;
+}
+
+.portal-fieldset:disabled {
+  opacity: 0.45;
+}
+
+.portal-fieldset > legend {
+  padding: 0;
+  margin-bottom: 0.5rem;
+}
+
+/* Checkboxes in columns: one family per cell. */
+.portal-check-grid {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 0.5rem;
+  grid-template-columns: repeat(auto-fill, minmax(14rem, 1fr));
+}
+
+.portal-check-grid > li {
+  gap: 0.5rem;
+}
+
+/* A form's text set as paragraphs, line breaks within a paragraph kept. */
+.portal-form-body {
+  white-space: pre-line;
+}
+
+/* The "are you sure?" panel before deleting something. */
+.portal-confirm {
+  max-width: 36rem;
+}
+
+.portal-confirm > h2 {
+  margin-bottom: 0.75rem;
+}
+
+.portal-confirm > p {
+  margin-bottom: 1.25rem;
+}

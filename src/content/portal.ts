@@ -2,7 +2,8 @@ import { school } from './site';
 
 /**
  * Copy for the Family Portal's chrome and its public sign-in pages. Page
- * content for the modules (home, resources, forms, payments) lives with them.
+ * content for the modules lives beside it: portal-users, portal-documents,
+ * portal-forms and portal-payments (which also holds the family home).
  */
 
 export type NavItem = { label: string; href: string };
@@ -68,11 +69,4 @@ export const errorPage = {
     },
   },
   retry: 'Back to sign in',
-};
-
-export const homeStub = {
-  eyebrow: 'Home',
-  heading: 'Home — coming in phase 2',
-  body: 'Tasks, forms and payments will appear here.',
-  denied: 'That page is for directors.',
 };

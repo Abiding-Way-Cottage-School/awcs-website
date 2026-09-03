@@ -63,9 +63,18 @@ export const formSchema = z.object({
     .max(20_000, { error: 'Keep the form under 20,000 characters.' }),
 });
 
+/** A row id arriving from the browser — bound to an action, or in a path. Shape only. */
+export const idSchema = z.string().trim().min(1).max(64);
+
 /** Form fields arrive as strings; an empty one means "not given". */
-const blankToUndefined = (value: unknown) =>
+export const blankToUndefined = (value: unknown) =>
   typeof value === 'string' && value.trim() === '' ? undefined : value;
+
+/** An optional due date from a form: blank means none, otherwise YYYY-MM-DD. */
+export const optionalDueDateSchema = z.preprocess(
+  blankToUndefined,
+  z.iso.date({ error: 'Enter the due date as YYYY-MM-DD.' }).optional(),
+);
 
 export const paymentSchema = z.object({
   description: z
@@ -81,10 +90,7 @@ export const paymentSchema = z.object({
       .min(0, { error: 'Amounts cannot be negative.' })
       .max(1_000_000, { error: 'That is more than $10,000; check the amount.' }),
   ),
-  dueAt: z.preprocess(
-    blankToUndefined,
-    z.iso.date({ error: 'Enter the due date as YYYY-MM-DD.' }).optional(),
-  ),
+  dueAt: optionalDueDateSchema,
 });
 
 /**

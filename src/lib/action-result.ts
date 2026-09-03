@@ -17,3 +17,9 @@ export function fail(message: string, errors?: Record<string, string[]>): Action
 export function succeed(message?: string): ActionResult {
   return message === undefined ? { ok: true } : { ok: true, message };
 }
+
+/** The first message for one field from an action's result, if any. */
+export function fieldError(state: ActionResult | undefined, name: string): string | undefined {
+  if (!state || state.ok) return undefined;
+  return state.errors?.[name]?.[0];
+}

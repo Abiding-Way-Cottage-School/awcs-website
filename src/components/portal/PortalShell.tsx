@@ -37,7 +37,8 @@ export default function PortalShell({
             width={512}
             height={512}
             className="portal-brand__mark"
-            priority
+            sizes="44px"
+            loading="eager"
           />
           <span className="portal-brand__text" aria-hidden="true">
             <span>{school.nameLines[0]}</span>

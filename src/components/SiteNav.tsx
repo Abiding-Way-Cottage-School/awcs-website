@@ -49,6 +49,29 @@ export default function SiteNav() {
     };
   }, []);
 
+  // Past the breakpoint the panel becomes the ordinary inline navigation, so an
+  // open menu has nothing left to close — and the scroll lock below must not
+  // outlive it. Matches the `max-width: 64rem` block in site.css.
+  useEffect(() => {
+    const narrow = window.matchMedia('(max-width: 64rem)');
+    const onChange = () => {
+      if (!narrow.matches) setMobileOpen(false);
+    };
+    narrow.addEventListener('change', onChange);
+    return () => narrow.removeEventListener('change', onChange);
+  }, []);
+
+  // The panel scrolls on its own; scrolling the page behind it only drags the
+  // header, and the panel with it, off the top of the screen.
+  useEffect(() => {
+    if (!mobileOpen) return;
+    const previous = document.body.style.overflow;
+    document.body.style.overflow = 'hidden';
+    return () => {
+      document.body.style.overflow = previous;
+    };
+  }, [mobileOpen]);
+
   // Trailing slashes are on, so compare normalised paths.
   const normalise = (href: string) =>
     href.endsWith('/') && href !== '/' ? href.slice(0, -1) : href;

@@ -9,17 +9,24 @@ import SiteShell from '@/components/SiteShell';
 import { givingMethods, home } from '@/content/home';
 import { atmosphereWords, commitments, photo, quotes, school } from '@/content/site';
 
-/** Facts run together with a dot that sighted readers see and screen readers skip. */
+/**
+ * Facts run together with a dot that sighted readers see and screen readers skip.
+ *
+ * Each fact is one unbreakable span, and the dot is drawn after it in CSS, so a
+ * line that has to wrap on a phone breaks between two facts rather than through
+ * the middle of "9:30 AM–1:30 PM". The wrapper is what gives it somewhere to
+ * break: the spans sit directly against one another with no whitespace between
+ * them, so the run only reflows because they are flex items.
+ */
 function Dotted({ parts }: { parts: string[] }) {
   return (
-    <>
-      {parts.map((part, i) => (
-        <span key={part}>
-          {i > 0 ? <span aria-hidden="true"> • </span> : null}
+    <span className="dotted">
+      {parts.map((part) => (
+        <span key={part} className="dotted__item">
           {part}
         </span>
       ))}
-    </>
+    </span>
   );
 }
 
@@ -63,7 +70,7 @@ export default function HomePage() {
             <Photo
               src={home.hero.image}
               shape="fill"
-              priority
+              preload
               sizes="(min-width: 60rem) 52vw, 100vw"
             />
           </div>

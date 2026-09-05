@@ -34,7 +34,7 @@ export default function PageHeader({
         </div>
 
         {image ? (
-          <Photo src={image} shape="landscape" priority sizes="(min-width: 60rem) 45vw, 100vw" />
+          <Photo src={image} shape="landscape" preload sizes="(min-width: 60rem) 45vw, 100vw" />
         ) : null}
       </div>
     </header>

@@ -22,6 +22,7 @@ export default function SiteFooter() {
               width={512}
               height={512}
               className="site-footer__logo"
+              sizes="72px"
               aria-hidden="true"
             />
             <p className="site-footer__mark">

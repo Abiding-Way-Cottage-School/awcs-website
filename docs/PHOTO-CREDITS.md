@@ -53,19 +53,22 @@ release from the family of every child in the frame. Worth confirming that is on
 file before the site is promoted widely, and worth re-checking each time another
 real photograph is added.
 
-The deployed version is not the camera original. The photograph was taken in
-front of an office building and its car park, visible through the trees, and
-the school used Google Gemini to replace that background with foliage. Nothing
-about the children was changed. Both versions are kept in the gitignored
-`/source-photos/`: the camera original `awcs-children-together.jpeg`
-(3268x2451, 5.6MB) and the edited export `awcs-children-together-gemini.jpg`.
+The deployed version is the camera original, resized to 1800px and re-encoded
+like every other photograph here. The school shot it in front of an office
+building whose facade and car park are visible through the trees behind the
+children; that background is in the published image.
 
-Gemini exported the edit at only 1195x896, so unlike every other photograph
-here the web version is served at that native size rather than 1800px. On a
-high-density desktop display the hero will look softer than the rest of the
-set. If a sharper version is wanted, re-run the edit at a larger output size
-and drop the result into `/source-photos/` — the alt text and content wiring
-do not need to change.
+It was not always. An earlier version replaced the background with foliage
+using Google Gemini, but Gemini exported the edit at only 1195x896, so the
+hero was served at that size and looked visibly softer than the rest of the
+set on a high-density display. The school chose sharpness over the cleaner
+background and the original was put back.
+
+Both versions are kept in the gitignored `/source-photos/`: the camera
+original `awcs-children-together.jpeg` (3268x2451, 5.6MB) and the edited
+export `awcs-children-together-gemini.jpg`. Either can be re-published by
+resizing it to 1800px into `public/photos/children-together.jpg` — the alt
+text and content wiring do not need to change.
 
 | File | Origin | Used for |
 | --- | --- | --- |

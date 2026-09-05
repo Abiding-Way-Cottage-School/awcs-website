@@ -38,7 +38,8 @@ export default function AuthPage({
             width={512}
             height={512}
             className="brand-mark"
-            priority
+            sizes="52px"
+            loading="eager"
           />
         </Link>
 

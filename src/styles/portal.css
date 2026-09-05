@@ -11,7 +11,7 @@
 
 /* ---- Shell: a 16rem column beside the page from 60rem, stacked below ---- */
 .portal-shell {
-  min-height: 100vh;
+  min-height: 100dvh;
   display: grid;
   grid-template-columns: minmax(0, 1fr);
   background: var(--bg);
@@ -26,6 +26,29 @@
   border-bottom: 1px solid var(--border);
 }
 
+/* Stacked, the strip carries the mark, the section links and the signed-in
+   family; the links are the only part worth reaching for, so they sit apart
+   from the name rather than crowding it. */
+@media (max-width: 60rem) {
+  .portal-nav ul {
+    gap: 0.25rem 1.5rem;
+  }
+
+  .portal-nav__link {
+    padding: 0.55rem 0;
+  }
+
+  .portal-user {
+    flex-flow: row wrap;
+    align-items: baseline;
+    gap: 0.35rem 1rem;
+  }
+
+  .portal-user__name {
+    font-size: 1.125rem;
+  }
+}
+
 @media (min-width: 60rem) {
   .portal-shell {
     grid-template-columns: 16rem minmax(0, 1fr);
@@ -34,7 +57,7 @@
   .portal-sidebar {
     position: sticky;
     top: 0;
-    height: 100vh;
+    height: 100dvh;
     gap: 2rem;
     padding: 2rem 1.5rem;
     border-bottom: 0;
@@ -203,6 +226,27 @@ button.portal-nav__link {
   font-variant-numeric: tabular-nums;
 }
 
+/* Tables are the one thing here that cannot reflow. On a phone they scroll
+   sideways inside .portal-table-wrap instead, and the min-width is what makes
+   them scroll rather than crush six columns of prose into a few words each. */
+@media (max-width: 46rem) {
+  .portal-table {
+    min-width: 32rem;
+  }
+
+  .portal-table th,
+  .portal-table td {
+    padding-right: 0.75rem;
+  }
+
+  /* Dates, amounts and statuses are single tokens and read badly broken. */
+  .portal-table time,
+  .portal-table .portal-pill,
+  .portal-table__num {
+    white-space: nowrap;
+  }
+}
+
 .portal-table a {
   text-underline-offset: 0.25em;
 }
@@ -339,6 +383,13 @@ button.portal-nav__link {
   border-bottom: 1px solid var(--border);
 }
 
+@media (max-width: 34rem) {
+  .portal-task {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.35rem;
+  }
+}
+
 .portal-task__title {
   font-family: var(--font-display);
   font-size: var(--fs-h3);
@@ -352,7 +403,7 @@ button.portal-nav__link {
 
 /* ---- The public pages: sign in, check your email, error ---- */
 .portal-auth {
-  min-height: 100vh;
+  min-height: 100dvh;
   display: flex;
   align-items: center;
   padding-block: var(--section-y);

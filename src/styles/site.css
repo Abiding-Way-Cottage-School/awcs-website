@@ -7,6 +7,32 @@
    punctuate it, and olive is held back for the header rule, the footer, and the
    occasional dark panel. */
 
+/* ---- Small-screen tuning of the tokens ----
+   tokens.css is not edited, so the few values whose floors were set for a page
+   rather than for a 320px-wide phone are re-declared here; site.css loads after
+   it, so these win. Nothing is invented — the desktop end of every clamp is
+   exactly as tokens.css set it. */
+:root {
+  /* The floor sat at 2.5rem for every screen narrower than 800px. Letting it
+     keep scaling down stops a long heading running off a small phone, and
+     changes nothing at 800px and above. */
+  --fs-h1: clamp(2.125rem, 5vw, 3.75rem);
+
+  /* Eight rems of air between sections reads as generous on a page and as a
+     long scroll on a phone. */
+  --section-y: clamp(3.25rem, 10vw, 8rem);
+
+  /* The sticky header's height. Both the header and the mobile menu that hangs
+     beneath it need it, so it is named once rather than repeated as a literal. */
+  --header-h: 4.75rem;
+}
+
+@media (max-width: 46rem) {
+  :root {
+    --header-h: 4rem;
+  }
+}
+
 /* ---- Reset & base ---- */
 *,
 *::before,
@@ -22,6 +48,11 @@ body {
   font-size: var(--fs-body);
   line-height: var(--lh-body);
   text-rendering: optimizeLegibility;
+  /* Stop iOS inflating body text when a phone is turned sideways, and let an
+     email address or a long word break instead of widening the whole page. */
+  -webkit-text-size-adjust: 100%;
+  text-size-adjust: 100%;
+  overflow-wrap: break-word;
 }
 
 img {
@@ -179,6 +210,13 @@ ul {
   }
 }
 
+/* Narrower still and a 3:2 band is too short to hold the quote it carries. */
+@media (max-width: 30rem) {
+  .photo--band {
+    aspect-ratio: 4 / 3;
+  }
+}
+
 /* ---- Skip link ---- */
 .skip-link {
   position: absolute;
@@ -215,7 +253,7 @@ ul {
   align-items: center;
   justify-content: space-between;
   gap: 1.5rem;
-  min-height: 4.75rem;
+  min-height: var(--header-h);
 }
 
 /* Wordmark and cottage mark read as one unit and link as one. */
@@ -255,9 +293,34 @@ ul {
   flex-shrink: 0;
 }
 
+/* On a phone the lockup, the menu button and two gutters share about 280px.
+   Shrinking the wordmark and closing the gaps keeps them all on one line
+   instead of wrapping the header onto two. */
 @media (max-width: 46rem) {
+  .site-header__inner {
+    gap: 0.75rem;
+  }
+
+  .brand-lockup {
+    gap: 0.6rem;
+  }
+
+  .wordmark {
+    font-size: 1.25rem;
+  }
+
   .brand-mark {
-    height: 2.75rem;
+    height: 2.5rem;
+  }
+}
+
+@media (max-width: 26rem) {
+  .wordmark {
+    font-size: 1.0625rem;
+  }
+
+  .brand-mark {
+    height: 2.125rem;
   }
 }
 
@@ -395,11 +458,17 @@ ul {
     display: inline-flex;
   }
 
+  /* Anchored to the header rather than to a fixed distance from the top of the
+     viewport: .site-header is sticky, so it is the containing block, and the
+     panel now follows the header instead of assuming its height. */
   .site-nav {
-    position: fixed;
-    inset: 4.75rem 0 auto;
-    max-height: calc(100dvh - 4.75rem);
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    max-height: calc(100dvh - var(--header-h));
     overflow-y: auto;
+    overscroll-behavior: contain;
     flex-direction: column;
     align-items: stretch;
     gap: 0;
@@ -469,6 +538,14 @@ ul {
   padding: clamp(3rem, 8vw, 6rem) var(--gutter);
 }
 
+/* Stacked, the text sits directly under the header and directly over the
+   photograph, so it needs far less air than the desktop column does. */
+@media (max-width: 60rem) {
+  .hero__text {
+    padding: 2.5rem var(--gutter) 3rem;
+  }
+}
+
 .hero__inner {
   max-width: 34rem;
   margin-inline: auto;
@@ -478,8 +555,18 @@ ul {
 .hero-title {
   display: flex;
   flex-direction: column;
-  font-size: clamp(2.75rem, 6.5vw, 4.75rem);
+  /* Stacked, the title has the whole page, so it can scale with the viewport
+     all the way down — at the old 2.75rem floor "Cottage School" was wider than
+     a 320px screen. Beside the photograph it has a column instead, and keeps
+     the gentler rate set below. */
+  font-size: clamp(2.25rem, 11vw, 4.75rem);
   margin: 0;
+}
+
+@media (min-width: 60rem) {
+  .hero-title {
+    font-size: clamp(2.75rem, 6.5vw, 4.75rem);
+  }
 }
 
 .hero-title em {
@@ -496,6 +583,25 @@ ul {
   font-size: clamp(1.25rem, 2vw, 1.5rem);
   line-height: 1.4;
   color: var(--text-heading);
+}
+
+/* A run of facts separated by dots — the hero's two lines, and the lead on the
+   day section. The dot is a trailing pseudo-element, as on .subject-list, so it
+   cannot be left stranded at the start of a wrapped line; the empty alt text
+   keeps screen readers from announcing it. */
+.dotted {
+  display: inline-flex;
+  flex-wrap: wrap;
+  align-items: baseline;
+}
+
+.dotted__item {
+  white-space: nowrap;
+}
+
+.dotted__item:not(:last-child)::after {
+  content: '•' / '';
+  margin-inline: 0.45em;
 }
 
 /* Two lines of facts under the lead: day, hours, place; ages, groups, who runs it. */
@@ -530,10 +636,22 @@ ul {
   height: 100%;
 }
 
+/* 4:3 rather than 3:2 because the photograph is 4:3 and the children run the
+   full width of it — a shallower frame crops the ends of the line away. */
 @media (max-width: 60rem) {
   .hero__photo {
     min-height: 0;
-    aspect-ratio: 3 / 2;
+    aspect-ratio: 4 / 3;
+  }
+}
+
+/* Two tracked-caps labels cannot sit side by side on a narrow phone without
+   clipping, so each action takes its own full-width row — the usual phone
+   pattern, and a much bigger target. */
+@media (max-width: 30rem) {
+  .hero__actions .btn,
+  .cta__actions .btn {
+    flex: 1 1 100%;
   }
 }
 
@@ -697,8 +815,12 @@ ul {
   gap: clamp(2rem, 4vw, 3rem);
 }
 
-@media (min-width: 46rem) {
-  .cards--2 {
+/* Two up as soon as there is room for it — a landscape phone or a small
+   tablet, well before the full column count. Ordered narrowest first, because
+   these all match at the wide end and the last one to match wins. */
+@media (min-width: 40rem) {
+  .cards--2,
+  .cards--3 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
@@ -715,9 +837,33 @@ ul {
   }
 }
 
-@media (min-width: 46rem) and (max-width: 60rem) {
+@media (min-width: 40rem) and (max-width: 60rem) {
   .cards--4 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+/* ---- Photo gallery ----
+   A run of photographs with nothing between them. .cards would stack them one
+   enormous square at a time on a phone; this leads with one wide frame and sets
+   the rest two up, which reads as a deliberate arrangement rather than a queue. */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(0.75rem, 2vw, 1.5rem);
+}
+
+@media (max-width: 52rem) {
+  .gallery > :first-child {
+    grid-column: 1 / -1;
+    aspect-ratio: 3 / 2;
+  }
+}
+
+@media (min-width: 52rem) {
+  .gallery {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: clamp(2rem, 4vw, 3rem);
   }
 }
 
@@ -852,8 +998,9 @@ ul {
   margin-top: clamp(2.5rem, 5vw, 3.5rem);
 }
 
-@media (min-width: 46rem) {
-  .def-grid--2 {
+@media (min-width: 40rem) {
+  .def-grid--2,
+  .def-grid--3 {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
@@ -918,6 +1065,19 @@ ul {
 .schedule__note {
   grid-column: 2;
   font-size: var(--fs-small);
+}
+
+/* Below this the 5.5rem time column leaves too little for the label beside it,
+   so the time becomes a line of its own above the entry. */
+@media (max-width: 34rem) {
+  .schedule > li {
+    grid-template-columns: minmax(0, 1fr);
+    gap: 0.35rem;
+  }
+
+  .schedule__note {
+    grid-column: auto;
+  }
 }
 
 @media (min-width: 52rem) {
@@ -1284,6 +1444,8 @@ ul {
 
 .site-footer__contact a {
   text-underline-offset: 0.25em;
+  /* The school's address is one long word to a 320px screen. */
+  overflow-wrap: anywhere;
 }
 
 .site-footer__contact p + p {
@@ -1317,6 +1479,14 @@ ul {
 
 .sitemap li + li {
   margin-top: 0.6rem;
+}
+
+/* Four columns of small links become two on a phone, where they are tapped
+   rather than clicked and need the room between them. */
+@media (max-width: 46rem) {
+  .sitemap li + li {
+    margin-top: 0.9rem;
+  }
 }
 
 .sitemap a {
@@ -1360,6 +1530,18 @@ ul {
 /* ---- Buttons ---- */
 .btn {
   cursor: pointer;
+  /* Set here rather than left to inherit, because on a phone a .btn is often
+     stretched to the full width of its row. */
+  text-align: center;
+}
+
+/* The tracked caps are wide, and a label like "Our philosophy" overflows a
+   narrow phone at the full padding. */
+@media (max-width: 30rem) {
+  .btn {
+    padding: 0.8rem 1.125rem;
+    letter-spacing: 0.16em;
+  }
 }
 
 .btn[aria-disabled='true'] {
@@ -1382,6 +1564,15 @@ ul {
 
 .link-more:hover {
   color: var(--text-heading);
+}
+
+/* An 11px line is a small thing to hit with a thumb; the padding is invisible
+   but roughly doubles the target. */
+@media (max-width: 46rem) {
+  .link-more {
+    padding-top: 0.4rem;
+    padding-bottom: 0.4rem;
+  }
 }
 
 /* ---- Motion: a slow fade-up on section entry, and nothing else ---- */

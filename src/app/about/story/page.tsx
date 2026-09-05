@@ -46,9 +46,21 @@ export default function StoryPage() {
       </section>
 
       <section className="section-tight">
-        <div className="container cards cards--3 reveal">
-          {story.gallery.map((src) => (
-            <Photo key={src} src={src} shape="square" sizes="(min-width: 52rem) 30vw, 100vw" />
+        <div className="container gallery reveal">
+          {/* The first frame runs the full width on a phone and the other two
+              sit beside each other under it, so the run reads as an
+              arrangement rather than as three squares in a queue. */}
+          {story.gallery.map((src, i) => (
+            <Photo
+              key={src}
+              src={src}
+              shape="square"
+              sizes={
+                i === 0
+                  ? '(min-width: 52rem) 30vw, 100vw'
+                  : '(min-width: 52rem) 30vw, 50vw'
+              }
+            />
           ))}
         </div>
       </section>

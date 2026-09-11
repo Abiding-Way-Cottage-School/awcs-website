@@ -6,7 +6,7 @@ export default function PhotoBand({
   quote,
 }: {
   image: string;
-  quote?: { text: string; cite: string };
+  quote?: { text: string; cite?: string };
 }) {
   return (
     <section className="photo-band">
@@ -14,8 +14,12 @@ export default function PhotoBand({
       {quote ? (
         <div className="photo-band__caption">
           <blockquote>
-            {quote.text}
-            <cite>{quote.cite}</cite>
+            {quote.text.split('\n').map((line) => (
+              <span key={line} style={{ display: 'block' }}>
+                {line}
+              </span>
+            ))}
+            {quote.cite ? <cite>{quote.cite}</cite> : null}
           </blockquote>
         </div>
       ) : null}

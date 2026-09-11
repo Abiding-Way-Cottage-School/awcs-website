@@ -36,45 +36,65 @@ export const communityIndex = {
 export const experience = {
   eyebrow: 'The Abiding Way experience',
   heading: 'Quiet, ordered, and full of life.',
-  lead: 'You can tell a great deal about a school from how it sounds at ten in the morning.',
+  lead: 'There is a certain feeling when you walk into Abiding Way on a Wednesday.',
   image: photo.lightWall,
   intro: [
-    'Walk in on a Wednesday and the first thing you will notice is that it is not loud. Not silent — there are children here, and folk dance is coming — but unhurried. Nobody is being rushed from one thing to the next, and nobody is being entertained.',
-    'The second thing you will notice is that the children are doing the work. They are the ones telling the story back. They are the ones looking at the painting and describing it from memory. The adults in the room are largely quiet, which takes more discipline than talking.',
+    'Children are gathered together, mothers are nearby, beautiful things are being shared, and everyone knows what comes next. There is a rhythm to the day, but there is also room to breathe.',
+    'Lessons are short and focused. Children have space to listen, think, wonder, and respond. And in between the lessons, there is plenty of childhood: friendship, conversation, movement, laughter, and time together.',
   ],
-  marks: {
-    eyebrow: 'What sets it apart',
-    heading: 'Six things a visitor notices.',
-    items: [
-      {
-        name: 'Mixed ages, on purpose',
-        body: 'A six-year-old and an eleven-year-old hear the same Shakespeare. They take different things from it, and both take something real.',
-      },
-      {
-        name: 'One reading, then narration',
-        body: 'We do not re-read, and we do not quiz. The child attends the first time because they know they will be asked to tell it.',
-      },
-      {
-        name: 'Short lessons, hard stops',
-        body: 'Twenty minutes of full attention, then we move. Lessons end while interest is still high, which is why it survives to next week.',
-      },
-      {
-        name: 'Beautiful things, unexplained',
-        body: 'A real painting, a real symphony, a real poem, without a worksheet attached. We let them do their own work on a child.',
-      },
-      {
-        name: 'Outdoors whenever possible',
-        body: 'Lunch outside, nature study outside, and the plain assumption that weather is not an obstacle.',
-      },
-      {
-        name: 'Parents in the room',
-        body: 'Not observers. Teaching, assisting, holding babies, setting out lunch. The children see their mothers work.',
-      },
-    ],
+  marks: [
+    {
+      name: 'More Than Classes',
+      body: [
+        'Abiding Way is more than a collection of enrichment classes. The relationships between the lessons matter just as much.',
+        'Children know one another. Mothers know one another. We share meals, conversations, and the ordinary moments that turn a gathering into a community.',
+        'Our hope is that children don’t simply attend Abiding Way. They feel that they belong here.',
+      ],
+    },
+    {
+      name: 'A Generous Feast',
+      body: [
+        'We want children to encounter a rich and beautiful education.',
+        'They listen to poetry and music, study great works of art, hear Shakespeare, practice another language, make things with their hands, move their bodies, and encounter ideas worth remembering.',
+        'We want these things to inspire a lasting love for what is beautiful, true, and good.',
+      ],
+    },
+    {
+      name: 'Learning With Delight',
+      body: [
+        'We want children to genuinely enjoy being here.',
+        'There is room for curiosity, laughter, movement, friendship, and the simple delight of discovering something new. We want learning to be something children look forward to, not something that leaves childhood feeling hurried.',
+      ],
+    },
+    {
+      name: 'Mothers Are Part of It',
+      body: [
+        'Abiding Way is not a drop-off program.',
+        'Mothers remain part of their children’s education and part of the community itself. They teach, assist, care for younger children, share meals, encourage one another, and learn alongside their children.',
+        'We want mothers to leave feeling encouraged too, reminded that they aren’t walking this road alone.',
+      ],
+    },
+    {
+      name: 'Christ at the Center',
+      body: [
+        'Everything we do is rooted in Christ.',
+        'We want our children to grow in wisdom while learning to see the goodness of God’s creation with wonder and gratitude.',
+      ],
+    },
+    {
+      name: 'A Breath of Fresh Air',
+      body: [
+        'We want Abiding Way to feel like a breath of fresh air in the middle of the homeschool week.',
+        'A place to come, learn something beautiful, see friends, make something with your hands, sing, laugh, and return home refreshed.',
+      ],
+    },
+  ],
+  refrain: {
+    text: 'Something different.\nSomething shared.\nSomething beautiful.',
   },
-  quote: {
-    text: 'Education is an atmosphere, a discipline, a life.',
-    cite: 'Charlotte M. Mason',
+  cta: {
+    heading: 'Come Experience Abiding Way',
+    body: 'The best way to understand Abiding Way is to experience it for yourself.',
   },
   gallery: [photo.booksHeld, photo.knittingHands, photo.candleDried],
 };

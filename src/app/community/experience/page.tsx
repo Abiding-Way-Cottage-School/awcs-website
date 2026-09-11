@@ -52,28 +52,25 @@ export default function ExperiencePage() {
 
       <section className="section surface-alt">
         <div className="container">
-          <div className="section-head reveal">
-            <span className="eyebrow">{experience.marks.eyebrow}</span>
-            <h2>{experience.marks.heading}</h2>
-          </div>
-          <div className="def-grid def-grid--3 reveal">
-            {experience.marks.items.map((m) => (
+          <div className="def-grid def-grid--2 reveal" style={{ marginTop: 0 }}>
+            {experience.marks.map((m) => (
               <div key={m.name} className="def">
                 <h3>{m.name}</h3>
-                <p>{m.body}</p>
+                {m.body.map((para) => (
+                  <p key={para.slice(0, 40)}>{para}</p>
+                ))}
               </div>
             ))}
           </div>
         </div>
       </section>
 
-      <PhotoBand image={photo.heroPath} quote={experience.quote} />
+      <PhotoBand image={photo.heroPath} quote={experience.refrain} />
 
       <CtaBand
-        heading="It is easier to see than to describe."
-        body="Come for a Wednesday morning and watch it happen."
+        heading={experience.cta.heading}
+        body={experience.cta.body}
         primary={{ label: 'Plan a visit', href: '/join/visit/' }}
-        secondary={{ label: 'A day at Abiding Way', href: '/community/a-day/' }}
         surface="linen"
       />
     </SiteShell>

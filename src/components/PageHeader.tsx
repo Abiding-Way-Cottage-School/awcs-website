@@ -8,12 +8,15 @@ export default function PageHeader({
   heading,
   lead,
   image,
+  imageShape = 'landscape',
   parent,
 }: {
   eyebrow: string;
   heading: string;
   lead?: string;
   image?: string;
+  /** Landscape suits most pages; use portrait when the photograph is of people. */
+  imageShape?: 'landscape' | 'portrait';
   parent?: { label: string; href: string };
 }) {
   return (
@@ -34,7 +37,7 @@ export default function PageHeader({
         </div>
 
         {image ? (
-          <Photo src={image} shape="landscape" preload sizes="(min-width: 60rem) 45vw, 100vw" />
+          <Photo src={image} shape={imageShape} preload sizes="(min-width: 60rem) 45vw, 100vw" />
         ) : null}
       </div>
     </header>

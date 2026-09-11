@@ -149,22 +149,35 @@ export const story = {
   gallery: [photo.woolBasket, photo.pressedFlowers, photo.childReading],
 };
 
+const directorBios: Record<string, string> = {
+  'Lily Anderson':
+    'Lily loves living books, literature, nature, music, and the simple beauty of learning alongside children. She is especially passionate about protecting childhood from unnecessary hurry and creating space for wonder, beauty, and rich ideas.',
+  'Bethany Lynch':
+    'Bethany brings a thoughtful, creative, and deeply relational presence to Abiding Way. She loves nature, beauty, meaningful community, and creating an environment where children and mothers feel known, welcomed, and encouraged.',
+};
+
 export const leadership = {
   eyebrow: 'Our leadership',
-  heading: 'The mothers who carry the day.',
-  lead: 'Abiding Way is led by the parents who teach in it.',
-  image: photo.armsLinked,
-  intro:
-    'Our co-directors handle the practical weight of the co-op — the calendar, the room, the enrollment, the hundred small decisions that let a Wednesday run well — alongside teaching their own children like everyone else.',
-  /* DRAFT — names and roles are from the handbook and are correct. The `bio`
-     field is intentionally left empty rather than invented: these are real
-     people and we will not publish claims about them they have not written.
-     Ask Lily and Bethany for two or three sentences each. */
-  people: school.directors.map((d) => ({ ...d, bio: '' })),
+  heading: 'Two mothers, longtime friends, and the women behind Abiding Way.',
+  image: photo.lilyAndBethany,
+  founders: {
+    heading: 'Lily & Bethany',
+    body: [
+      'Abiding Way was founded by two mothers who share a love for home education, Charlotte Mason, and a vision for something beautiful.',
+      'We have walked through motherhood and home education alongside one another for years. What began as a friendship and a small nature group eventually grew into Abiding Way.',
+      'Today, we lead the cottage school together, shaping the vision, planning each year, teaching alongside our community, and caring for the many details that make each Wednesday possible.',
+      'But most importantly, we are part of the community we lead.',
+      'We homeschool our own children, learn alongside other mothers, and share in the joys and challenges of this work. We want Abiding Way to be a place where mothers feel encouraged and supported, and where children are known, loved, and given room to flourish.',
+    ],
+  },
+  people: school.directors.map((d) => ({ ...d, bio: directorBios[d.name] ?? '' })),
   join: {
-    eyebrow: 'Everyone serves',
-    heading: 'There is no audience here.',
-    body: 'Every family takes a part — teaching a subject, assisting in a room, holding babies in the nursery, setting out lunch, or running the music for assembly. The load is real, and it is shared, and it is what keeps the co-op affordable and unmistakably ours.',
+    heading: 'A Community We Build Together',
+    body: [
+      'Abiding Way is intentionally a community where everyone has a part.',
+      'Mothers teach, assist, care for younger children, help with the rhythm of the day, and encourage one another. We believe that when families bring their gifts and share in the work, something richer is created than any one person could build alone.',
+      'As we grow, our hope is to remain small enough to know one another, rooted in Christ, and intentional about protecting the beauty, simplicity, and wonder that brought us here in the first place.',
+    ],
     image: photo.woodworkHands,
   },
 };

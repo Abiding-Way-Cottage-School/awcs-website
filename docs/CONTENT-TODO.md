@@ -11,7 +11,6 @@ Search the codebase for `DRAFT` to find every instance.
 
 | Where | File | What is needed |
 | --- | --- | --- |
-| **Leadership bios** | `src/content/about.ts` → `leadership.people` | Names and roles are correct (from the handbook). The `bio` field is deliberately **empty** — we will not publish invented claims about real people. Ask Lily and Bethany for two or three sentences each. |
 | **Calendar** | `src/content/families.ts` → `calendar` | Entirely placeholder. The page shows a visible warning banner until `isDraft` is set to `false`. Replace every row with the real 2026–2027 dates. |
 | **Mid-day schedule** | `src/content/community.ts` → `aDay.schedule` | The day opens with assembly at 9:30 and ends at 1:30; there is no separate arrival window. Both are handbook facts. The 10:00, 12:00 and 12:30 blocks are a reasonable reconstruction — check them. |
 | **What to bring** | `src/content/community.ts` → `aDay.bring` | A sensible list, not from the handbook. |

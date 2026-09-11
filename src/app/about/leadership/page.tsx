@@ -7,7 +7,7 @@ import { mailto } from '@/content/site';
 
 export const metadata = {
   title: 'Our Leadership',
-  description: leadership.lead,
+  description: leadership.heading,
 };
 
 export default function LeadershipPage() {
@@ -16,14 +16,19 @@ export default function LeadershipPage() {
       <PageHeader
         eyebrow="Our Leadership"
         heading={leadership.heading}
-        lead={leadership.lead}
         image={leadership.image}
+        imageShape="portrait"
         parent={{ label: 'About', href: '/about/' }}
       />
 
       <section className="section">
         <div className="container container--narrow reveal">
-          <p className="prose">{leadership.intro}</p>
+          <div className="prose">
+            <h2>{leadership.founders.heading}</h2>
+            {leadership.founders.body.map((p) => (
+              <p key={p.slice(0, 40)}>{p}</p>
+            ))}
+          </div>
 
           <ul className="ruled-list" style={{ marginTop: 'clamp(2rem, 4vw, 3rem)' }}>
             {leadership.people.map((person) => (
@@ -48,9 +53,8 @@ export default function LeadershipPage() {
       <section className="section surface-alt">
         <div className="container reveal">
           <Feature
-            eyebrow={leadership.join.eyebrow}
             heading={leadership.join.heading}
-            body={[leadership.join.body]}
+            body={leadership.join.body}
             image={leadership.join.image}
             imageShape="landscape"
             reverse

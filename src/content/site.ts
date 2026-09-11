@@ -159,6 +159,7 @@ export const photo = {
   readingInGrass: '/photos/reading-in-grass.jpg',
   readingOnBlanket: '/photos/reading-on-blanket.jpg',
   openPsalms: '/photos/open-psalms.jpg',
+  lilyAndBethany: '/photos/lily-and-bethany.jpg',
   knittingChild: '/photos/knitting-child.jpg',
   beachPath: '/photos/beach-path.jpg',
 
@@ -197,6 +198,8 @@ export const photoAlt: Record<string, string> = {
     'A child lying on a blanket in a meadow, chin in hand, absorbed in an open picture book with more books spread open nearby.',
   [photo.openPsalms]:
     'A Bible lying open to the Psalms on a whitewashed table, beside a cup of coffee, a small jug and a flowering plant in morning light.',
+  [photo.lilyAndBethany]:
+    'Lily and Bethany, the co-directors, standing together on a sunlit lawn in summer dresses, smiling.',
   [photo.knittingChild]: 'A child’s hands working a piece of teal wool with a hook.',
   [photo.beachPath]: 'A sand path through sea oats opening onto the ocean.',
   [photo.heroPath]: 'A figure walking a narrow path through a misty field at dawn.',

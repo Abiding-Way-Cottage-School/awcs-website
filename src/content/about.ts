@@ -142,11 +142,10 @@ export const story = {
         'What began as a few mothers walking nature trails together has become a community of families learning, growing, and forming friendships together.',
         'Children are discovering beautiful things side by side. Mothers are encouraging one another in the work of educating their children. Friendships are taking root.',
         'And we are still just beginning.',
-        'Our hope is to grow carefully while protecting the things that mattered to us from the very beginning: Christ, beauty, wonder, childhood, motherhood, and community.',
+        'Our hope is to grow carefully while protecting the things that mattered to us from the very beginning: Christ, beauty, wonder, childhood, motherhood, and community. This is Abiding Way.',
       ],
     },
   ],
-  closing: 'This is Abiding Way.',
   gallery: [photo.woolBasket, photo.pressedFlowers, photo.childReading],
 };
 

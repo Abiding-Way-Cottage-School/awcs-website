@@ -1151,8 +1151,7 @@ ul {
   text-align: center;
 }
 
-.statement blockquote,
-.statement .statement__text {
+.statement blockquote {
   max-width: 30ch;
   margin-inline: auto;
   font-size: clamp(1.5rem, 3.5vw, 2.25rem);

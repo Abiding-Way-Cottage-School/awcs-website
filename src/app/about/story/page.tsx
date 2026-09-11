@@ -39,12 +39,6 @@ export default function StoryPage() {
         </section>
       ))}
 
-      <section className="section-tight surface-alt statement">
-        <div className="container container--narrow reveal">
-          <p className="statement__text">{story.closing}</p>
-        </div>
-      </section>
-
       <section className="section-tight">
         <div className="container gallery reveal">
           {/* The first frame runs the full width on a phone and the other two

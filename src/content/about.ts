@@ -14,7 +14,7 @@ export const aboutIndex = {
     },
     {
       name: 'Our Story',
-      body: 'How a few families around a kitchen table became a co-op.',
+      body: 'How two mothers and a nature group became a cottage school.',
       href: '/about/story/',
       image: photo.candleDried,
     },
@@ -87,29 +87,66 @@ export const philosophy = {
       'Mason took for granted that the Holy Spirit is the supreme educator, and that every subject a child studies belongs to God already. We hold the same. Scripture is read for its own sake, not mined for lessons. Hymns are sung because they are true and beautiful.',
       'Families come to us from many churches. What we hold in common, and what we ask families to be glad about, is that Christ is at the center of the day rather than off to one side of it.',
     ],
-    image: photo.candleDried,
+    image: photo.openPsalms,
   },
 };
 
 export const story = {
   eyebrow: 'Our story',
-  heading: 'It began with a few mothers and a long table.',
-  lead: 'A co-op is what happens when several families decide not to do this alone.',
+  heading:
+    'It began with two mothers, a shared love of home education, and a vision for something beautiful.',
+  lead: 'Long before there was Abiding Way, there was friendship.',
   image: photo.dancingCircle,
-  /* DRAFT — the narrative below is written to the right tone but the specifics are
-     invented. Replace with the real account: who started it, in what year, what
-     prompted it, and how many families there were at the beginning.
-     See docs/CONTENT-TODO.md. */
-  body: [
-    'Like most good things, Abiding Way began as a conversation that would not go away. A handful of mothers, each teaching at home, each doing well enough alone, kept circling the same thought: some parts of this education are meant to be shared. Shakespeare wants a room full of voices. Folk dance needs more than one pair of feet. A picture is easier to look at slowly when someone else is looking too.',
-    'So we set a day aside. We found a room. We divided the subjects between us according to what each of us could carry, and we began — imperfectly, and gladly.',
-    'What we did not expect was how much the mothers would need it. The children came for Shakespeare and handicrafts. The mothers came for those too, and stayed for the company of women who understood why a morning could be ruined by a bad reading and saved by a good one.',
-    'We remain small on purpose. A cottage school is not an institution; it is a household that meets on Wednesdays.',
+  opening: [
+    'Bethany and I first became friends as teenagers and young adults. Years later, after we had both become mothers, we reconnected and found ourselves walking through many of the same seasons of motherhood and home education together.',
+    'We both knew we wanted to homeschool our children. We loved being home with them and having the freedom to shape their education ourselves. Around the same time, we both discovered Charlotte Mason and fell in love with her vision of an education filled with living books, nature, beauty, and rich ideas.',
+    'But we also discovered how abundant that vision really was.',
+    'There was art, music, poetry, Shakespeare, handicrafts, foreign language, nature study, movement, and so much more. We wanted our children to experience this generous feast, but we began to realize that some things were even more beautiful when shared with others.',
   ],
-  pullQuote: {
-    text: 'A cottage school is not an institution; it is a household that meets on Wednesdays.',
-    cite: 'Abiding Way Cottage School',
-  },
+  sections: [
+    {
+      heading: 'The Seed',
+      body: [
+        'So we started with nature.',
+        'For three years, Abide Nature Group brought our families together in different places around our community. What began as relaxed nature walks grew into themed lessons, nature journaling, living books, shared meals, and, most importantly, friendship.',
+        'The children were growing together.',
+        'So were the mothers.',
+        'The nature group became the seed of what would eventually become Abiding Way.',
+      ],
+    },
+    {
+      heading: 'A Different Kind of School',
+      body: [
+        'As our children approached their school years, our vision became clearer.',
+        'We looked for a community that reflected what we were hoping to build, but we couldn’t quite find it. We didn’t want to recreate traditional school in another setting or take the place of the mother. We wanted something that would complement the home: a beautiful addition to the homeschool week where children could experience goodness, beauty, and truth alongside other families who shared the same vision.',
+        'We envisioned short, focused lessons in poetry, Shakespeare, art, music, language, movement, handicrafts, and more, while mothers remained their children’s primary educators.',
+        'We also wanted mothers to have a place to grow together through friendship, study, conversation, and encouragement.',
+        'Most of all, we wanted Christ to be at the center. Not simply as another part of the day, but as the foundation underneath all that we were doing.',
+        'A place where Wednesday could feel like a breath of fresh air in the middle of the school week.',
+      ],
+    },
+    {
+      heading: 'Bringing It to Life',
+      body: [
+        'During our last year of Abide Nature Group, we began building that vision.',
+        'There were countless coffee shop conversations, planning sessions, questions, revisions, and prayers as we worked to create something that felt true to what we had envisioned.',
+        'We knew what we wanted to protect: slow childhood, beauty, simplicity, close relationships, the mother’s role, and Christ at the center.',
+        'And eventually, we decided to go for it.',
+        'The name Abiding Way grew from our desire to build a community rooted in Christ, along with the biblical picture of seeking the ancient paths and walking in the good way.',
+        'Cottage School reflects what we hoped the community would feel like: intimate, welcoming, small, and more like a little educational home than an institution.',
+      ],
+    },
+    {
+      heading: 'Where We Are Now',
+      body: [
+        'What began as a few mothers walking nature trails together has become a community of families learning, growing, and forming friendships together.',
+        'Children are discovering beautiful things side by side. Mothers are encouraging one another in the work of educating their children. Friendships are taking root.',
+        'And we are still just beginning.',
+        'Our hope is to grow carefully while protecting the things that mattered to us from the very beginning: Christ, beauty, wonder, childhood, motherhood, and community.',
+      ],
+    },
+  ],
+  closing: 'This is Abiding Way.',
   gallery: [photo.woolBasket, photo.pressedFlowers, photo.childReading],
 };
 

@@ -22,26 +22,26 @@ export default function StoryPage() {
 
       <section className="section">
         <div className="container container--narrow prose reveal">
-          {story.body.slice(0, 2).map((p) => (
+          {story.opening.map((p) => (
             <p key={p.slice(0, 40)}>{p}</p>
           ))}
         </div>
       </section>
+
+      {story.sections.map((s, i) => (
+        <section key={s.heading} className={i % 2 === 0 ? 'section surface-alt' : 'section'}>
+          <div className="container container--narrow prose reveal">
+            <h2>{s.heading}</h2>
+            {s.body.map((p) => (
+              <p key={p.slice(0, 40)}>{p}</p>
+            ))}
+          </div>
+        </section>
+      ))}
 
       <section className="section-tight surface-alt statement">
         <div className="container container--narrow reveal">
-          <blockquote>
-            {story.pullQuote.text}
-            <cite>{story.pullQuote.cite}</cite>
-          </blockquote>
-        </div>
-      </section>
-
-      <section className="section">
-        <div className="container container--narrow prose reveal">
-          {story.body.slice(2).map((p) => (
-            <p key={p.slice(0, 40)}>{p}</p>
-          ))}
+          <p className="statement__text">{story.closing}</p>
         </div>
       </section>
 

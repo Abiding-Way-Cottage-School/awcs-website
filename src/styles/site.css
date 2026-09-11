@@ -118,6 +118,10 @@ ul {
   margin-top: 1.25rem;
 }
 
+.prose h2 + p {
+  margin-top: 1.25rem;
+}
+
 .prose strong {
   font-weight: 600;
 }
@@ -1147,7 +1151,8 @@ ul {
   text-align: center;
 }
 
-.statement blockquote {
+.statement blockquote,
+.statement .statement__text {
   max-width: 30ch;
   margin-inline: auto;
   font-size: clamp(1.5rem, 3.5vw, 2.25rem);

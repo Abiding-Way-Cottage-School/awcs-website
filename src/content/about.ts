@@ -31,7 +31,7 @@ export const philosophy = {
   eyebrow: 'Our philosophy',
   heading: 'Children are born persons.',
   lead: 'Not vessels to be filled, and not clay to be moulded. Persons, already.',
-  image: photo.bookOldHands,
+  image: photo.readingOnBlanket,
   intro: [
     'Charlotte Mason was a British educator who spent her life arguing something that still unsettles people: that a child is a whole person from the beginning, with a mind that wants real food. Not a smaller, emptier version of an adult. A person.',
     'Everything else follows from that. If a child is a person, you do not hand them a diluted summary of a subject — you hand them the thing itself, written by someone who loved it. If a child is a person, you do not test whether the information stuck; you ask them to tell you what they know, and you listen.',

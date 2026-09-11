@@ -157,6 +157,7 @@ export const photo = {
   silhouetteSunset: '/photos/silhouette-sunset.jpg',
   bookFlowers: '/photos/book-flowers.jpg',
   readingInGrass: '/photos/reading-in-grass.jpg',
+  readingOnBlanket: '/photos/reading-on-blanket.jpg',
   knittingChild: '/photos/knitting-child.jpg',
   beachPath: '/photos/beach-path.jpg',
 
@@ -191,6 +192,8 @@ export const photoAlt: Record<string, string> = {
     'An open book on a weathered wooden table, with small white daisies laid across the pages.',
   [photo.readingInGrass]:
     'Two children lying on a blanket in long summer grass, reading a book together.',
+  [photo.readingOnBlanket]:
+    'A child lying on a blanket in a meadow, chin in hand, absorbed in an open picture book with more books spread open nearby.',
   [photo.knittingChild]: 'A child’s hands working a piece of teal wool with a hook.',
   [photo.beachPath]: 'A sand path through sea oats opening onto the ocean.',
   [photo.heroPath]: 'A figure walking a narrow path through a misty field at dawn.',

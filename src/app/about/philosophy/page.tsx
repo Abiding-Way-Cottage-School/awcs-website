@@ -47,7 +47,7 @@ export default function PhilosophyPage() {
         </div>
       </section>
 
-      <PhotoBand image={photo.mistyField} quote={quotes.bornPerson} />
+      <PhotoBand image={photo.childrenWalking} quote={quotes.bornPerson} />
 
       <section className="section">
         <div className="container">
